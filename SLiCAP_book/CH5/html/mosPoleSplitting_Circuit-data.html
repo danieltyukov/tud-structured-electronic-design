@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of mosPoleSplitting.kicad_sch</h2>
+<figure><a id="fig_mosPoleSplitting.kicad_sch"></a><img src="img/mosPoleSplitting.svg" alt="Circuit diagram of mosPoleSplitting." style="width:500px">
+<figcaption>Figure: mosPoleSplitting.svg<br>Circuit diagram of mosPoleSplitting.</figcaption>
+</figure>
+<h2><a id="netlist_mosPoleSplitting"></a>Netlist: mosPoleSplitting.cir</h2>
+<pre>"mosPoleSplitting"
+.source I1
+.detector V_out
+.param c_dg=0.3f I_s=1 C_s=0.2p R_s=100k R_ell=100k C_ell=0.5p
+.model MN M gm=0.5m cgs=1.25f cdg={c_dg} cdb=0.2f go=20u
+C1 1 0 C value={C_s} vinit=0
+C2 out 0 C value={C_ell} vinit=0
+I1 0 1 I value={I_s} noise=0 dc=0 dcvar=0
+M1 out 1 0 0 MN
+R1 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_ell} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end</pre>
+<a id="elementdata_mosPoleSplitting"></a><table>Expanded netlist of mosPoleSplitting.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$2.0 \cdot 10^{-13}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$5.0 \cdot 10^{-13}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$2.0 \cdot 10^{-16}$</td><td class="left">$2.0 \cdot 10^{-16}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdg_M1</td><td class = "left">out 1 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg}$</td><td class="left">$3.0 \cdot 10^{-16}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgb_M1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgs_M1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$1.25 \cdot 10^{-15}$</td><td class="left">$1.25 \cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Csb_M1</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gb_M1</td><td class = "left">out 0 0 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gm_M1</td><td class = "left">out 0 1 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0.0005$</td><td class="left">$0.0005$</td></tr>
+<tr><td class="left">Go_M1</td><td class = "left">out 0 out 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$2.0 \cdot 10^{-5}$</td><td class="left">$2.0 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">I1</td><td class = "left">0 1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$I_{s}$</td><td class="left">$1.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{\ell}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_mosPoleSplitting"></a><table>Parameter definitions of mosPoleSplitting.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$C_{\ell}$</td><td class="left">$5.0 \cdot 10^{-13}$</td><td class="left">$5.0 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$C_{s}$</td><td class="left">$2.0 \cdot 10^{-13}$</td><td class="left">$2.0 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$I_{s}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$R_{\ell}$</td><td class="left">$1.0 \cdot 10^{5}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$1.0 \cdot 10^{5}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td class="left">$c_{dg}$</td><td class="left">$3.0 \cdot 10^{-16}$</td><td class="left">$3.0 \cdot 10^{-16}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="mosPoleSplitting_index.html">mosPoleSplitting_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:55:36</p>
+</div></body></html>

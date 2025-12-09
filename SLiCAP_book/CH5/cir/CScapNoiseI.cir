@@ -1,0 +1,9 @@
+"CScapNoiseI"
+.source I1
+.detector V_out
+.lib C18.lib
+.param C_s=0.1p W=57.4u L=180n ID=6.47m IG=0
+C1 1 0 C value={C_s} vinit=0
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+X1 1 0 out NM18_noise ID={ID} IG={IG} W={W} L={L}
+.end

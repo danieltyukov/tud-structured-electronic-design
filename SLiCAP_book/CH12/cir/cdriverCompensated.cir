@@ -1,0 +1,14 @@
+"cdriver"
+.source I1
+.detector V_out1
+.lgRef E_O1
+.param R_phz=0.18
+C1 1 0 C value=1u vinit=0
+C2 out2 0 C value=10u vinit=0
+I1 0 out1 I value=0 noise=0 dc=0 dcvar=0
+I2 0 out2 I value=0 noise=0 dc=0 dcvar=0
+O1 1 out1 out1 0 AD8610
+R1 2 1 R value=15k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out1 out2 r value={R_phz} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+.end

@@ -1,0 +1,6 @@
+"VampBias"
+.detector V_out
+R3 0 3 R value={R_B1} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+R4 4 out R value={R_B2} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+X1 3 4 out 0 O_dcvar svo={v_off} sio={i_off} sib={sigma_ib*I_b} iib={I_b}
+.end

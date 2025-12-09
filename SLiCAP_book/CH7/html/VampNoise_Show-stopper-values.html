@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Show-stopper values"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Show-stopper values</h1></div>
+<p>Let us find show-stopper values for $R_a$, $S_v$, and $S_i$ for the case in which the noise factor $NF$ equals 2 (3dB).</p>
+<h2>Noise factor NF</h2>
+<p>The noise factor NF [-] is obtained as:</p>
+\begin{equation}
+NF=0.001583 R_{a} + 3.621 \cdot 10^{22} S_{i} \left(0.001583 R_{a} + 1\right)^{2} + 1.006 \cdot 10^{17} S_{v} + 1.0
+\end{equation}
+<h2>Show-stopper value $R_a$</h2>
+<p>The show stopper value $R_{amax}$ for $R_a$ with $NF=2$, $S_v=0$ and $S_i=0$ is obained as:</p>
+\begin{equation}
+R_{a max}=631.6
+\end{equation}
+<h2>Show-stopper value $S_v$</h2>
+<p>The show stopper value for $S_v$ with $NF=2$ and $S_i=0$ can be obained as a function of $R_a$ (setting $R_a$ to zero would be meaningless):</p>
+\begin{equation}
+S_{v max}=9.941 \cdot 10^{-18} - 1.574 \cdot 10^{-20} R_{a}
+\end{equation}
+<h2>Show-stopper value $S_i$</h2>
+<p>The show stopper value for $S_i$ with $NF=2$ and $S_v=0$ can be obained as a function of $R_a$: (setting $R_a$ to zero would be meaningless):</p>
+\begin{equation}
+S_{i max}=\frac{2.761 \cdot 10^{-23} - 4.372 \cdot 10^{-26} R_{a}}{\left(0.001583 R_{a} + 1.0\right)^{2}}
+\end{equation}
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="VampNoise_index.html">VampNoise_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:59:00</p>
+</div></body></html>

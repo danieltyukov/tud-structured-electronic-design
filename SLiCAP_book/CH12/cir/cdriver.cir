@@ -1,0 +1,10 @@
+"cdriver"
+.source V1
+.detector V_out
+.lgRef E_O1
+C1 1 0 C value=1u vinit=0
+C2 out 0 C value=10u vinit=0
+O1 1 out out 0 AD8610
+R1 2 1 R value=15k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+.end

@@ -1,0 +1,10 @@
+"CSstageEKV"
+.source I1
+.detector V_out
+.lib C18.lib
+.param W=10u L=180n ID=100u R_L=10k R_s=10G
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+R1 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_L} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+X1 out 1 0 0 CMOS18N W={W} L={L} ID={ID}
+.end

@@ -1,0 +1,10 @@
+"VampBiasNullor"
+.detector V_6
+N1 0 6 4 5 N
+R1 1 2 R value={R_a} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 2 3 R value={R_b} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 2 4 R value={R_c} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R4 5 6 R value={(A_v-1)*R} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc={V_P} dcvar=0
+V2 0 3 V value=0 noise=0 dc={V_N} dcvar=0
+.end

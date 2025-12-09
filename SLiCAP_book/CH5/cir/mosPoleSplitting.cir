@@ -1,0 +1,12 @@
+"mosPoleSplitting"
+.source I1
+.detector V_out
+.param c_dg=0.3f I_s=1 C_s=0.2p R_s=100k R_ell=100k C_ell=0.5p
+.model MN M gm=0.5m cgs=1.25f cdg={c_dg} cdb=0.2f go=20u
+C1 1 0 C value={C_s} vinit=0
+C2 out 0 C value={C_ell} vinit=0
+I1 0 1 I value={I_s} noise=0 dc=0 dcvar=0
+M1 out 1 0 0 MN
+R1 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_ell} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end

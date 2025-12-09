@@ -1,0 +1,10 @@
+"CSstageModel"
+.source I1
+.detector V_out
+.param W=10u L=180n ID=100u R_L=10k R_s=10G
+.model myNMOS M gm={g_m} cgs={c_gs} cgb={c_gb} cdg={c_dg} cdb={c_db} go={g_o}
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+M1 out 1 0 0 myNMOS
+R1 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_L} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end

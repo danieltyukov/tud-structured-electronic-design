@@ -1,0 +1,11 @@
+"CDcompM18"
+.lib C18.lib
+.source V1
+.detector V_out
+.lgref Gm_M1_X1
+C1 out 0 C value={C_ell} vinit=0
+C2 2 0 C value={C_phz} vinit=0
+R1 1 2 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 0 2 out 0 CMOS18N W={W} L={L} ID={ID}
+.end

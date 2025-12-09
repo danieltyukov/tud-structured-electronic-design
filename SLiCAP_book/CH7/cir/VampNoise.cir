@@ -1,0 +1,10 @@
+"VampNoise"
+.source V1
+.detector V_out
+.param A_v=20 R_s=600
+R1 out 2 R value={(A_v-1)*R_a} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R2 2 0 R value={R_a} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 3 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 3 2 out 0 N_noise sv={S_v} si={S_i}
+.end

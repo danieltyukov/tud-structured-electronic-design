@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of CSresNoise.kicad_sch</h2>
+<figure><a id="fig_CSresNoise.kicad_sch"></a><img src="img/CSresNoise.svg" alt="Circuit diagram of CSresNoise." style="width:400px">
+<figcaption>Figure: CSresNoise.svg<br>Circuit diagram of CSresNoise.</figcaption>
+</figure>
+<h2><a id="netlist_CSresNoise"></a>Netlist: CSresNoise.cir</h2>
+<pre>"CSresNoise"
+.source V1
+.detector V_out
+.lib C18.lib
+.param R_s=600 W=54.6u L=180n ID=6.15m IG=0
+R1 1 2 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 2 0 out NM18_noise ID={ID} IG={IG} W={W} L={L}
+.end</pre>
+<a id="elementdata_CSresNoise"></a><table>Expanded netlist of CSresNoise.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">F1_X1</td><td class = "left">2 0 10_X1 0 </td><td class = "left"></td><td class = "left">F</td>
+<td class="left">value</td><td class="left">$\frac{0.5 s}{\pi f_{T X1}}$</td><td class="left">$4.775 \cdot 10^{-12} s$</td></tr>
+<tr><td class="left">H1_X1</td><td class = "left">2 out 1_X1 10_X1 </td><td class = "left"></td><td class = "left">H</td>
+<td class="left">value</td><td class="left">$\frac{1}{g_{m X1}}$</td><td class="left">$41.31$</td></tr>
+<tr><td class="left">I1_X1</td><td class = "left">0 1_X1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$\frac{4 T k \left(\left(\frac{f_{\ell X1}}{f}\right)^{AF_{N18}} + 1\right)}{R_{N X1}}$</td><td class="left">$2.024 \cdot 10^{-16} \left(\frac{1}{f}\right)^{0.85} + 3.824 \cdot 10^{-22}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">I2_X1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$2 IG q$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$600.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_CSresNoise"></a><table>Parameter definitions of CSresNoise.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$AF_{N18}$</td><td class="left">$0.85$</td><td class="left">$0.85$</td></tr>
+<tr><td class="left">$CGBO_{N18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{N18}$</td><td class="left">$4.6 \cdot 10^{-10}$</td><td class="left">$4.6 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 N18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX N18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{N18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$E_{CRIT N18}$</td><td class="left">$3.5 \cdot 10^{6}$</td><td class="left">$3.5 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$ID$</td><td class="left">$0.00615$</td><td class="left">$0.00615$</td></tr>
+<tr><td class="left">$IG$</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">$I_{0 N18}$</td><td class="left">$2 C_{OX N18} N_{s N18} U_{T}^{2} u_{0 N18}$</td><td class="left">$1.439 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$KF_{N18}$</td><td class="left">$3.0 \cdot 10^{-25}$</td><td class="left">$3.0 \cdot 10^{-25}$</td></tr>
+<tr><td class="left">$L$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$LDS_{N18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$N_{s N18}$</td><td class="left">$1.45$</td><td class="left">$1.45$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$600$</td><td class="left">$600.0$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{N18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{N18}$</td><td class="left">$0.28$</td><td class="left">$0.28$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$W$</td><td class="left">$5.46 \cdot 10^{-5}$</td><td class="left">$5.46 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$u_{0 N18}$</td><td class="left">$0.086$</td><td class="left">$0.086$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s N18}^{2} U_{T}^{2} \left(\Theta_{N18} + \frac{1}{E_{CRIT N18} L}\right)^{2}}$</td><td class="left">$12.76$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$IC_{i X1} \left(1 + \frac{0.5 IC_{i X1}}{IC_{CRIT X1}}\right)^{0.5}$</td><td class="left">$17.56$</td></tr>
+<tr><td class="left">$IC_{i X1}$</td><td class="left">$\frac{ID L}{I_{0 N18} W}$</td><td class="left">$14.09$</td></tr>
+<tr><td class="left">$R_{N X1}$</td><td class="left">$\frac{IC_{X1} + 1}{N_{s N18} g_{m X1} \left(0.6667 IC_{X1} + 0.5\right)}$</td><td class="left">$43.32$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 N18} LDS_{N18} W$</td><td class="left">$9.828 \cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{N18} W$</td><td class="left">$2.512 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{N18} L + \frac{0.3333 C_{OX N18} L W \left(N_{s N18} - 1\right)}{N_{s N18}}$</td><td class="left">$8.777 \cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{N18} W + 0.6667 C_{OX N18} L W$</td><td class="left">$8.168 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$1.156 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$3.333 \cdot 10^{10}$</td></tr>
+<tr><td class="left">$f_{\ell X1}$</td><td class="left">$\frac{0.25 KF_{N18} R_{N X1} g_{m X1}^{2}}{C_{OX N18} L T W k}$</td><td class="left">$5.417 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$\frac{ID}{N_{s N18} U_{T} \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$0.0242$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="CSresNoise_index.html">CSresNoise_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:47</p>
+</div></body></html>

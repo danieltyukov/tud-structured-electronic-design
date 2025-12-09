@@ -1,0 +1,13 @@
+"VampFeedbackBiasTotal"
+.source V1
+.detector V_out
+C1 2 3 C value={C_a} vinit=0
+C2 5 0 C value={C_b} vinit=0
+G1 3 0 out 6 G value={g_B/s}
+R1 2 1 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 4 5 R value={R} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+R3 4 out R value={(A_v-1)*R} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+V1 1 0 V value={V_s} noise=0 dc=0 dcvar=0
+V2 6 0 V value=0 noise=0 dc={V_ref} dcvar={(sigma_V*V_ref)^2}
+X1 3 4 out 0 O_dcvar svo={v_off} sio={i_off} sib={I_b*sigma_Ib} iib={I_b}
+.end

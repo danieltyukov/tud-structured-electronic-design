@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of VampBias.kicad_sch</h2>
+<figure><a id="fig_VampBias.kicad_sch"></a><img src="img/VampBias.svg" alt="Circuit diagram of VampBias." style="width:500px">
+<figcaption>Figure: VampBias.svg<br>Circuit diagram of VampBias.</figcaption>
+</figure>
+<h2><a id="netlist_VampBias"></a>Netlist: VampBias.cir</h2>
+<pre>"VampBias"
+.detector V_out
+R3 0 3 R value={R_B1} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+R4 4 out R value={R_B2} noisetemp=0 noiseflow=0 dcvar={sigma_R^2} dcvarlot=0
+X1 3 4 out 0 O_dcvar svo={v_off} sio={i_off} sib={sigma_ib*I_b} iib={I_b}
+.end</pre>
+<a id="elementdata_VampBias"></a><table>Expanded netlist of VampBias.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">F1_X1</td><td class = "left">4 0 5_X1 0 </td><td class = "left"></td><td class = "left">F</td>
+<td class="left">value</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">Ib_X1</td><td class = "left">3 5_X1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">dc</td><td class="left">$I_{b}$</td><td class="left">$I_{b}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$I_{b}^{2} \sigma_{ib}^{2}$</td><td class="left">$I_{b}^{2} \sigma_{ib}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Io_X1</td><td class = "left">3 4 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">dcvar</td><td class="left">$i_{off}^{2}$</td><td class="left">$i_{off}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">N1_X1</td><td class = "left">out 0 3_X1 4 </td><td class = "left"></td><td class = "left">N</td>
+<td></td><td></td><td></td><tr><tr><td class="left">R3</td><td class = "left">0 3 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{B1}$</td><td class="left">$R_{B1}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$\sigma_{R}^{2}$</td><td class="left">$\sigma_{R}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R4</td><td class = "left">4 out </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{B2}$</td><td class="left">$R_{B2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$\sigma_{R}^{2}$</td><td class="left">$\sigma_{R}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Vo_X1</td><td class = "left">3 3_X1 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">dcvar</td><td class="left">$v_{off}^{2}$</td><td class="left">$v_{off}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_VampBias"></a><table>Parameter definitions of VampBias.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'VampBias.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$\sigma_{ib}$</td></tr>
+<tr><td class="left">$R_{B2}$</td></tr>
+<tr><td class="left">$v_{off}$</td></tr>
+<tr><td class="left">$\sigma_{R}$</td></tr>
+<tr><td class="left">$I_{b}$</td></tr>
+<tr><td class="left">$i_{off}$</td></tr>
+<tr><td class="left">$R_{B1}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="VampBias_index.html">VampBias_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:18</p>
+</div></body></html>

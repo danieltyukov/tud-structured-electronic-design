@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2><a id="netlist_RLvAmp_3_2"></a>Netlist: RLvAmp_3_2.cir</h2>
+<pre>"Root Locus 3nd order voltage amplifier, two zeros"
+* File: RLvAmp-3_2.cir
+.source V1
+.detector V_3
+.lgRef E1
+V1 1 0 {V_s}
+R1 1 2 {R_s}
+E1 3 0 2 4 {A_0/(1-s/p_1)/(1-s/p_2)/(1-s/p_3)}
+E2 4 0 3 0 {A*(1-s/z_1)*(1-s/z_2)}
+R2 3 0 {R_ell}
+* For pole-zero analysis all parameters must have a numeric value
+.param A_0 = 1M A = 799u
++ p_1 = {-2*pi*20} 
++ p_2 = {-2*pi*50} 
++ p_3 = {-2*pi*1250} 
++ z_1 = {-2*pi*(695)}
++ z_2 = {-2*pi*(2116)}
++ R_ell = 1 R_s=1 V_s=1
+.end
+</pre>
+<a id="elementdata_RLvAmp_3_2"></a><table>Expanded netlist of RLvAmp_3_2.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">E1</td><td class = "left">3 0 2 4 </td><td class = "left"></td><td class = "left">E</td>
+<td class="left">value</td><td class="left">$\frac{A_{0}}{\left(1 - \frac{s}{p_{1}}\right) \left(1 - \frac{s}{p_{2}}\right) \left(1 - \frac{s}{p_{3}}\right)}$</td><td class="left">$\frac{1.0 \cdot 10^{6}}{\left(0.0001273 s + 1.0\right) \left(0.003183 s + 1.0\right) \left(0.007958 s + 1.0\right)}$</td></tr>
+<tr><td class="left">E2</td><td class = "left">4 0 3 0 </td><td class = "left"></td><td class = "left">E</td>
+<td class="left">value</td><td class="left">$A \left(- \frac{s}{z_{1}} + 1\right) \left(- \frac{s}{z_{2}} + 1\right)$</td><td class="left">$0.000799 \left(7.522 \cdot 10^{-5} s + 1.0\right) \left(0.000229 s + 1.0\right)$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$1.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{\ell}$</td><td class="left">$1.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$V_{s}$</td><td class="left">$1.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_RLvAmp_3_2"></a><table>Parameter definitions of RLvAmp_3_2.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$A$</td><td class="left">$0.000799$</td><td class="left">$0.000799$</td></tr>
+<tr><td class="left">$A_{0}$</td><td class="left">$1.0 \cdot 10^{6}$</td><td class="left">$1.0 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$R_{\ell}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$V_{s}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$p_{1}$</td><td class="left">$- 40 \pi$</td><td class="left">$-125.7$</td></tr>
+<tr><td class="left">$p_{2}$</td><td class="left">$- 100 \pi$</td><td class="left">$-314.2$</td></tr>
+<tr><td class="left">$p_{3}$</td><td class="left">$- 2500 \pi$</td><td class="left">$-7854.0$</td></tr>
+<tr><td class="left">$z_{1}$</td><td class="left">$- 1390 \pi$</td><td class="left">$-4367.0$</td></tr>
+<tr><td class="left">$z_{2}$</td><td class="left">$- 4232 \pi$</td><td class="left">$-1.33 \cdot 10^{4}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="Root-Locus-3nd-order-voltage-amplifier,-two-zeros_index.html">Root-Locus-3nd-order-voltage-amplifier,-two-zeros_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:56:38</p>
+</div></body></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"DC variance analysis"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>DC variance analysis</h1></div>
+<h2>Dcvar analysis results</h2>
+<h3>DC solution of the network</h3>
+$$\left[\begin{matrix}I_{V1}\\Ii_{F1 X1}\\I_{Vo X1}\\Io_{N1 X1}\\V_{1}\\V_{2}\\V_{3}\\V_{3 X1}\\V_{4}\\V_{5 X1}\\V_{out}\end{matrix}\right]=\left[\begin{matrix}\frac{- I_{b} R_{b} - V_{P}}{R_{a} + R_{b}}\\I_{b}\\0\\- I_{b}\\V_{P}\\\frac{R_{b} \left(- I_{b} R_{a} + V_{P}\right)}{R_{a} + R_{b}}\\\frac{- I_{b} R_{a} R_{b} - I_{b} R_{a} R_{c} - I_{b} R_{b} R_{c} + R_{b} V_{P}}{R_{a} + R_{b}}\\\frac{- I_{b} R_{a} R_{b} - I_{b} R_{a} R_{c} - I_{b} R_{b} R_{c} + R_{b} V_{P}}{R_{a} + R_{b}}\\\frac{- I_{b} R_{a} R_{b} - I_{b} R_{a} R_{c} - I_{b} R_{b} R_{c} + R_{b} V_{P}}{R_{a} + R_{b}}\\0\\\frac{I_{b} R \left(A_{v} - 1\right) \left(R_{a} + R_{b}\right) - I_{b} \left(R_{a} R_{b} + R_{a} R_{c} + R_{b} R_{c}\right) + R_{b} V_{P}}{R_{a} + R_{b}}\end{matrix}\right]$$
+<h3>Detector-referred variance</h3>
+$$\sigma_{out}^2=I_{b}^{2} R^{2} \sigma_{R}^{2} \left(A_{v} - 1\right)^{2} + I_{b}^{2} R_{c}^{2} \sigma_{R}^{2} + \frac{I_{b}^{2} \sigma_{ib}^{2} \left(A_{v} R R_{a} + A_{v} R R_{b} - R R_{a} - R R_{b} - R_{a} R_{b} - R_{a} R_{c} - R_{b} R_{c}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}} + \frac{R_{a}^{2} R_{b}^{2} \sigma_{R}^{2} \left(I_{b} R_{a} - V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{4}} + \frac{R_{a}^{2} R_{b}^{2} \sigma_{R}^{2} \left(I_{b} R_{b} + V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{4}} + \frac{i_{off}^{2} \left(A_{v} R R_{a} + A_{v} R R_{b} - R R_{a} - R R_{b} + R_{a} R_{b} + R_{a} R_{c} + R_{b} R_{c}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}} + v_{off}^{2}\, \mathrm{\left[ V^2 \right]}$$
+<h3>Contributions of individual component variances</h3><table>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R1</th><tr><td class="title">Source variance:</td><td>$\frac{\sigma_{R}^{2} \left(I_{b} R_{b} + V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{R_{a}^{2} R_{b}^{2} \sigma_{R}^{2} \left(I_{b} R_{b} + V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{4}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R2</th><tr><td class="title">Source variance:</td><td>$\frac{\sigma_{R}^{2} \left(- I_{b} R_{a} + V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{R_{a}^{2} R_{b}^{2} \sigma_{R}^{2} \left(I_{b} R_{a} - V_{P}\right)^{2}}{\left(R_{a} + R_{b}\right)^{4}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R3</th><tr><td class="title">Source variance:</td><td>$I_{b}^{2} \sigma_{R}^{2}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$I_{b}^{2} R_{c}^{2} \sigma_{R}^{2}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R4</th><tr><td class="title">Source variance:</td><td>$I_{b}^{2} \sigma_{R}^{2}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$I_{b}^{2} R^{2} \sigma_{R}^{2} \left(A_{v} - 1\right)^{2}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: Ib_X1</th><tr><td class="title">Source variance:</td><td>$I_{b}^{2} \sigma_{ib}^{2}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{I_{b}^{2} \sigma_{ib}^{2} \left(A_{v} R R_{a} + A_{v} R R_{b} - R R_{a} - R R_{b} - R_{a} R_{b} - R_{a} R_{c} - R_{b} R_{c}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: Io_X1</th><tr><td class="title">Source variance:</td><td>$i_{off}^{2}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{i_{off}^{2} \left(A_{v} R R_{a} + A_{v} R R_{b} - R R_{a} - R R_{b} + R_{a} R_{b} + R_{a} R_{c} + R_{b} R_{c}\right)^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: V1</th><tr><td class="title">Source variance:</td><td>$0$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$0$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: Vo_X1</th><tr><td class="title">Source variance:</td><td>$v_{off}^{2}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$v_{off}^{2}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="VampBiasTotal_index.html">VampBiasTotal_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:18</p>
+</div></body></html>

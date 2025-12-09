@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Example controller GB product requirements"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Example controller GB product requirements</h1></div>
+<p>Found the nonzero DC loop gain.</p>
+<p>The DC loop gain equals:</p>
+\begin{equation}
+L_{DC}=\frac{A_{0} \left(- 5.0 \cdot 10^{-14} R_{o} - 1.0 \cdot 10^{-10}\right)}{2.5 \cdot 10^{-17} R_{o}^{2} + 1.0 \cdot 10^{-13} R_{o} + 1.0 \cdot 10^{-10}}
+\end{equation}
+<p>The loop gain-poles product is found as:</p>
+\begin{equation}
+LP=- \frac{G_{B} \left(- 5.0 \cdot 10^{-14} R_{o} - 1.0 \cdot 10^{-10}\right)}{2.029 \cdot 10^{-13} C_{c} R_{o}^{2} + 8.037 \cdot 10^{-10} C_{c} R_{o} + 7.958 \cdot 10^{-7} C_{c} + 4.058 \cdot 10^{-13} C_{d} R_{o}^{2} + 1.607 \cdot 10^{-9} C_{d} R_{o} + 1.592 \cdot 10^{-6} C_{d} + 2.029 \cdot 10^{-24} R_{o}^{2} + 8.037 \cdot 10^{-21} R_{o} + 7.958 \cdot 10^{-18}}
+\end{equation}
+<p>The order of the LP product is: 2</p>
+<p>The required bandwidth  = 500.0kHz</p>
+<p>With this value, the show stopper value of the gain-bandwidth product $G_B$ is:</p>
+\begin{equation}
+GB_{min}=7.854 \cdot 10^{5}
+\end{equation}
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="transimpedance_index.html">transimpedance_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:53:53</p>
+</div></body></html>

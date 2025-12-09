@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of CDcompM18.kicad_sch</h2>
+<figure><a id="fig_CDcompM18.kicad_sch"></a><img src="img/CDcompM18.svg" alt="Circuit diagram of CDcompM18." style="width:500px">
+<figcaption>Figure: CDcompM18.svg<br>Circuit diagram of CDcompM18.</figcaption>
+</figure>
+<h2><a id="netlist_CDcompM18"></a>Netlist: CDcompM18.cir</h2>
+<pre>"CDcompM18"
+.lib C18.lib
+.source V1
+.detector V_out
+.lgref Gm_M1_X1
+C1 out 0 C value={C_ell} vinit=0
+C2 2 0 C value={C_phz} vinit=0
+R1 1 2 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 0 2 out 0 CMOS18N W={W} L={L} ID={ID}
+.end</pre>
+<a id="elementdata_CDcompM18"></a><table>Expanded netlist of CDcompM18.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$C_{\ell}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{phz}$</td><td class="left">$C_{phz}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1_X1</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X1}$</td><td class="left">$1.8 \cdot 10^{-10} W$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdg_M1_X1</td><td class = "left">0 2 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X1}$</td><td class="left">$4.6 \cdot 10^{-10} W$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgb_M1_X1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X1}$</td><td class="left">$0.0008931 L W + 2.0 \cdot 10^{-12} L$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgs_M1_X1</td><td class = "left">2 out </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X1}$</td><td class="left">$0.005755 L W + 4.6 \cdot 10^{-10} W$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Csb_M1_X1</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X1}$</td><td class="left">$1.8 \cdot 10^{-10} W$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gb_M1_X1</td><td class = "left">0 out 0 out </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X1}$</td><td class="left">$\frac{0.002895 ID}{\left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W} + 0.0001206 \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W}\right)^{0.5} + 5.814 \cdot 10^{-8}\right)^{0.5}}$</td></tr>
+<tr><td class="left">Gm_M1_X1</td><td class = "left">0 out 2 out </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X1}$</td><td class="left">$\frac{0.006433 ID}{\left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W} + 0.0001206 \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W}\right)^{0.5} + 5.814 \cdot 10^{-8}\right)^{0.5}}$</td></tr>
+<tr><td class="left">Go_M1_X1</td><td class = "left">0 out 0 out </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X1}$</td><td class="left">$\frac{1.111 \cdot 10^{-8} ID}{L}$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$R_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_CDcompM18"></a><table>Parameter definitions of CDcompM18.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$CGBO_{N18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{N18}$</td><td class="left">$4.6 \cdot 10^{-10}$</td><td class="left">$4.6 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 N18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX N18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{N18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$E_{CRIT N18}$</td><td class="left">$3.5 \cdot 10^{6}$</td><td class="left">$3.5 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$I_{0 N18}$</td><td class="left">$2 C_{OX N18} N_{s N18} U_{T}^{2} u_{0 N18}$</td><td class="left">$1.439 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$LDS_{N18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$N_{s N18}$</td><td class="left">$1.45$</td><td class="left">$1.45$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{N18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{N18}$</td><td class="left">$0.28$</td><td class="left">$0.28$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$VAL_{N18}$</td><td class="left">$9.0 \cdot 10^{7}$</td><td class="left">$9.0 \cdot 10^{7}$</td></tr>
+<tr><td class="left">$Vth_{N18}$</td><td class="left">$0.48$</td><td class="left">$0.48$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$u_{0 N18}$</td><td class="left">$0.086$</td><td class="left">$0.086$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s N18}^{2} U_{T}^{2} \left(\Theta_{N18} + \frac{1}{E_{CRIT N18} L}\right)^{2}}$</td><td class="left">$\frac{567.3}{\left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$IC_{i X1} \left(1 + \frac{0.5 IC_{i X1}}{IC_{CRIT X1}}\right)^{0.5}$</td><td class="left">$\frac{1.72 \cdot 10^{7} ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W}$</td></tr>
+<tr><td class="left">$IC_{i X1}$</td><td class="left">$\frac{ID L}{I_{0 N18} W}$</td><td class="left">$\frac{6.95 \cdot 10^{5} ID L}{W}$</td></tr>
+<tr><td class="left">$V_{GS X1}$</td><td class="left">$2 N_{s N18} U_{T} \log{\left(e^{IC_{X1}^{0.5}} - 1 \right)} + Vth_{N18}$</td><td class="left">$0.07497 \log{\left(e^{470.3 \sqrt{\pi} \sqrt{\frac{ID L \sqrt{\frac{651597504584192789 \pi ID L \left(\frac{7}{25} + \frac{1}{3500000 L}\right)^{2}}{262031250000000 W} + 1}}{W}}} - 1 \right)} + 0.48$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 N18} LDS_{N18} W$</td><td class="left">$1.8 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{N18} W$</td><td class="left">$4.6 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{N18} L + \frac{0.3333 C_{OX N18} L W \left(N_{s N18} - 1\right)}{N_{s N18}}$</td><td class="left">$0.0008931 L W + 2.0 \cdot 10^{-12} L$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{N18} W + 0.6667 C_{OX N18} L W$</td><td class="left">$0.005755 L W + 4.6 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$0.006648 L W + 2.0 \cdot 10^{-12} L + 9.2 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{sb X1}$</td><td class="left">$CJB_{0 N18} LDS_{N18} W$</td><td class="left">$1.8 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$\frac{0.001024 ID}{\left(0.006648 L W + 2.0 \cdot 10^{-12} L + 9.2 \cdot 10^{-10} W\right) \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W} + 0.0001206 \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W}\right)^{0.5} + 5.814 \cdot 10^{-8}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$g_{b X1}$</td><td class="left">$g_{m X1} \left(N_{s N18} - 1\right)$</td><td class="left">$\frac{0.002895 ID}{\left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W} + 0.0001206 \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W}\right)^{0.5} + 5.814 \cdot 10^{-8}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$\frac{ID}{N_{s N18} U_{T} \left(IC_{X1} \left(1 + \frac{0.25 IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{0.25 IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$\frac{0.006433 ID}{\left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W} + 0.0001206 \left(\frac{ID L \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5} \left(\frac{7579.0 ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2} \left(\frac{ID L \left(1 + \frac{1.02 \cdot 10^{-6}}{L}\right)^{2}}{W} + 0.001633\right)^{0.5}}{W} + 1.0\right)}{W}\right)^{0.5} + 5.814 \cdot 10^{-8}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$g_{o X1}$</td><td class="left">$\frac{ID}{L VAL_{N18}}$</td><td class="left">$\frac{1.111 \cdot 10^{-8} ID}{L}$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'CDcompM18.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$R_{s}$</td></tr>
+<tr><td class="left">$W$</td></tr>
+<tr><td class="left">$C_{\ell}$</td></tr>
+<tr><td class="left">$C_{phz}$</td></tr>
+<tr><td class="left">$L$</td></tr>
+<tr><td class="left">$ID$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="CDcompM18_index.html">CDcompM18_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 13:18:11</p>
+</div></body></html>

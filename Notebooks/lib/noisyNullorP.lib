@@ -1,0 +1,8 @@
+.subckt noisyNullorP outP outN inP inN W=220n L=180n M=1 ID=1u VGS=0 VDS=-0.9
+F1 inN 1 V1 1
+H1 outN outP V1 1
+I1 1 inN {ID}
+M1 1 2 inN inN pch m={M} w={W} l={L}
+V1 1 inN {VDS}
+V2 2 inP {VGS}
+.ends

@@ -1,0 +1,7 @@
+"vDivider"
+.source V1
+.detector V_out
+R1 1 out R value={R_a} noisetemp=0 noiseflow=0 dcvar={sigma_2^2} dcvarlot=0
+R2 out 0 R value={R_b} noisetemp=0 noiseflow=0 dcvar={sigma_3^2} dcvarlot=0
+V1 1 0 V value=0 noise=0 dc={V_s} dcvar={(sigma_1*V_s)^2}
+.end

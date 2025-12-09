@@ -1,0 +1,13 @@
+"CSstageComponents"
+.source I1
+.detector V_out
+.param R_L=10k R_s=10G
+C1 1 0 C value={c_gs+c_gb} vinit=0
+C3 1 out C value={c_dg} vinit=0
+C4 out 0 C value={c_db} vinit=0
+G1 out 0 1 0 G value={g_m}
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+R1 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_L} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 out 0 R value={1/g_o} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end

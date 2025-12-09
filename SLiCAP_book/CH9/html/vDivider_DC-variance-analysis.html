@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"DC variance analysis"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>DC variance analysis</h1></div>
+<h2>Dcvar analysis results</h2>
+<h3>DC solution of the network</h3>
+$$\left[\begin{matrix}I_{V1}\\V_{1}\\V_{out}\end{matrix}\right]=\left[\begin{matrix}- \frac{V_{s}}{R_{a} + R_{b}}\\V_{s}\\\frac{R_{b} V_{s}}{R_{a} + R_{b}}\end{matrix}\right]$$
+<h3>Detector-referred variance</h3>
+$$\sigma_{out}^2=\frac{R_{a}^{2} R_{b}^{2} V_{s}^{2} \sigma_{2}^{2}}{\left(R_{a} + R_{b}\right)^{4}} + \frac{R_{a}^{2} R_{b}^{2} V_{s}^{2} \sigma_{3}^{2}}{\left(R_{a} + R_{b}\right)^{4}} + \frac{R_{b}^{2} V_{s}^{2} \sigma_{1}^{2}}{\left(R_{a} + R_{b}\right)^{2}}\, \mathrm{\left[ V^2 \right]}$$
+<h3>Contributions of individual component variances</h3><table>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R1</th><tr><td class="title">Source variance:</td><td>$\frac{V_{s}^{2} \sigma_{2}^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{R_{a}^{2} R_{b}^{2} V_{s}^{2} \sigma_{2}^{2}}{\left(R_{a} + R_{b}\right)^{4}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: I_dcvar_R2</th><tr><td class="title">Source variance:</td><td>$\frac{V_{s}^{2} \sigma_{3}^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ A^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{R_{a}^{2} R_{b}^{2} V_{s}^{2} \sigma_{3}^{2}}{\left(R_{a} + R_{b}\right)^{4}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<th colspan = "3" class="center">Variance of source: V1</th><tr><td class="title">Source variance:</td><td>$V_{s}^{2} \sigma_{1}^{2}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+<tr><td class="title">Detector-referred:</td><td>$\frac{R_{b}^{2} V_{s}^{2} \sigma_{1}^{2}}{\left(R_{a} + R_{b}\right)^{2}}$</td><td class="units">$\,\mathrm{\left[ V^2 \right]}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="vDivider_index.html">vDivider_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:18</p>
+</div></body></html>

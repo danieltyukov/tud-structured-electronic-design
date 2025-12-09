@@ -1,0 +1,9 @@
+"CSresNoise"
+.source V1
+.detector V_out
+.lib C18.lib
+.param R_s=600 W=54.6u L=180n ID=6.15m IG=0
+R1 1 2 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 2 0 out NM18_noise ID={ID} IG={IG} W={W} L={L}
+.end

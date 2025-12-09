@@ -1,0 +1,8 @@
+"P18noise"
+.source V1
+.detector V_out
+.lib C18.lib
+.param W=220n L=180n ID=-10u IG=0
+V1 1 0 V value=0 noise=0 dc=0 dcvar=0
+X1 1 0 out PM18_noise ID={ID} IG={IG} W={W} L={L}
+.end

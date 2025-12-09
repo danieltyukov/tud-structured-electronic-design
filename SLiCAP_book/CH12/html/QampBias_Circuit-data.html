@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of QampBias.kicad_sch</h2>
+<figure><a id="fig_QampBias.kicad_sch"></a><img src="img/QampBias.svg" alt="Circuit diagram of QampBias." style="width:500px">
+<figcaption>Figure: QampBias.svg<br>Circuit diagram of QampBias.</figcaption>
+</figure>
+<h2><a id="netlist_QampBias"></a>Netlist: QampBias.cir</h2>
+<pre>"QampBias"
+.source I1
+.detector V_out
+.param R_s=50k R_ell=2k C_i=5p R_B=1M C_B=100n C_c=0
+C1 1 out C value={C_i} vinit=0
+C2 out 4 C value={C_c} vinit=0
+C3 4 2 C value={C_B} vinit=0
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+O1 1 2 out 0 OPA627
+O2 4 3 2 0 OPA627
+R1 out 4 R value={R_B} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_ell} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc={V_B} dcvar=0
+.end</pre>
+<a id="elementdata_QampBias"></a><table>Expanded netlist of QampBias.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">1 out </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{i}$</td><td class="left">$5.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">out 4 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{c}$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C3</td><td class = "left">4 2 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{B}$</td><td class="left">$1.0 \cdot 10^{-7}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cc1_O1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$4.0 \cdot 10^{-12}$</td><td class="left">$4.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cc1_O2</td><td class = "left">4 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$4.0 \cdot 10^{-12}$</td><td class="left">$4.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cc2_O1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$4.0 \cdot 10^{-12}$</td><td class="left">$4.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cc2_O2</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$4.0 \cdot 10^{-12}$</td><td class="left">$4.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cd_O1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$8.0 \cdot 10^{-12}$</td><td class="left">$8.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cd_O2</td><td class = "left">4 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$8.0 \cdot 10^{-12}$</td><td class="left">$8.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">E_O1</td><td class = "left">out 0 1 2 </td><td class = "left"></td><td class = "left">EZ</td>
+<td class="left">value</td><td class="left">$\frac{1.0 \cdot 10^{6}}{\left(1 - 2.0 \cdot 10^{-9} s\right) \left(2.0 \cdot 10^{-9} s + 1\right) \left(\frac{0.03125 s}{\pi} + 1\right)}$</td><td class="left">$\frac{1.0 \cdot 10^{6}}{\left(1.0 - 2.0 \cdot 10^{-9} s\right) \left(2.0 \cdot 10^{-9} s + 1.0\right) \left(0.009947 s + 1.0\right)}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">zo</td><td class="left">$55$</td><td class="left">$55.0$</td></tr>
+<tr><td class="left">E_O2</td><td class = "left">2 0 4 3 </td><td class = "left"></td><td class = "left">EZ</td>
+<td class="left">value</td><td class="left">$\frac{1.0 \cdot 10^{6}}{\left(1 - 2.0 \cdot 10^{-9} s\right) \left(2.0 \cdot 10^{-9} s + 1\right) \left(\frac{0.03125 s}{\pi} + 1\right)}$</td><td class="left">$\frac{1.0 \cdot 10^{6}}{\left(1.0 - 2.0 \cdot 10^{-9} s\right) \left(2.0 \cdot 10^{-9} s + 1.0\right) \left(0.009947 s + 1.0\right)}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">zo</td><td class="left">$55$</td><td class="left">$55.0$</td></tr>
+<tr><td class="left">Gc1_O1</td><td class = "left">1 0 1 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gc1_O2</td><td class = "left">4 0 4 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gc2_O1</td><td class = "left">2 0 2 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gc2_O2</td><td class = "left">3 0 3 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gd_O1</td><td class = "left">1 2 1 2 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gd_O2</td><td class = "left">4 3 4 3 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">I1</td><td class = "left">0 1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">out 4 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{B}$</td><td class="left">$1.0 \cdot 10^{6}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{\ell}$</td><td class="left">$2000.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$5.0 \cdot 10^{4}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$V_{B}$</td><td class="left">$V_{B}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_QampBias"></a><table>Parameter definitions of QampBias.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$C_{B}$</td><td class="left">$1.0 \cdot 10^{-7}$</td><td class="left">$1.0 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$C_{c}$</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">$C_{i}$</td><td class="left">$5.0 \cdot 10^{-12}$</td><td class="left">$5.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$R_{B}$</td><td class="left">$1.0 \cdot 10^{6}$</td><td class="left">$1.0 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$R_{\ell}$</td><td class="left">$2000$</td><td class="left">$2000.0$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$5.0 \cdot 10^{4}$</td><td class="left">$5.0 \cdot 10^{4}$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'QampBias.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$V_{B}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="QampBias_index.html">QampBias_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:57:56</p>
+</div></body></html>

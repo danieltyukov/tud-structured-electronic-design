@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Asymptotic-gain model G1 ref"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Asymptotic-gain model G1 ref</h1></div>
+<p>The gain of the circuit is obtained as:</p>
+\begin{equation}
+\frac{V_{\ell}}{V_{s}}=\frac{A_{r} g_{m} \left(R_{a} + R_{b}\right)}{A_{r} R_{b} g_{m} + R_{a} R_{b} g_{m} + R_{a} + R_{b}}
+\end{equation}
+<p>The asymptotic-gain $A_{\infty_G1}$ is found as:</p>
+\begin{equation}
+A_{oo G1}=\frac{A_{r} \left(R_{a} + R_{b}\right)}{R_{b} \left(A_{r} + R_{a}\right)}
+\end{equation}
+<p>The loop gain $L_{G1}$ is found as:</p>
+\begin{equation}
+L_{G1}=\frac{R_{b} g_{m} \left(- A_{r} - R_{a}\right)}{R_{a} + R_{b}}
+\end{equation}
+<p>The servo function $S_{G1}$ is found as:</p>
+\begin{equation}
+S_{G1}=- \frac{R_{b} g_{m} \left(- A_{r} - R_{a}\right)}{A_{r} R_{b} g_{m} + R_{a} R_{b} g_{m} + R_{a} + R_{b}}
+\end{equation}
+<p>The direct transfer $\rho_{G1}$ is found as:</p>
+\begin{equation}
+\rho_{G1}=0
+\end{equation}
+<p>The gain $A_f$ calculated from $A_{\infty_{G1}}$, $S_{G1}$ and  $\rho_{G1}$ is obtained as:</p>
+\begin{equation}
+A_{f}=\frac{A_{r} g_{m} \left(R_{a} + R_{b}\right)}{A_{r} R_{b} g_{m} + R_{a} R_{b} g_{m} + R_{a} + R_{b}}
+\end{equation}
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="cfbVamp_index.html">cfbVamp_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:58:39</p>
+</div></body></html>

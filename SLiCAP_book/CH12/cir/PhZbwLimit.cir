@@ -1,0 +1,10 @@
+"PhZbwLimit"
+.source I1
+.detector V_out
+.lgref E1
+C1 1 out C value={C_f} vinit=0
+C2 1 0 C value={C_s} vinit=0
+E1 out 0 1 0 E value={A/(s*(1+s*tau_2))}
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+R1 1 out R value={R_f} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end

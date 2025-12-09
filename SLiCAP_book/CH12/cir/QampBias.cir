@@ -1,0 +1,15 @@
+"QampBias"
+.source I1
+.detector V_out
+.param R_s=50k R_ell=2k C_i=5p R_B=1M C_B=100n C_c=0
+C1 1 out C value={C_i} vinit=0
+C2 out 4 C value={C_c} vinit=0
+C3 4 2 C value={C_B} vinit=0
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+O1 1 2 out 0 OPA627
+O2 4 3 2 0 OPA627
+R1 out 4 R value={R_B} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 0 R value={R_ell} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 0 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc={V_B} dcvar=0
+.end

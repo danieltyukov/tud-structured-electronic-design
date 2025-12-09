@@ -1,0 +1,16 @@
+"activePHZ"
+.source I1
+.detector V_out
+.lgRef E_O1
+.param A_0=300k
+C1 3 0 C value=1u vinit=0
+C2 out 0 C value=10u vinit=0
+C3 4 1 C value=2.7n vinit=0
+I1 0 out I value=0 noise=0 dc=0 dcvar=0
+O1 3 2 out 0 AD8610_A0
+O2 out 4 2 0 AD8610
+R1 5 3 R value=15k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 2 4 R value=1k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 0 R value=82 noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 5 0 V value=0 noise=0 dc=0 dcvar=0
+.end

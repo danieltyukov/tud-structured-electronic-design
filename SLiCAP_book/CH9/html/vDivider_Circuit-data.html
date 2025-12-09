@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of vDivider.kicad_sch</h2>
+<figure><a id="fig_vDivider.kicad_sch"></a><img src="img/vDivider.svg" alt="Circuit diagram of vDivider." style="width:700px">
+<figcaption>Figure: vDivider.svg<br>Circuit diagram of vDivider.</figcaption>
+</figure>
+<h2><a id="netlist_vDivider"></a>Netlist: vDivider.cir</h2>
+<pre>"vDivider"
+.source V1
+.detector V_out
+R1 1 out R value={R_a} noisetemp=0 noiseflow=0 dcvar={sigma_2^2} dcvarlot=0
+R2 out 0 R value={R_b} noisetemp=0 noiseflow=0 dcvar={sigma_3^2} dcvarlot=0
+V1 1 0 V value=0 noise=0 dc={V_s} dcvar={(sigma_1*V_s)^2}
+.end</pre>
+<a id="elementdata_vDivider"></a><table>Expanded netlist of vDivider.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">R1</td><td class = "left">1 out </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{a}$</td><td class="left">$R_{a}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$\sigma_{2}^{2}$</td><td class="left">$\sigma_{2}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{b}$</td><td class="left">$R_{b}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$\sigma_{3}^{2}$</td><td class="left">$\sigma_{3}^{2}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$V_{s}$</td><td class="left">$V_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$V_{s}^{2} \sigma_{1}^{2}$</td><td class="left">$V_{s}^{2} \sigma_{1}^{2}$</td></tr>
+</table>
+<a id="params_vDivider"></a><table>Parameter definitions of vDivider.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'vDivider.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$\sigma_{1}$</td></tr>
+<tr><td class="left">$R_{a}$</td></tr>
+<tr><td class="left">$\sigma_{3}$</td></tr>
+<tr><td class="left">$\sigma_{2}$</td></tr>
+<tr><td class="left">$R_{b}$</td></tr>
+<tr><td class="left">$V_{s}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="vDivider_index.html">vDivider_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:18</p>
+</div></body></html>

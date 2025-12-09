@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2><a id="netlist_simpleQamp"></a>Netlist: simpleQamp.cir</h2>
+<pre>simpleQamp
+* file: simpleQamp.cir
+* SLiCAP circuit file
+I1 0 1 {I_s}
+R1 1 0 {R_s}
+C1 1 2 {C_i}
+R2 2 0 {R_ell}
+E1 2 0 0 1 {A_0}
+.param C_i=5p R_s=50k R_ell=2k
+.source I1
+.detector V_2
+.lgRef E1
+.end
+
+</pre>
+<a id="elementdata_simpleQamp"></a><table>Expanded netlist of simpleQamp.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{i}$</td><td class="left">$5.0 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">E1</td><td class = "left">2 0 0 1 </td><td class = "left"></td><td class = "left">E</td>
+<td class="left">value</td><td class="left">$A_{0}$</td><td class="left">$A_{0}$</td></tr>
+<tr><td class="left">I1</td><td class = "left">0 1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$I_{s}$</td><td class="left">$I_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$5.0 \cdot 10^{4}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{\ell}$</td><td class="left">$2000.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_simpleQamp"></a><table>Parameter definitions of simpleQamp.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$C_{i}$</td><td class="left">$5.0 \cdot 10^{-12}$</td><td class="left">$5.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$R_{\ell}$</td><td class="left">$2000$</td><td class="left">$2000.0$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$5.0 \cdot 10^{4}$</td><td class="left">$5.0 \cdot 10^{4}$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'simpleQamp.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$A_{0}$</td></tr>
+<tr><td class="left">$I_{s}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="simpleQamp_index.html">simpleQamp_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:53:53</p>
+</div></body></html>

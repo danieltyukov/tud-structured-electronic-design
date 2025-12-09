@@ -1,0 +1,13 @@
+"transimpedance"
+.source I1
+.lgRef E1
+.detector V_2
+.param C_s=5p R_f=100k R_ell=2k
+C1 1 0 C value={C_s} vinit=0
+C2 1 0 C value={C_d} vinit=0
+C3 1 0 C value={C_c/2} vinit=0
+E1 2 0 1 0 EZ value={-A_0/(1+s*A_0/2/pi/G_B)} zo={R_o}
+I1 0 1 I value={I_s} noise=0 dc=0 dcvar=0
+R1 1 2 R value={R_f} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 2 0 R value={R_ell} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+.end

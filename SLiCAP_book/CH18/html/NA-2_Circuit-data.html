@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2><a id="netlist_NA-2"></a>Netlist: NA-2.cir</h2>
+<pre>"NA-2"
+* file: NA-2.cir
+* SLiCAP netlist for nodal analysis
+I1 1 0 {I_s}
+C1 0 1 {C_a}
+R1 0 1 {R_a}
+R2 0 2 {R_b}
+C2 2 1 {C_b}
+.source I1
+.detector V_2
+.param R_a=100k R_b=1k C_a=100p C_b=10n I_s=1
+.end
+</pre>
+<a id="elementdata_NA-2"></a><table>Expanded netlist of NA-2.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">0 1 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{a}$</td><td class="left">$1.0 \cdot 10^{-10}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">2 1 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{b}$</td><td class="left">$1.0 \cdot 10^{-8}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">I1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$I_{s}$</td><td class="left">$1.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">0 1 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{a}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">0 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{b}$</td><td class="left">$1000.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_NA-2"></a><table>Parameter definitions of NA-2.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$C_{a}$</td><td class="left">$1.0 \cdot 10^{-10}$</td><td class="left">$1.0 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$C_{b}$</td><td class="left">$1.0 \cdot 10^{-8}$</td><td class="left">$1.0 \cdot 10^{-8}$</td></tr>
+<tr><td class="left">$I_{s}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$R_{a}$</td><td class="left">$1.0 \cdot 10^{5}$</td><td class="left">$1.0 \cdot 10^{5}$</td></tr>
+<tr><td class="left">$R_{b}$</td><td class="left">$1000$</td><td class="left">$1000.0$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="NA-2_index.html">NA-2_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 16:54:18</p>
+</div></body></html>

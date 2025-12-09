@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2><a id="netlist_mosEKVplotsN"></a>Netlist: mosEKVplotsN.cir</h2>
+<pre>CMOS18N
+* SLiCAP netlist file
+.include C18.lib
+X1 d g s 0 CMOS18N W={W} L={L} ID={I_D}
+.param I_D=1a W=220n L=180n
+.end
+</pre>
+<a id="elementdata_mosEKVplotsN"></a><table>Expanded netlist of mosEKVplotsN.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">Cdb_M1_X1</td><td class = "left">d 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X1}$</td><td class="left">$3.96 \cdot 10^{-17}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdg_M1_X1</td><td class = "left">d g </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X1}$</td><td class="left">$1.012 \cdot 10^{-16}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgb_M1_X1</td><td class = "left">g 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X1}$</td><td class="left">$3.572 \cdot 10^{-17}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgs_M1_X1</td><td class = "left">g s </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X1}$</td><td class="left">$3.291 \cdot 10^{-16}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Csb_M1_X1</td><td class = "left">s 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X1}$</td><td class="left">$3.96 \cdot 10^{-17}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gb_M1_X1</td><td class = "left">d s 0 s </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X1}$</td><td class="left">$1.2 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">Gm_M1_X1</td><td class = "left">d s g s </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X1}$</td><td class="left">$2.668 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">Go_M1_X1</td><td class = "left">d s d s </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X1}$</td><td class="left">$6.173 \cdot 10^{-20}$</td></tr>
+</table>
+<a id="params_mosEKVplotsN"></a><table>Parameter definitions of mosEKVplotsN.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$CGBO_{N18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{N18}$</td><td class="left">$4.6 \cdot 10^{-10}$</td><td class="left">$4.6 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 N18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX N18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{N18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$E_{CRIT N18}$</td><td class="left">$3.5 \cdot 10^{6}$</td><td class="left">$3.5 \cdot 10^{6}$</td></tr>
+<tr><td class="left">$I_{0 N18}$</td><td class="left">$2 C_{OX N18} N_{s N18} U_{T}^{2} u_{0 N18}$</td><td class="left">$1.439 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$I_{D}$</td><td class="left">$1.0 \cdot 10^{-18}$</td><td class="left">$1.0 \cdot 10^{-18}$</td></tr>
+<tr><td class="left">$L$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$LDS_{N18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$N_{s N18}$</td><td class="left">$1.45$</td><td class="left">$1.45$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{N18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{N18}$</td><td class="left">$0.28$</td><td class="left">$0.28$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$VAL_{N18}$</td><td class="left">$9.0 \cdot 10^{7}$</td><td class="left">$9.0 \cdot 10^{7}$</td></tr>
+<tr><td class="left">$Vth_{N18}$</td><td class="left">$0.48$</td><td class="left">$0.48$</td></tr>
+<tr><td class="left">$W$</td><td class="left">$2.2 \cdot 10^{-7}$</td><td class="left">$2.2 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$u_{0 N18}$</td><td class="left">$0.086$</td><td class="left">$0.086$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s N18}^{2} U_{T}^{2} \left(\Theta_{N18} + \frac{1}{E_{CRIT N18} L}\right)^{2}}$</td><td class="left">$12.76$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$IC_{i X1} \left(1 + \frac{0.5 IC_{i X1}}{IC_{CRIT X1}}\right)^{0.5}$</td><td class="left">$5.686 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$IC_{i X1}$</td><td class="left">$\frac{I_{D} L}{I_{0 N18} W}$</td><td class="left">$5.686 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$V_{GS X1}$</td><td class="left">$2 N_{s N18} U_{T} \log{\left(e^{IC_{X1}^{0.5}} - 1 \right)} + Vth_{N18}$</td><td class="left">$-0.5769$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 N18} LDS_{N18} W$</td><td class="left">$3.96 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{N18} W$</td><td class="left">$1.012 \cdot 10^{-16}$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{N18} L + \frac{0.3333 C_{OX N18} L W \left(N_{s N18} - 1\right)}{N_{s N18}}$</td><td class="left">$3.572 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{N18} W + 0.6667 C_{OX N18} L W$</td><td class="left">$3.291 \cdot 10^{-16}$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$4.66 \cdot 10^{-16}$</td></tr>
+<tr><td class="left">$c_{sb X1}$</td><td class="left">$CJB_{0 N18} LDS_{N18} W$</td><td class="left">$3.96 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$0.00911$</td></tr>
+<tr><td class="left">$g_{b X1}$</td><td class="left">$g_{m X1} \left(N_{s N18} - 1\right)$</td><td class="left">$1.2 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$\frac{I_{D}}{N_{s N18} U_{T} \left(IC_{X1} \left(1 + \frac{0.25 IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{0.25 IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$2.668 \cdot 10^{-17}$</td></tr>
+<tr><td class="left">$g_{o X1}$</td><td class="left">$\frac{I_{D}}{L VAL_{N18}}$</td><td class="left">$6.173 \cdot 10^{-20}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="CMOS18N_index.html">CMOS18N_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 2.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2024-10-20 17:46:49</p>
+</div></body></html>
