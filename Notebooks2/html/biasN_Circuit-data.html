@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of biasN.kicad_sch</h2>
+<figure><a id="fig_biasN.kicad_sch"></a><img src="img/biasN.svg" alt="Circuit diagram of biasN." style="width:500px">
+<figcaption>Figure: biasN.svg<br>Circuit diagram of biasN.</figcaption>
+</figure>
+<h2><a id="netlist_biasN"></a>Netlist: biasN.cir</h2>
+<pre>biasN
+.lib lib/log018.l TT
+B1 g1 0 V=0.9*(1+tanh(I(V1)))
+F1 0 d1 V1 1
+I2 0 d1 {ID}
+M1 d1 g1 0 0 nch m={M} w={W} l={L}
+V1 d1 0 {VDS}
+.end</pre>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="biasN_index.html">biasN_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.9 &copy 2009-2025 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-12-16 11:32:59</p>
+</div></body></html>

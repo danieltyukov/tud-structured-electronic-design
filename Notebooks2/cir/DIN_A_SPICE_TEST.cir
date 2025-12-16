@@ -1,0 +1,5 @@
+DIN_A_SPICE_TEST
+.inc lib/DIN_A.lib
+V1 1 0 DC 0 AC 1 0
+X1 out 0 1 0 DIN_A
+.end

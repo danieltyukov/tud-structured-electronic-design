@@ -1,0 +1,9 @@
+Trimp
+.detector V_out
+.param C_s=1p C_t=0.2p IG=0
+C1 1 0 C value={C_s} vinit=0
+C2 out 1 C value={C_t} vinit=0
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+X1 out 0 1 0 MN18_noisyNullor W={W} L={L} ID={ID} IG={IG}
+.lib SLiCAP_C18.lib
+.end

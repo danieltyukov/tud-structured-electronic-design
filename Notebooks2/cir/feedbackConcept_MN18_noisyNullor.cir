@@ -1,0 +1,16 @@
+feedbackConcept
+.source V1
+.detector V_out
+C1 3 0 C value={C_s} vinit=0
+C2 out 0 C value={C_L} vinit=0
+C3 out 2 C value={C_i} vinit=0
+E2 noise 0 out 0 E value={DIN_A}
+L1 3 1 L value={L_s} iinit=0
+X1 out 0 3 2 MN18_noisyNullor W={W} L={L} ID={ID} IG={IG}
+R1 1 4 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R2 3 0 R value={R_t} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 2 0 R value={R_f} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R4 out 2 R value={R_b} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 4 0 V value=0 noise=0 dc=0 dcvar=0
+.lib SLiCAP_C18.lib
+.end

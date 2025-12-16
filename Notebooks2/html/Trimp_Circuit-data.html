@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of Trimp_MP18_noisyNullor.cir</h2>
+<figure><a id="fig_Trimp_MP18_noisyNullor.cir"></a><img src="img/Trimp_MP18_noisyNullor.svg" alt="Circuit diagram of Trimp_MP18_noisyNullor." style="width:500px">
+<figcaption>Figure: Trimp_MP18_noisyNullor.svg<br>Circuit diagram of Trimp_MP18_noisyNullor.</figcaption>
+</figure>
+<h2><a id="netlist_Trimp_MP18_noisyNullor"></a>Netlist: Trimp_MP18_noisyNullor.cir</h2>
+<pre>Trimp
+.detector V_out
+.param C_s=1p C_t=0.2p IG=0
+C1 1 0 C value={C_s} vinit=0
+C2 out 1 C value={C_t} vinit=0
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+X1 out 0 1 0 MP18_noisyNullor W={W} L={L} ID={ID} IG={IG}
+.lib SLiCAP_C18.lib
+.end</pre>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="Trimp_index.html">Trimp_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.8 &copy 2009-2025 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-12-15 17:02:59</p>
+</div></body></html>

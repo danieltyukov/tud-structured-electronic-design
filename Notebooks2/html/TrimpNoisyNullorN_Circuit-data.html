@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of TrimpNoisyNullorN.kicad_sch</h2>
+<figure><a id="fig_TrimpNoisyNullorN.kicad_sch"></a><img src="img/TrimpNoisyNullorN.svg" alt="Circuit diagram of TrimpNoisyNullorN." style="width:500px">
+<figcaption>Figure: TrimpNoisyNullorN.svg<br>Circuit diagram of TrimpNoisyNullorN.</figcaption>
+</figure>
+<h2><a id="netlist_TrimpNoisyNullorN"></a>Netlist: TrimpNoisyNullorN.cir</h2>
+<pre>TrimpNoisyNullorN
+.param W=220n L=180n M=1 ID=1u VGS=0.5 VDS=0.9
+.param C_s=1p C_t=0.2p R_bias=1T
+.lib lib/log018.l TT
+.inc lib/noisyNullorN.lib
+C3 in 0 {C_s}
+C4 in out {C_t}
+I4 0 in DC 0 AC 1 0
+R1 in out {R_bias} noisy=0
+X1 0 out in 0 noisyNullorN W={W} L={L} M={M} ID={ID} VGS={VGS} VDS={VDS}
+.end</pre>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="TrimpNoisyNullorN_index.html">TrimpNoisyNullorN_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.9 &copy 2009-2025 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-12-16 11:32:59</p>
+</div></body></html>
