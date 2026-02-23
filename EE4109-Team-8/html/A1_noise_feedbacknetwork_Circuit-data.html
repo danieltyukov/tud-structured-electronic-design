@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of A1_R_noise_with_Ri.kicad_sch</h2>
+<figure><a id="fig_A1_R_noise_with_Ri.kicad_sch"></a><img src="img/A1_R_noise_with_Ri.svg" alt="Circuit diagram of A1_R_noise_with_Ri." style="width:500px">
+<figcaption>Figure: A1_R_noise_with_Ri.svg<br>Circuit diagram of A1_R_noise_with_Ri.</figcaption>
+</figure>
+<h2><a id="netlist_A1_R_noise_with_Ri"></a>Netlist: A1_R_noise_with_Ri.cir</h2>
+<pre>"A1_noise_feedbacknetwork"
+.source V1
+.detector V_out
+C1 1 0 C value={C_s} vinit=0
+E1 out 0 in 0 E value={1/s/tau_i}
+L1 2 1 L value={L_s} iinit=0
+R1 2 3 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 in R value={R_i} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc=0 dcvar=0
+.end</pre>
+<a id="elementdata_A1_R_noise_with_Ri"></a><table>Expanded netlist of A1_R_noise_with_Ri.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$C_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">E1</td><td class = "left">out 0 in 0 </td><td class = "left"></td><td class = "left">E</td>
+<td class="left">value</td><td class="left">$\frac{1}{s \tau_{i}}$</td><td class="left">$\frac{1}{s \tau_{i}}$</td></tr>
+<tr><td class="left">L1</td><td class = "left">2 1 </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$L_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">2 3 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$R_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">1 in </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{i}$</td><td class="left">$R_{i}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_A1_R_noise_with_Ri"></a><table>Parameter definitions of A1_R_noise_with_Ri.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'A1_noise_feedbacknetwork.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$L_{s}$</td></tr>
+<tr><td class="left">$R_{s}$</td></tr>
+<tr><td class="left">$C_{s}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td></tr>
+<tr><td class="left">$R_{i}$</td></tr>
+</table>
+<figure><img src="img/A1_R_noise_with_Ri.svg" alt="" style="width:500px">
+</figure>
+\begin{equation}
+S_{onoise}=\frac{1.634 \cdot 10^{-12} R_{i}}{f^{2}} + \frac{5.585 \cdot 10^{46}}{f^{2} \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{\frac{V^{2}}{Hz}}\right]
+\end{equation}
+\begin{equation}
+n_{Ri}=0.4
+\end{equation}
+\begin{equation}
+N_{var required}=4.729 \cdot 10^{-11}\,\left[ \mathrm{\frac{V^{2}}{Hz}}\right]
+\end{equation}
+\begin{equation}
+RMS_{2 sq}=2.451 \cdot 10^{-15} R_{i} + 2.145 \cdot 10^{-12}\,\left[ \mathrm{\frac{V^{2}}{Hz}}\right]
+\end{equation}
+\begin{equation}
+Ri_{max}=1.842 \cdot 10^{4}\,\left[ \mathrm{Ohm}\right]
+\end{equation}
+\begin{equation}
+S_{weighted}=\frac{4.072 \cdot 10^{-26} f^{6} \left(5.02 \cdot 10^{51} f^{4} - 2.259 \cdot 10^{62} f^{2} + 2.662 \cdot 10^{72}\right)}{\left(6.725 \cdot 10^{-9} f^{2} + 1\right)^{2} \left(0.002356 f^{2} + 1\right)^{2} \left(100.0 f^{2} + 1.16 \cdot 10^{6}\right) \left(100.0 f^{2} + 5.445 \cdot 10^{7}\right) \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{\frac{V^{2}}{Hz}}\right]
+\end{equation}
+\begin{equation}
+N_{var obtained}=4.849 \cdot 10^{-11}\,\left[ \mathrm{\frac{V^{2}}{Hz}}\right]
+\end{equation}
+\begin{equation}
+correction=0.9754
+\end{equation}
+\begin{equation}
+Ri_{max}=1.794 \cdot 10^{4}\,\left[ \mathrm{Ohm}\right]
+\end{equation}
+\begin{equation}
+R_{i}=1.7 \cdot 10^{4}\,\left[ \mathrm{Ohm}\right]
+\end{equation}
+<h3>budgets specification</h3>
+<table><a id="table_budgets"></a><caption>Table budgets specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$n_{Ri}$</td><td class="left">Relative contribution of R_i noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.4$</td><td></td></tr>
+<td class="left">$n_{SRC}$</td><td class="left">Relative contribution of source noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.01951$</td><td></td></tr>
+</table>
+<h3>design specification</h3>
+<table><a id="table_design"></a><caption>Table design specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{i}$</td><td class="left">Required value of integrator capacitor</td><td class="left">$8.965 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$I_{fb}$</td><td class="left">Maximum peak-peak current through feedback network</td><td class="left">$2.286 \cdot 10^{-5}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$R_{i}$</td><td class="left">Selected value of integrator resistor</td><td class="left">$1.7 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{max}$</td><td class="left">Max. value of integrator resistor</td><td class="left">$1.794 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{min}$</td><td class="left">Min. value of integrator resistor</td><td class="left">$1620$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$SRCnoise$</td><td class="left">DIN A weighted RMS output noise, source + termination</td><td class="left">$1.483 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$4.492 \cdot 10^{-11}$</td><td class="left">$\mathrm{\frac{V^{2}}{Hz}}$</td></tr>
+<td class="left">$n_{Ri obtained}$</td><td class="left">Relative contribution of source and feedback network to squared DIN A weighted output noise</td><td class="left">$0.3789$</td><td></td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_noise_feedbacknetwork_index.html">A1_noise_feedbacknetwork_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 10:02:33</p>
+</div></body></html>

@@ -1,0 +1,14 @@
+symbol, description, value, units, type
+V_battery,Battery voltage,7/5,V,Power Supply
+I_battery,Battery current,600,mAh,Power Supply
+T_battery,Battery duration,100,hours,Power Supply
+V_regulated,Battery voltage regulated,9/10,V,Power Supply
+Crest_factor,Audio signal crest factor,3,,Performance
+f_max_full_power,Maximum full power frequency,5000,Hz,Performance
+0dB_SPL,Zero dB SPL value,1/50000,Pa,Performance
+Noise_level,Noise level,30,dBSPL,Performance
+Peak_power_level,Peak power level,110,dBSPL,Performance
+f_low_microphone_input,Low frequency microphone input,20,Hz,Performance
+f_high_microphone_input,High frequency microphone input,6000,Hz,Performance
+f_low_hearing_loop,Low frequency hearing loop,600,Hz,Performance
+f_high_hearing_loop,High frequency hearing loop,6000,Hz,Performance

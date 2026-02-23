@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of single_PMOS.kicad_sch</h2>
+<figure><a id="fig_single_PMOS.kicad_sch"></a><img src="img/single_PMOS.svg" alt="Circuit diagram of single_PMOS." style="width:500px">
+<figcaption>Figure: single_PMOS.svg<br>Circuit diagram of single_PMOS.</figcaption>
+</figure>
+<h2><a id="netlist_single_PMOS"></a>Netlist: single_PMOS.cir</h2>
+<pre>"A1_controller_single_pmos_optimization"
+.source V1
+.param L_s=120m R_s=875 C_ell=10p
+.param W={W_P} L={L_P} ID={ID_P} ID_o={-0.6*I_fb}
+.detector V_out
+.lgref Gm_M1_X1
+C1 out 3 C value={tau_i/R_i} vinit=0
+C2 out 0 C value={C_ell} vinit=0
+C3 in 0 C value={C_s} vinit=0
+L1 1 in L value={L_s} iinit=0
+R1 1 2 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 in 0 R value=113k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 3 in R value={R_i} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+X1 out 3 0 0 CMOS18P W={W_P} L={L_P} ID={ID_P}
+.end</pre>
+<a id="elementdata_single_PMOS"></a><table>Expanded netlist of single_PMOS.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">out 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$1.0 \cdot 10^{-11}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C3</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$C_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1_X1</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X1}$</td><td class="left">$1.8 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">Cdg_M1_X1</td><td class = "left">out 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X1}$</td><td class="left">$3.5 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">Cgb_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X1}$</td><td class="left">$0.0007461 L_{P} W_{P} \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L_{P}$</td></tr>
+<tr><td class="left">Cgs_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X1}$</td><td class="left">$0.008633 L_{P} W_{P} \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 3.5 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">Csb_M1_X1</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X1}$</td><td class="left">$1.8 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">Gb_M1_X1</td><td class = "left">out 0 0 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X1}$</td><td class="left">$- \frac{0.003858 ID_{P}}{\left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}} + 0.0001923 \left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td class="left">Gm_M1_X1</td><td class = "left">out 0 3 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X1}$</td><td class="left">$- \frac{0.01102 ID_{P}}{\left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}} + 0.0001923 \left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td class="left">Go_M1_X1</td><td class = "left">out 0 out 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X1}$</td><td class="left">$- \frac{4.0 \cdot 10^{-8} ID_{P}}{L_{P}}$</td></tr>
+<tr><td class="left">L1</td><td class = "left">1 in </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$0.12$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$875.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$1.13 \cdot 10^{5}$</td><td class="left">$1.13 \cdot 10^{5}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">3 in </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{i}$</td><td class="left">$R_{i}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_single_PMOS"></a><table>Parameter definitions of single_PMOS.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$CGBO_{P18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{P18}$</td><td class="left">$3.5 \cdot 10^{-10}$</td><td class="left">$3.5 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 P18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX P18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{P18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$C_{\ell}$</td><td class="left">$1.0 \cdot 10^{-11}$</td><td class="left">$1.0 \cdot 10^{-11}$</td></tr>
+<tr><td class="left">$E_{CRIT P18}$</td><td class="left">$1.0 \cdot 10^{9}$</td><td class="left">$1.0 \cdot 10^{9}$</td></tr>
+<tr><td class="left">$ID$</td><td class="left">$ID_{P}$</td><td class="left">$ID_{P}$</td></tr>
+<tr><td class="left">$ID_{o}$</td><td class="left">$- 0.6 I_{fb}$</td><td class="left">$- 0.6 I_{fb}$</td></tr>
+<tr><td class="left">$I_{0 P18}$</td><td class="left">$2 C_{OX P18} N_{s P18} U_{T}^{2} u_{0 P18}$</td><td class="left">$1.48 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$L$</td><td class="left">$L_{P}$</td><td class="left">$L_{P}$</td></tr>
+<tr><td class="left">$LDS_{P18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$L_{s}$</td><td class="left">$0.12$</td><td class="left">$0.12$</td></tr>
+<tr><td class="left">$N_{s P18}$</td><td class="left">$1.35$</td><td class="left">$1.35$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$875$</td><td class="left">$875.0$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{P18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{P18}$</td><td class="left">$0.4$</td><td class="left">$0.4$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$VAL_{P18}$</td><td class="left">$2.5 \cdot 10^{7}$</td><td class="left">$2.5 \cdot 10^{7}$</td></tr>
+<tr><td class="left">$Vth_{P18}$</td><td class="left">$-0.425$</td><td class="left">$-0.425$</td></tr>
+<tr><td class="left">$W$</td><td class="left">$W_{P}$</td><td class="left">$W_{P}$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$u_{0 P18}$</td><td class="left">$0.0095$</td><td class="left">$0.0095$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s P18}^{2} U_{T}^{2} \left(\Theta_{P18} + \frac{1}{E_{CRIT P18} L_{P}}\right)^{2}}$</td><td class="left">$\frac{320.7}{\left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$- \frac{ID_{P} L_{P}}{I_{0 P18} W_{P}}$</td><td class="left">$- \frac{6.757 \cdot 10^{6} ID_{P} L_{P}}{W_{P}}$</td></tr>
+<tr><td class="left">$V_{GS X1}$</td><td class="left">$- 2 N_{s P18} U_{T} \log{\left(e^{\left(IC_{X1} \left(1 + \frac{0.5 IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5}} - 1 \right)} + Vth_{P18}$</td><td class="left">$- 0.0698 \log{\left(e^{\frac{12008011676498299 \sqrt{1235} \sqrt{\pi} \sqrt{- \frac{ID_{P} L_{P} \left(- \frac{202219915215783969 \pi ID_{P} L_{P} \left(\frac{2}{5} + \frac{1}{1000000000 L_{P}}\right)^{2}}{9648437500000 W_{P}} + 1\right)}{W_{P}}}}{287735780621250}} - 1 \right)} - 0.425$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$1.8 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{P18} W_{P}$</td><td class="left">$3.5 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{P18} L_{P} + \frac{0.3333 C_{OX P18} L_{P} W_{P} \left(N_{s P18} - 1\right) \left(x_{X1} + 1\right)}{N_{s P18}}$</td><td class="left">$0.0007461 L_{P} W_{P} \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L_{P}$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{P18} W_{P} + C_{OX P18} L_{P} W_{P} \left(0.6667 - 0.3333 x_{X1}\right)$</td><td class="left">$0.008633 L_{P} W_{P} \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 3.5 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$0.008633 L_{P} W_{P} \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L_{P} W_{P} \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L_{P} + 7.0 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">$c_{sb X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$1.8 \cdot 10^{-10} W_{P}$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$- \frac{0.001754 ID_{P}}{\left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}} + 0.0001923 \left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5} \left(0.008633 L_{P} W_{P} \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L_{P} W_{P} \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L_{P} + 7.0 \cdot 10^{-10} W_{P}\right)}$</td></tr>
+<tr><td class="left">$g_{b X1}$</td><td class="left">$g_{m X1} \left(N_{s P18} - 1\right)$</td><td class="left">$- \frac{0.003858 ID_{P}}{\left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}} + 0.0001923 \left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$- \frac{ID_{P}}{N_{s P18} U_{T} \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$- \frac{0.01102 ID_{P}}{\left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}} + 0.0001923 \left(- \frac{ID_{P} L_{P} \left(- \frac{2.107 \cdot 10^{4} ID_{P} L_{P} \left(1 + \frac{2.5 \cdot 10^{-9}}{L_{P}}\right)^{2}}{W_{P}} + 1.0\right)}{W_{P}}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$g_{o X1}$</td><td class="left">$- \frac{ID_{P}}{L_{P} VAL_{P18}}$</td><td class="left">$- \frac{4.0 \cdot 10^{-8} ID_{P}}{L_{P}}$</td></tr>
+<tr><td class="left">$x_{X1}$</td><td class="left">$\frac{\left(IC_{X1} + 0.25\right)^{0.5} + 1.5}{\left(\left(IC_{X1} + 0.25\right)^{0.5} + 0.5\right)^{2}}$</td><td class="left">$\frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID_{P} L_{P}}{W_{P}} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'A1_controller_single_pmos_optimization.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$I_{fb}$</td></tr>
+<tr><td class="left">$ID_{P}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td></tr>
+<tr><td class="left">$L_{P}$</td></tr>
+<tr><td class="left">$C_{s}$</td></tr>
+<tr><td class="left">$R_{i}$</td></tr>
+<tr><td class="left">$W_{P}$</td></tr>
+</table>
+<figure><img src="img/single_PMOS.svg" alt="" style="width:600px">
+</figure>
+<h3>design specification</h3>
+<table><a id="table_design"></a><caption>Table design specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{i}$</td><td class="left">Required value of integrator capacitor</td><td class="left">$8.965 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$IC_{P}$</td><td class="left">Inversion coefficient input stage PMOS</td><td class="left">$0.198$</td><td></td></tr>
+<td class="left">$ID_{P}$</td><td class="left">Operating current input stage PMOS</td><td class="left">$-4.876 \cdot 10^{-6}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$I_{fb}$</td><td class="left">Maximum peak-peak current through feedback network</td><td class="left">$2.286 \cdot 10^{-5}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$L_{P}$</td><td class="left">Selected length input stage PMOS</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$M_{P}$</td><td class="left">Number of fingers input stage PMOS</td><td class="left">$1$</td><td></td></tr>
+<td class="left">$R_{i}$</td><td class="left">Selected value of integrator resistor</td><td class="left">$1.7 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{max}$</td><td class="left">Max. value of integrator resistor</td><td class="left">$1.794 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{min}$</td><td class="left">Min. value of integrator resistor</td><td class="left">$1620$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$SRCnoise$</td><td class="left">DIN A weighted RMS output noise, source + termination</td><td class="left">$1.483 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$4.492 \cdot 10^{-11}$</td><td class="left">$\mathrm{\frac{V^{2}}{Hz}}$</td></tr>
+<td class="left">$W_{F P}$</td><td class="left">Finger width input stage PMOS</td><td class="left">$5.0 \cdot 10^{-5}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$W_{P}$</td><td class="left">Selected width input stage PMOS</td><td class="left">$2.994 \cdot 10^{-5}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$c_{issP}$</td><td class="left">Selected input capacitance PMOS</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss P o}$</td><td class="left">Obtained input capacitance input stage PMOS</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss costs minP}$</td><td class="left">Required c_iss PMOS for minimum costs</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss g m minP}$</td><td class="left">Required c_issN at g_m_minP</td><td class="left">$3.684 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$g_{mP}$</td><td class="left">Selected transconductance input stage PMOS</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m P o}$</td><td class="left">Obtained transconductance input stage PMOS</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m costs minP}$</td><td class="left">g_m PMOS for minimum costs</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m minP}$</td><td class="left">Minimum transconductance input stage PMOS</td><td class="left">$5.877 \cdot 10^{-5}$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$n_{Ri obtained}$</td><td class="left">Relative contribution of source and feedback network to squared DIN A weighted output noise</td><td class="left">$0.3789$</td><td></td></tr>
+</table>
+<h3>performance specification</h3>
+<table><a id="table_performance"></a><caption>Table performance specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{s}$</td><td class="left">Source capacitance</td><td class="left">$9.382 \cdot 10^{-12}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$L_{s}$</td><td class="left">Source inductance</td><td class="left">$0.12$</td><td class="left">$\mathrm{H}$</td></tr>
+<td class="left">$P_{max}$</td><td class="left">Maximum power dissipation at maximum supply voltage</td><td class="left">$0.001$</td><td class="left">$\mathrm{W}$</td></tr>
+<td class="left">$R_{s}$</td><td class="left">Source resistance</td><td class="left">$875$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$R_{t}$</td><td class="left">Termination resistance</td><td class="left">$1.0 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$V_{DD}$</td><td class="left">Maximum supply voltage</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$V_{onoise}$</td><td class="left">DIN A weighted output voltage noise</td><td class="left">$1.062 \cdot 10^{-5}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{ADC}$</td><td class="left">Peak-peak input voltage ADC</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{pp}$</td><td class="left">Maximum peak-peak input voltage</td><td class="left">$0.2932$</td><td></td></tr>
+<td class="left">$f_{fp}$</td><td class="left">Maximum full-power frequency</td><td class="left">$5000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{max}$</td><td class="left">-3dB low-pass cut-off frequency</td><td class="left">$6000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{min}$</td><td class="left">-3dB high-pass cut-off frequency</td><td class="left">$600$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$\tau_{i}$</td><td class="left">Integration time constant</td><td class="left">$1.603 \cdot 10^{-5}$</td><td class="left">$\mathrm{s}$</td></tr>
+</table>
+<h3>achievements specification</h3>
+<table><a id="table_achievements"></a><caption>Table achievements specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$V_{onoise WLI P}$</td><td class="left">DIN A weighted RMS output noise with PMOS, W, L, and ID</td><td class="left">$9.068 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$V_{onoise gmCissP}$</td><td class="left">DIN A weighted RMS output noise with PMOS and selected g_m and c_iss</td><td class="left">$9.006 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+</table>
+<h3>budgets specification</h3>
+<table><a id="table_budgets"></a><caption>Table budgets specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$n_{MP}$</td><td class="left">Relative contribution controller PMOS input stage noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.3$</td><td></td></tr>
+<td class="left">$n_{Ri}$</td><td class="left">Relative contribution of R_i noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.4$</td><td></td></tr>
+<td class="left">$n_{SRC}$</td><td class="left">Relative contribution of source noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.01951$</td><td></td></tr>
+</table>
+<table><caption>Table: Element data of expanded netlist 'A1_controller_single_pmos_optimization'</caption>
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">out 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td><td class="left">$9.427 \cdot 10^{-10}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$1.0 \cdot 10^{-11}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C3</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$9.382 \cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1_X1</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X1}$</td><td class="left">$1.516 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">Cdg_M1_X1</td><td class = "left">out 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X1}$</td><td class="left">$2.949 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">Cgb_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X1}$</td><td class="left">$2.926 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">Cgs_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X1}$</td><td class="left">$4.753 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">Csb_M1_X1</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X1}$</td><td class="left">$1.516 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">Gb_M1_X1</td><td class = "left">out 0 0 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X1}$</td><td class="left">$0.0001154$</td></tr>
+<tr><td class="left">Gm_M1_X1</td><td class = "left">out 0 3 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X1}$</td><td class="left">$0.0003298$</td></tr>
+<tr><td class="left">Go_M1_X1</td><td class = "left">out 0 out 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X1}$</td><td class="left">$3.048 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">L1</td><td class = "left">1 in </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$0.12$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$875.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$1.13 \cdot 10^{5}$</td><td class="left">$1.13 \cdot 10^{5}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">3 in </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{i}$</td><td class="left">$1.7 \cdot 10^{4}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<table><caption>Table: Parameter definitions in 'A1_controller_single_pmos_optimization'.</caption>
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$CGBO_{P18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{P18}$</td><td class="left">$3.5 \cdot 10^{-10}$</td><td class="left">$3.5 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 P18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX P18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{P18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$C_{\ell}$</td><td class="left">$1.0 \cdot 10^{-11}$</td><td class="left">$1.0 \cdot 10^{-11}$</td></tr>
+<tr><td class="left">$C_{i}$</td><td class="left">$8.965 \cdot 10^{-10}$</td><td class="left">$8.965 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$C_{s}$</td><td class="left">$9.382 \cdot 10^{-12}$</td><td class="left">$9.382 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$E_{CRIT P18}$</td><td class="left">$1.0 \cdot 10^{9}$</td><td class="left">$1.0 \cdot 10^{9}$</td></tr>
+<tr><td class="left">$IC_{P}$</td><td class="left">$0.198$</td><td class="left">$0.198$</td></tr>
+<tr><td class="left">$ID$</td><td class="left">$ID_{P}$</td><td class="left">$-1.372 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$ID_{P}$</td><td class="left">$-1.372 \cdot 10^{-5}$</td><td class="left">$-1.372 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$ID_{o}$</td><td class="left">$- 0.6 I_{fb}$</td><td class="left">$-1.372 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$I_{0 P18}$</td><td class="left">$2 C_{OX P18} N_{s P18} U_{T}^{2} u_{0 P18}$</td><td class="left">$1.48 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$I_{fb}$</td><td class="left">$2.286 \cdot 10^{-5}$</td><td class="left">$2.286 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$L$</td><td class="left">$L_{P}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$LDS_{P18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$L_{P}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$L_{s}$</td><td class="left">$0.12$</td><td class="left">$0.12$</td></tr>
+<tr><td class="left">$M_{P}$</td><td class="left">$1$</td><td class="left">$1.0$</td></tr>
+<tr><td class="left">$N_{s P18}$</td><td class="left">$1.35$</td><td class="left">$1.35$</td></tr>
+<tr><td class="left">$P_{max}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$R_{i}$</td><td class="left">$1.7 \cdot 10^{4}$</td><td class="left">$1.7 \cdot 10^{4}$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$875$</td><td class="left">$875.0$</td></tr>
+<tr><td class="left">$R_{t}$</td><td class="left">$1.0 \cdot 10^{4}$</td><td class="left">$1.0 \cdot 10^{4}$</td></tr>
+<tr><td class="left">$Ri_{max}$</td><td class="left">$1.794 \cdot 10^{4}$</td><td class="left">$1.794 \cdot 10^{4}$</td></tr>
+<tr><td class="left">$Ri_{min}$</td><td class="left">$1620$</td><td class="left">$1620.0$</td></tr>
+<tr><td class="left">$SRCnoise$</td><td class="left">$1.483 \cdot 10^{-6}$</td><td class="left">$1.483 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$S_{Ri}$</td><td class="left">$4.492 \cdot 10^{-11}$</td><td class="left">$4.492 \cdot 10^{-11}$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{P18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{P18}$</td><td class="left">$0.4$</td><td class="left">$0.4$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$VAL_{P18}$</td><td class="left">$2.5 \cdot 10^{7}$</td><td class="left">$2.5 \cdot 10^{7}$</td></tr>
+<tr><td class="left">$V_{DD}$</td><td class="left">$0.9$</td><td class="left">$0.9$</td></tr>
+<tr><td class="left">$V_{onoise}$</td><td class="left">$1.062 \cdot 10^{-5}$</td><td class="left">$1.062 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$V_{onoise WLI P}$</td><td class="left">$9.068 \cdot 10^{-6}$</td><td class="left">$9.068 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$V_{onoise gmCissP}$</td><td class="left">$9.006 \cdot 10^{-6}$</td><td class="left">$9.006 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$Vi_{ADC}$</td><td class="left">$0.9$</td><td class="left">$0.9$</td></tr>
+<tr><td class="left">$Vi_{pp}$</td><td class="left">$0.2932$</td><td class="left">$0.2932$</td></tr>
+<tr><td class="left">$Vth_{P18}$</td><td class="left">$-0.425$</td><td class="left">$-0.425$</td></tr>
+<tr><td class="left">$W$</td><td class="left">$W_{P}$</td><td class="left">$8.425 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$W_{F P}$</td><td class="left">$5.0 \cdot 10^{-5}$</td><td class="left">$5.0 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$W_{P}$</td><td class="left">$8.425 \cdot 10^{-5}$</td><td class="left">$8.425 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$c_{issP}$</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$3.747 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{iss P o}$</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$3.747 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{iss costs minP}$</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$3.747 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{iss g m minP}$</td><td class="left">$3.684 \cdot 10^{-10}$</td><td class="left">$3.684 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$f_{fp}$</td><td class="left">$5000$</td><td class="left">$5000.0$</td></tr>
+<tr><td class="left">$f_{max}$</td><td class="left">$6000$</td><td class="left">$6000.0$</td></tr>
+<tr><td class="left">$f_{min}$</td><td class="left">$600$</td><td class="left">$600.0$</td></tr>
+<tr><td class="left">$g_{mP}$</td><td class="left">$0.0001172$</td><td class="left">$0.0001172$</td></tr>
+<tr><td class="left">$g_{m P o}$</td><td class="left">$0.0001172$</td><td class="left">$0.0001172$</td></tr>
+<tr><td class="left">$g_{m costs minP}$</td><td class="left">$0.0001172$</td><td class="left">$0.0001172$</td></tr>
+<tr><td class="left">$g_{m minP}$</td><td class="left">$5.877 \cdot 10^{-5}$</td><td class="left">$5.877 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$n_{MP}$</td><td class="left">$0.3$</td><td class="left">$0.3$</td></tr>
+<tr><td class="left">$n_{Ri}$</td><td class="left">$0.4$</td><td class="left">$0.4$</td></tr>
+<tr><td class="left">$n_{Ri obtained}$</td><td class="left">$0.3789$</td><td class="left">$0.3789$</td></tr>
+<tr><td class="left">$n_{SRC}$</td><td class="left">$0.01951$</td><td class="left">$0.01951$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td><td class="left">$1.603 \cdot 10^{-5}$</td><td class="left">$1.603 \cdot 10^{-5}$</td></tr>
+<tr><td class="left">$u_{0 P18}$</td><td class="left">$0.0095$</td><td class="left">$0.0095$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s P18}^{2} U_{T}^{2} \left(\Theta_{P18} + \frac{1}{E_{CRIT P18} L_{P}}\right)^{2}}$</td><td class="left">$312.0$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$- \frac{ID_{P} L_{P}}{I_{0 P18} W_{P}}$</td><td class="left">$0.198$</td></tr>
+<tr><td class="left">$V_{GS X1}$</td><td class="left">$- 2 N_{s P18} U_{T} \log{\left(e^{\left(IC_{X1} \left(1 + \frac{0.5 IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5}} - 1 \right)} + Vth_{P18}$</td><td class="left">$-0.3846$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$1.516 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{P18} W_{P}$</td><td class="left">$2.949 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{P18} L_{P} + \frac{0.3333 C_{OX P18} L_{P} W_{P} \left(N_{s P18} - 1\right) \left(x_{X1} + 1\right)}{N_{s P18}}$</td><td class="left">$2.926 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{P18} W_{P} + C_{OX P18} L_{P} W_{P} \left(0.6667 - 0.3333 x_{X1}\right)$</td><td class="left">$4.753 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$1.063 \cdot 10^{-13}$</td></tr>
+<tr><td class="left">$c_{sb X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$1.516 \cdot 10^{-14}$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$4.938 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$g_{b X1}$</td><td class="left">$g_{m X1} \left(N_{s P18} - 1\right)$</td><td class="left">$0.0001154$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$- \frac{ID_{P}}{N_{s P18} U_{T} \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$0.0003298$</td></tr>
+<tr><td class="left">$g_{o X1}$</td><td class="left">$- \frac{ID_{P}}{L_{P} VAL_{P18}}$</td><td class="left">$3.048 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$x_{X1}$</td><td class="left">$\frac{\left(IC_{X1} + 0.25\right)^{0.5} + 1.5}{\left(\left(IC_{X1} + 0.25\right)^{0.5} + 0.5\right)^{2}}$</td><td class="left">$1.586$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_controller_single_pmos_optimization_index.html">A1_controller_single_pmos_optimization_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 10:02:33</p>
+</div></body></html>

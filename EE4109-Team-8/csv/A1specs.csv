@@ -1,0 +1,17 @@
+symbol, description, value, units, type
+L_s,Source inductance,3/25,H,performance
+R_s,Source resistance,875,Omega,performance
+R_t,Termination resistance,10000,Omega,performance
+Vi_pp,Maximum peak-peak input voltage,293171166286743/1000000000000000,,performance
+f_fp,Maximum full-power frequency,5000,Hz,performance
+tau_i,Integration time constant,1/62500,s,performance
+f_min,-3dB high-pass cut-off frequency,600,Hz,performance
+f_max,-3dB low-pass cut-off frequency,6000,Hz,performance
+V_onoise,DIN A weighted output voltage noise,10617688884619767/1000000000000000000000,V,performance
+Vi_ADC,Peak-peak input voltage ADC,9/10,V,performance
+P_max,Maximum power dissipation at maximum supply voltage,1/1000,W,performance
+V_DD,Maximum supply voltage,13/10,V,performance
+C_s,Source capacitance,4690795538997119/500000000000000000000000000,F,performance
+C_i,Integrator capacitance,62259677644293/125000000000000000000000,F,design
+SRCnoise,DIN A weighted RMS output noise&#44; source + termination,371377214679133/250000000000000000000,V,design
+n_SRC,Relative contribution of source noise to the squared DIN-A weighted RMS output noise,39148984065399/2000000000000000,,budgets

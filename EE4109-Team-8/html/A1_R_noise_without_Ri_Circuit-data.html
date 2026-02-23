@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of A1_R_noise_without_Ri.kicad_sch</h2>
+<figure><a id="fig_A1_R_noise_without_Ri.kicad_sch"></a><img src="img/A1_R_noise_without_Ri.svg" alt="Circuit diagram of A1_R_noise_without_Ri." style="width:800px">
+<figcaption>Figure: A1_R_noise_without_Ri.svg<br>Circuit diagram of A1_R_noise_without_Ri.</figcaption>
+</figure>
+<h2><a id="netlist_A1_R_noise_without_Ri"></a>Netlist: A1_R_noise_without_Ri.cir</h2>
+<pre>"A1_R_noise_without_Ri"
+.source V1
+.detector V_out
+C2 in 0 C value={C_s} vinit=0
+E1 out 0 in 0 E value={1/s/tau_i}
+L1 1 in L value={L_s} iinit=0
+R1 1 2 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+.end</pre>
+<a id="elementdata_A1_R_noise_without_Ri"></a><table>Expanded netlist of A1_R_noise_without_Ri.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C2</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$C_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">E1</td><td class = "left">out 0 in 0 </td><td class = "left"></td><td class = "left">E</td>
+<td class="left">value</td><td class="left">$\frac{1}{s \tau_{i}}$</td><td class="left">$\frac{1}{s \tau_{i}}$</td></tr>
+<tr><td class="left">L1</td><td class = "left">1 in </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$L_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$R_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_A1_R_noise_without_Ri"></a><table>Parameter definitions of A1_R_noise_without_Ri.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'A1_R_noise_without_Ri.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$C_{s}$</td></tr>
+<tr><td class="left">$L_{s}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td></tr>
+<tr><td class="left">$R_{s}$</td></tr>
+</table>
+<figure><img src="img/A1_R_noise_without_Ri.svg" alt="" style="width:800px">
+</figure>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_R_noise_without_Ri_index.html">A1_R_noise_without_Ri_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-29 23:44:51</p>
+</div></body></html>

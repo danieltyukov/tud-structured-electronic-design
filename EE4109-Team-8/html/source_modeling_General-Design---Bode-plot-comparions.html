@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"General Design - Bode plot comparions"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>General Design - Bode plot comparions</h1></div>
+<p>When a MOS enters triode region, it's C_iss increases due to a 'larger channel'. In Saturation the C_iss is approximately 2/3 of C_ox</p>
+<p>When a Mos enters triode region, it's gm decreases. In saturation the gm saturates, so dont put to much current because you dont gain gm</p>
+<p>The Ft follows gm, because in saturation the C_iss is constant</p>
+\begin{equation}
+f_{T}=\frac{0.5 g_{m}}{\pi C_{iss}}
+\end{equation}
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="source_modeling_index.html">source_modeling_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 00:04:12</p>
+</div></body></html>

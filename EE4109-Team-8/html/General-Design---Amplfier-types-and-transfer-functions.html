@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"General Design - Amplfier types and transfer functions"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>General Design - Amplfier types and transfer functions</h1></div>
+<h2>A1 amplifier type</h2>
+<p>A1 needs to be voltage to voltage, because the microphone is voltage and the induced electic field is a voltage from the coil.</p>
+<p>At 1kHz the microphone coil equals -59.4 dBV/(A/m), the induced voltage for 1kHz equals</p>
+<p>The transfer is an integrator with a certain voltage gain to match the output voltage of the microphone toto the output voltage of the coil. The integration is 1/s, and first we will convert the 70 dBSPL of the coil to voltage. 70dbSPL written as ... pascal which gets converted to voltage on the A2 input.</p>
+$V_{ind 1khz} = 0.1062\left[\mathrm{V}\right]$<p>Now we are going to calculate the magnatic signal to electic signal for the input of A1. We assume the magnatic field scales linearly with the dBSPL</p>
+\begin{equation}
+V_{ind 1khz}=0.09644
+\end{equation}
+\begin{equation}
+V_{out}=V_{in} + V_{offset}
+\end{equation}
+<h2>A2 amplifier type</h2>
+<p>A2 also needs to be a voltage amplfier to saturate the ADC for maximum resolution. The ADC is a voltage to digital converter.</p>
+<p>For now this amplifier is not needed so let make it a wire</p>
+<h2>A3 amplifier type</h2>
+<p>A3 is also a voltage to voltage amplifier to drive the speaker.</p>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="index.html">index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-29 22:08:04</p>
+</div></body></html>

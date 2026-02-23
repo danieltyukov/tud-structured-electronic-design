@@ -1,0 +1,10 @@
+"A1_R_noise_with_Rt"
+.source V1
+.detector V_out
+C1 1 0 C value={C_s} vinit=0
+E1 out 0 in 0 E value={1/s/tau_i}
+L1 2 1 L value={L_s} iinit=0
+R1 2 3 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 in R value={R_i} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc=0 dcvar=0
+.end

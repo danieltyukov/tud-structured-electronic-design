@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of A1_controller_noiseWLI_p.kicad_sch</h2>
+<figure><a id="fig_A1_controller_noiseWLI_p.kicad_sch"></a><img src="img/A1_controller_noiseWLI_p.svg" alt="Circuit diagram of A1_controller_noiseWLI_p." style="width:500px">
+<figcaption>Figure: A1_controller_noiseWLI_p.svg<br>Circuit diagram of A1_controller_noiseWLI_p.</figcaption>
+</figure>
+<h2><a id="netlist_A1_controller_noiseWLI_p"></a>Netlist: A1_controller_noiseWLI_p.cir</h2>
+<pre>"A1_controller_noiseWLI_p"
+.source V1
+.detector V_out
+.param L_s=120m R_s=875
+C1 4 out C value={tau_i/R_i} vinit=0
+C2 1 0 C value={C_s} vinit=0
+C3 out 0 C value={C_ell} vinit=0
+L1 2 1 L value={L_s} iinit=0
+N1 out 0 in 0 N
+R1 2 3 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 1 4 R value={R_i} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc=0 dcvar=0
+X1 4 0 in PM18_noise ID={ID} IG=0 W={W} L={L}
+.end</pre>
+<a id="elementdata_A1_controller_noiseWLI_p"></a><table>Expanded netlist of A1_controller_noiseWLI_p.cir.
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">4 out </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">1 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$C_{s}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C3</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$C_{\ell}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">F1_X1</td><td class = "left">4 0 10_X1 0 </td><td class = "left"></td><td class = "left">F</td>
+<td class="left">value</td><td class="left">$\frac{0.5 s}{\pi f_{T X1} \left(- \frac{c_{dg X1} s}{g_{m X1}} + 1\right)}$</td><td class="left">$- \frac{90.72 s \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5} \left(0.008222 L W \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L W \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L + 7.0 \cdot 10^{-10} W\right)}{ID \left(1.0 + \frac{3.175 \cdot 10^{-8} W s \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}{ID}\right)}$</td></tr>
+<tr><td class="left">H1_X1</td><td class = "left">4 2_X1 1_X1 10_X1 </td><td class = "left"></td><td class = "left">H</td>
+<td class="left">value</td><td class="left">$\frac{1}{g_{m X1} \left(- \frac{c_{dg X1} s}{g_{m X1}} + 1\right)}$</td><td class="left">$- \frac{90.72 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}{ID \left(1.0 + \frac{3.175 \cdot 10^{-8} W s \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}{ID}\right)}$</td></tr>
+<tr><td class="left">I1_X1</td><td class = "left">0 1_X1 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$4 \Gamma_{X1} N_{s N18} T g_{m X1} k$</td><td class="left">$- \frac{2.52 \cdot 10^{-22} ID \left(- \frac{4.505 \cdot 10^{6} ID L}{W} + 0.5\right)}{\left(- \frac{6.757 \cdot 10^{6} ID L}{W} + 1.0\right) \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">I2_X1</td><td class = "left">4 0 </td><td class = "left"></td><td class = "left">I</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">L1</td><td class = "left">2 1 </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$0.12$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">N1</td><td class = "left">out 0 in 0 </td><td class = "left"></td><td class = "left">N</td>
+<td></td><td></td><td></td><tr><tr><td class="left">R1</td><td class = "left">2 3 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$875.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">1 4 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{i}$</td><td class="left">$R_{i}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$T$</td><td class="left">$300.0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1_X1</td><td class = "left">2_X1 in </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$f^{- AF_{P18}} k_{f X1}$</td><td class="left">$\frac{4.638 \cdot 10^{-18} \left(\left(- \frac{ID L}{W}\right)^{0.5} + 0.001102\right)^{2}}{L W f^{1.25}}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<a id="params_A1_controller_noiseWLI_p"></a><table>Parameter definitions of A1_controller_noiseWLI_p.cir.
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$AF_{P18}$</td><td class="left">$1.25$</td><td class="left">$1.25$</td></tr>
+<tr><td class="left">$CGBO_{P18}$</td><td class="left">$1.0 \cdot 10^{-12}$</td><td class="left">$1.0 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CGSO_{P18}$</td><td class="left">$3.5 \cdot 10^{-10}$</td><td class="left">$3.5 \cdot 10^{-10}$</td></tr>
+<tr><td class="left">$CJB_{0 P18}$</td><td class="left">$0.001$</td><td class="left">$0.001$</td></tr>
+<tr><td class="left">$C_{OX N18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{N18}}$</td><td class="left">$0.008222$</td></tr>
+<tr><td class="left">$C_{OX P18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{P18}}$</td><td class="left">$0.008633$</td></tr>
+<tr><td class="left">$E_{CRIT P18}$</td><td class="left">$1.0 \cdot 10^{9}$</td><td class="left">$1.0 \cdot 10^{9}$</td></tr>
+<tr><td class="left">$I_{0 P18}$</td><td class="left">$2 C_{OX P18} N_{s P18} U_{T}^{2} u_{0 P18}$</td><td class="left">$1.48 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$KF_{P18}$</td><td class="left">$4.2 \cdot 10^{-28}$</td><td class="left">$4.2 \cdot 10^{-28}$</td></tr>
+<tr><td class="left">$LDS_{P18}$</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$1.8 \cdot 10^{-7}$</td></tr>
+<tr><td class="left">$L_{s}$</td><td class="left">$0.12$</td><td class="left">$0.12$</td></tr>
+<tr><td class="left">$N_{s N18}$</td><td class="left">$1.38$</td><td class="left">$1.38$</td></tr>
+<tr><td class="left">$N_{s P18}$</td><td class="left">$1.35$</td><td class="left">$1.35$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$875$</td><td class="left">$875.0$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300.0$</td></tr>
+<tr><td class="left">$TOX_{N18}$</td><td class="left">$4.2 \cdot 10^{-9}$</td><td class="left">$4.2 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$TOX_{P18}$</td><td class="left">$4.0 \cdot 10^{-9}$</td><td class="left">$4.0 \cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{P18}$</td><td class="left">$0.4$</td><td class="left">$0.4$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$V_{KF P18}$</td><td class="left">$0.2$</td><td class="left">$0.2$</td></tr>
+<tr><td class="left">$Vth_{P18}$</td><td class="left">$-0.425$</td><td class="left">$-0.425$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$2.998 \cdot 10^{8}$</td><td class="left">$2.998 \cdot 10^{8}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854 \cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$1.381 \cdot 10^{-23}$</td><td class="left">$1.381 \cdot 10^{-23}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$4.0 \cdot 10^{-7} \pi$</td><td class="left">$1.257 \cdot 10^{-6}$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$1.602 \cdot 10^{-19}$</td><td class="left">$1.602 \cdot 10^{-19}$</td></tr>
+<tr><td class="left">$u_{0 P18}$</td><td class="left">$0.0095$</td><td class="left">$0.0095$</td></tr>
+<tr><td class="left">$\Gamma_{X1}$</td><td class="left">$\frac{0.6667 IC_{X1} + 0.5}{IC_{X1} + 1}$</td><td class="left">$\frac{- \frac{4.505 \cdot 10^{6} ID L}{W} + 0.5}{- \frac{6.757 \cdot 10^{6} ID L}{W} + 1.0}$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s P18}^{2} U_{T}^{2} \left(\Theta_{P18} + \frac{1}{E_{CRIT P18} L}\right)^{2}}$</td><td class="left">$\frac{320.7}{\left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$- \frac{ID L}{I_{0 P18} W}$</td><td class="left">$- \frac{6.757 \cdot 10^{6} ID L}{W}$</td></tr>
+<tr><td class="left">$VGS_{X1}$</td><td class="left">$- 2 N_{s P18} U_{T} \log{\left(e^{\left(IC_{X1} \left(1 + \frac{0.5 IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5}} - 1 \right)} + Vth_{P18}$</td><td class="left">$- 0.0698 \log{\left(e^{\frac{12008011676498299 \sqrt{1235} \sqrt{\pi} \sqrt{- \frac{ID L \left(- \frac{202219915215783969 \pi ID L \left(\frac{2}{5} + \frac{1}{1000000000 L}\right)^{2}}{9648437500000 W} + 1\right)}{W}}}{287735780621250}} - 1 \right)} - 0.425$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W$</td><td class="left">$1.8 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{P18} W$</td><td class="left">$3.5 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{P18} L + \frac{0.3333 C_{OX P18} L W \left(N_{s P18} - 1\right) \left(x_{X1} + 1\right)}{N_{s P18}}$</td><td class="left">$0.0007461 L W \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{P18} W + C_{OX N18} L W \left(0.6667 - 0.3333 x_{X1}\right)$</td><td class="left">$0.008222 L W \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 3.5 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$0.008222 L W \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L W \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L + 7.0 \cdot 10^{-10} W$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$- \frac{0.001754 ID}{\left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5} \left(0.008222 L W \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L W \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L + 7.0 \cdot 10^{-10} W\right)}$</td></tr>
+<tr><td class="left">$f_{\ell X1}$</td><td class="left">$\left(\frac{0.5 \pi KF_{P18} f_{T X1} \left(- 0.3333 x_{X1} + 0.6667 + \frac{\left(N_{s P18} - 1\right) \left(0.3333 x_{X1} + 0.3333\right)}{N_{s P18}}\right)}{C_{OX P18} \Gamma_{X1} N_{s P18} T k}\right)^{\frac{1}{AF_{P18}}}$</td><td class="left">$8.014 \cdot 10^{-7} \left(- \frac{ID \left(0.7531 - \frac{3.654 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) \left(- \frac{6.757 \cdot 10^{6} ID L}{W} + 1.0\right)}{\left(- \frac{4.505 \cdot 10^{6} ID L}{W} + 0.5\right) \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5} \left(0.008222 L W \left(0.6667 - \frac{4.933 \cdot 10^{-8} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 0.0007461 L W \left(1.0 + \frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}\right) + 2.0 \cdot 10^{-12} L + 7.0 \cdot 10^{-10} W\right)}\right)^{0.8}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$- \frac{ID}{N_{s P18} U_{T} \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$- \frac{0.01102 ID}{\left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W} + 0.0001923 \left(- \frac{ID L \left(- \frac{2.107 \cdot 10^{4} ID L \left(1 + \frac{2.5 \cdot 10^{-9}}{L}\right)^{2}}{W} + 1.0\right)}{W}\right)^{0.5} + 1.48 \cdot 10^{-7}\right)^{0.5}}$</td></tr>
+<tr><td class="left">$k_{f X1}$</td><td class="left">$\frac{KF_{P18} \left(\frac{2 IC_{X1}^{0.5} N_{s P18} U_{T}}{V_{KF P18}} + 1\right)^{2}}{C_{OX P18}^{2} L W}$</td><td class="left">$\frac{4.638 \cdot 10^{-18} \left(\left(- \frac{ID L}{W}\right)^{0.5} + 0.001102\right)^{2}}{L W}$</td></tr>
+<tr><td class="left">$x_{X1}$</td><td class="left">$\frac{\left(IC_{X1} + 0.25\right)^{0.5} + 1.5}{\left(\left(IC_{X1} + 0.25\right)^{0.5} + 0.5\right)^{2}}$</td><td class="left">$\frac{1.48 \cdot 10^{-7} \left(2599.0 \left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 1.5\right)}{\left(\left(- \frac{ID L}{W} + 3.7 \cdot 10^{-8}\right)^{0.5} + 0.0001923\right)^{2}}$</td></tr>
+</table>
+<table><caption>Table: Parameters without definition in 'A1_controller_noiseWLI_p.</caption>
+
+<tr><th class="left">Name</th></tr>
+<tr><td class="left">$L$</td></tr>
+<tr><td class="left">$ID$</td></tr>
+<tr><td class="left">$C_{\ell}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td></tr>
+<tr><td class="left">$C_{s}$</td></tr>
+<tr><td class="left">$W$</td></tr>
+<tr><td class="left">$R_{i}$</td></tr>
+</table>
+<figure><img src="img/A1_controller_noiseWLI_p.svg" alt="" style="width:600px">
+</figure>
+<h3>design specification</h3>
+<table><a id="table_design"></a><caption>Table design specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{i}$</td><td class="left">Required value of integrator capacitor</td><td class="left">$8.965 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$IC_{P}$</td><td class="left">Inversion coefficient input stage PMOS</td><td class="left">$0.198$</td><td></td></tr>
+<td class="left">$ID_{P}$</td><td class="left">Operating current input stage PMOS</td><td class="left">$-4.876 \cdot 10^{-6}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$I_{fb}$</td><td class="left">Maximum peak-peak current through feedback network</td><td class="left">$2.286 \cdot 10^{-5}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$L_{P}$</td><td class="left">Selected length input stage PMOS</td><td class="left">$1.8 \cdot 10^{-7}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$M_{P}$</td><td class="left">Number of fingers input stage PMOS</td><td class="left">$1$</td><td></td></tr>
+<td class="left">$R_{i}$</td><td class="left">Selected value of integrator resistor</td><td class="left">$1.7 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{max}$</td><td class="left">Max. value of integrator resistor</td><td class="left">$1.794 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{min}$</td><td class="left">Min. value of integrator resistor</td><td class="left">$1620$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$SRCnoise$</td><td class="left">DIN A weighted RMS output noise, source + termination</td><td class="left">$1.483 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$4.492 \cdot 10^{-11}$</td><td class="left">$\mathrm{\frac{V^{2}}{Hz}}$</td></tr>
+<td class="left">$W_{F P}$</td><td class="left">Finger width input stage PMOS</td><td class="left">$5.0 \cdot 10^{-5}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$W_{P}$</td><td class="left">Selected width input stage PMOS</td><td class="left">$2.994 \cdot 10^{-5}$</td><td class="left">$\mathrm{m}$</td></tr>
+<td class="left">$c_{issP}$</td><td class="left">Selected input capacitance PMOS</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss P o}$</td><td class="left">Obtained input capacitance input stage PMOS</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss costs minP}$</td><td class="left">Required c_iss PMOS for minimum costs</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss g m minP}$</td><td class="left">Required c_issN at g_m_minP</td><td class="left">$3.684 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$g_{mP}$</td><td class="left">Selected transconductance input stage PMOS</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m P o}$</td><td class="left">Obtained transconductance input stage PMOS</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m costs minP}$</td><td class="left">g_m PMOS for minimum costs</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m minP}$</td><td class="left">Minimum transconductance input stage PMOS</td><td class="left">$5.877 \cdot 10^{-5}$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$n_{Ri obtained}$</td><td class="left">Relative contribution of source and feedback network to squared DIN A weighted output noise</td><td class="left">$0.3789$</td><td></td></tr>
+</table>
+<h3>performance specification</h3>
+<table><a id="table_performance"></a><caption>Table performance specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{s}$</td><td class="left">Source capacitance</td><td class="left">$9.382 \cdot 10^{-12}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$L_{s}$</td><td class="left">Source inductance</td><td class="left">$0.12$</td><td class="left">$\mathrm{H}$</td></tr>
+<td class="left">$P_{max}$</td><td class="left">Maximum power dissipation at maximum supply voltage</td><td class="left">$0.001$</td><td class="left">$\mathrm{W}$</td></tr>
+<td class="left">$R_{s}$</td><td class="left">Source resistance</td><td class="left">$875$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$R_{t}$</td><td class="left">Termination resistance</td><td class="left">$1.0 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$V_{DD}$</td><td class="left">Maximum supply voltage</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$V_{onoise}$</td><td class="left">DIN A weighted output voltage noise</td><td class="left">$1.062 \cdot 10^{-5}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{ADC}$</td><td class="left">Peak-peak input voltage ADC</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{pp}$</td><td class="left">Maximum peak-peak input voltage</td><td class="left">$0.2932$</td><td></td></tr>
+<td class="left">$f_{fp}$</td><td class="left">Maximum full-power frequency</td><td class="left">$5000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{max}$</td><td class="left">-3dB low-pass cut-off frequency</td><td class="left">$6000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{min}$</td><td class="left">-3dB high-pass cut-off frequency</td><td class="left">$600$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$\tau_{i}$</td><td class="left">Integration time constant</td><td class="left">$1.603 \cdot 10^{-5}$</td><td class="left">$\mathrm{s}$</td></tr>
+</table>
+<h3>achievements specification</h3>
+<table><a id="table_achievements"></a><caption>Table achievements specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$V_{onoise WLI P}$</td><td class="left">DIN A weighted RMS output noise with PMOS, W, L, and ID</td><td class="left">$9.068 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$V_{onoise gmCissP}$</td><td class="left">DIN A weighted RMS output noise with PMOS and selected g_m and c_iss</td><td class="left">$9.006 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+</table>
+<h3>budgets specification</h3>
+<table><a id="table_budgets"></a><caption>Table budgets specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$n_{MP}$</td><td class="left">Relative contribution controller PMOS input stage noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.3$</td><td></td></tr>
+<td class="left">$n_{Ri}$</td><td class="left">Relative contribution of R_i noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.4$</td><td></td></tr>
+<td class="left">$n_{SRC}$</td><td class="left">Relative contribution of source noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.01951$</td><td></td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_controller_noiseWLI_p_index.html">A1_controller_noiseWLI_p_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 10:02:33</p>
+</div></body></html>

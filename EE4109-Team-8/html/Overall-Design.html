@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Overall Design"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Overall Design</h1></div>
+<h2>Amplifier A1</h2>
+<h3>Amplifier Specs</h3>
+<p>The receive coil converts the induced magnetic field into a voltage. The output of A1 must be matched to the microphone voltage, so the output of A1 must be voltage as well</p>
+<p>Type: voltage to voltage</p>
+<p>Grounded input, grounded output</p>
+<p>$Z_{in} = \infty$ (Ideally)</p>
+<p>$Z_{out} = 0$ (Ideally)</p>
+<p>$V_{out,pp} = 636$ mV</p>
+<h3>Desired Transfer</h3>
+<p>The amplifier must have an integrating transfer since the induced voltage of the coil is proportional with the rate of change of the magnetic flux. Together with the specs of the microphone, the required transfer can be calculated:</p>
+<p>$\frac{V_{out}}{V_{in}} = \frac{62.4\cdot 10^3}{s}$</p>
+<h3>Implementing desired transfer</h3>
+<p>Options:</p>
+<figure><img src="img/transfer_impl.png" alt="" style="width:400px">
+</figure>
+<p>Option 1 allows for a design with 1 stage since it is a three-port, which can potentially perform better than a four-port in terms of noise, current and area. Furthermore, the terminiation resistance is maybe not needed since $R_i$ can be designed such that it acts like the terminiation resistance</p>
+<p>Other option: active feedback</p>
+<h2>Amplifier A2</h2>
+<p>type: Voltage to voltage</p>
+<p>$V_{in,pp} = 636$ mV</p>
+<p>$V_{out,pp} = 900$ mV</p>
+<p>Amplifier A2 is required to amplify the output of the previous stage to the maximum input of the ADC to maximize the resolution. However, the gain is only 1.41, so if the microphone is able to drive the ADC input, then the amplifier can be omitted at the cost of less dynamic range</p>
+<p>The output impedance of the microphone is 5.5$k\Omega$ and forms a low-pass filter together with the input capacitance of 10pF of the ADC. However, the cut off frequency is 2.9MHz, so the drive capibility of the microphone is considered large enough in the required frequency range</p>
+<h2>Amplifier A3</h2>
+<h3>Amplifier Specs</h3>
+<p>Voltage to voltage</p>
+<p>Single ended to differential</p>
+<p>DAC output impedance is 10k $\Omega$. Input impedance of A3 must be significantly higher</p>
+<p>Common mode output voltage around 0V</p>
+<p>$V_{in,pp} = 900$ mV</p>
+<p>The output peak-to-peak voltage can be calculated. When driven with an RMS voltage of 0.18V, the loudspeaker generates maximally 109dBSPL (the provided answer uses 106dBSPL which is a typical value. For safety reasons we choose the maximum value). From this, the loudspeaker voltage, $V_{LSP}$ can be calculated</p>
+<p>$V_{LSP} = 10^{\frac{110-109}{20}}0.18=0.202$ V</p>
+<p>When accounting for the crest factor, the loudspeaker peak to peak voltage becomes: $V_{LSP,pp} = 1.21 V$</p>
+<p>Which is less than the value provided in the answers, and is less than the power supply. </p>
+<h3>Possible Implementations</h3>
+<figure><img src="img/A3fbType1.svg" alt="" style="width:600px">
+</figure>
+<p>Option 1: higher input impedance, but requires rail to rail controller</p>
+<p>Option 2: High input impedance must be selected. Controller does not have to be rail to rail</p>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="index.html">index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 10:02:33</p>
+</div></body></html>

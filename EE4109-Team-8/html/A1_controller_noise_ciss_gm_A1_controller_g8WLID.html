@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"A1_controller_g8WLID"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>A1_controller_g8WLID</h1></div>
+<h3>design specification</h3>
+<table><a id="table_design"></a><caption>Table design specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{i}$</td><td class="left">Required value of integrator capacitor</td><td class="left">$8.965 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$I_{fb}$</td><td class="left">Maximum peak-peak current through feedback network</td><td class="left">$2.286 \cdot 10^{-5}$</td><td class="left">$\mathrm{A}$</td></tr>
+<td class="left">$R_{i}$</td><td class="left">Selected value of integrator resistor</td><td class="left">$1.7 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{max}$</td><td class="left">Max. value of integrator resistor</td><td class="left">$1.794 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$Ri_{min}$</td><td class="left">Min. value of integrator resistor</td><td class="left">$1620$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$SRCnoise$</td><td class="left">DIN A weighted RMS output noise, source + termination</td><td class="left">$1.483 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$4.492 \cdot 10^{-11}$</td><td class="left">$\mathrm{\frac{V^{2}}{Hz}}$</td></tr>
+<td class="left">$c_{issP}$</td><td class="left">Selected input capacitance PMOS</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss costs minP}$</td><td class="left">Required c_iss PMOS for minimum costs</td><td class="left">$3.747 \cdot 10^{-14}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$c_{iss g m minP}$</td><td class="left">Required c_issN at g_m_minP</td><td class="left">$3.684 \cdot 10^{-10}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$g_{mP}$</td><td class="left">Selected transconductance input stage PMOS</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m costs minP}$</td><td class="left">g_m PMOS for minimum costs</td><td class="left">$0.0001172$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$g_{m minP}$</td><td class="left">Minimum transconductance input stage PMOS</td><td class="left">$5.877 \cdot 10^{-5}$</td><td class="left">$\mathrm{\mathtt{\text{S}}}$</td></tr>
+<td class="left">$n_{Ri obtained}$</td><td class="left">Relative contribution of source and feedback network to squared DIN A weighted output noise</td><td class="left">$0.3789$</td><td></td></tr>
+</table>
+<h3>performance specification</h3>
+<table><a id="table_performance"></a><caption>Table performance specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$C_{s}$</td><td class="left">Source capacitance</td><td class="left">$9.382 \cdot 10^{-12}$</td><td class="left">$\mathrm{F}$</td></tr>
+<td class="left">$L_{s}$</td><td class="left">Source inductance</td><td class="left">$0.12$</td><td class="left">$\mathrm{H}$</td></tr>
+<td class="left">$P_{max}$</td><td class="left">Maximum power dissipation at maximum supply voltage</td><td class="left">$0.001$</td><td class="left">$\mathrm{W}$</td></tr>
+<td class="left">$R_{s}$</td><td class="left">Source resistance</td><td class="left">$875$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$R_{t}$</td><td class="left">Termination resistance</td><td class="left">$1.0 \cdot 10^{4}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
+<td class="left">$V_{DD}$</td><td class="left">Maximum supply voltage</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$V_{onoise}$</td><td class="left">DIN A weighted output voltage noise</td><td class="left">$1.062 \cdot 10^{-5}$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{ADC}$</td><td class="left">Peak-peak input voltage ADC</td><td class="left">$0.9$</td><td class="left">$\mathrm{V}$</td></tr>
+<td class="left">$Vi_{pp}$</td><td class="left">Maximum peak-peak input voltage</td><td class="left">$0.2932$</td><td></td></tr>
+<td class="left">$f_{fp}$</td><td class="left">Maximum full-power frequency</td><td class="left">$5000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{max}$</td><td class="left">-3dB low-pass cut-off frequency</td><td class="left">$6000$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$f_{min}$</td><td class="left">-3dB high-pass cut-off frequency</td><td class="left">$600$</td><td class="left">$\mathrm{Hz}$</td></tr>
+<td class="left">$\tau_{i}$</td><td class="left">Integration time constant</td><td class="left">$1.603 \cdot 10^{-5}$</td><td class="left">$\mathrm{s}$</td></tr>
+</table>
+<h3>achievements specification</h3>
+<table><a id="table_achievements"></a><caption>Table achievements specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$V_{onoise gmCissP}$</td><td class="left">DIN A weighted RMS output noise with PMOS and selected g_m and c_iss</td><td class="left">$9.006 \cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
+</table>
+<h3>budgets specification</h3>
+<table><a id="table_budgets"></a><caption>Table budgets specification </caption><tr><th class="left">symbol</th><th class="left">description</th><th class="left">value</th><th class="left">units</th></tr>
+<td class="left">$n_{MP}$</td><td class="left">Relative contribution controller PMOS input stage noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.3$</td><td></td></tr>
+<td class="left">$n_{Ri}$</td><td class="left">Relative contribution of R_i noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.4$</td><td></td></tr>
+<td class="left">$n_{SRC}$</td><td class="left">Relative contribution of source noise to the squared DIN-A weighted RMS output noise</td><td class="left">$0.01951$</td><td></td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_controller_noise_ciss_gm_index.html">A1_controller_noise_ciss_gm_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-30 10:02:33</p>
+</div></body></html>

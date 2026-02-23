@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"General Design - Concept Design Phase"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>General Design - Concept Design Phase</h1></div>
+<h2>Amplifier Design A1</h2>
+<p>We fully agree with the tranfer function given by the solutions</p>
+<h2>Amplifier Design A1 - type</h2>
+<p>A1 needs to be voltage to voltage, because the microphone is voltage and the induced electic field is a voltage from the coil.</p>
+<p>The amplifier needs to have an high input impedance, because its a voltage to voltage and you want all the voltage on the input (series input sensing) and dont want to load the coil.</p>
+<p>The output inpedance needs to be as low as possible so there is no voltage drop on the Zout and all the voltage is on the load.</p>
+<p>It needs common mode as the differential mode is more costly to design in terms of noise performance and noise. There is no need for differential mode so it is avoided. Only if there is enough interference in the wire between the pickup coil and the amplifier it might need to be reconsidered, but we assume this is not the case for now.</p>
+<h2>Amplifier Design A1 - structure</h2>
+<figure><img src="img/A1 - Three port.jpeg" alt="" style="width:400px">
+</figure>
+<p>We are looking at into the possibility to use a different topology for the amplifier then the solutions. The tought process is to see if it is possible to have a three port configuation which can perform similar or even better compared to Antons 4 port controller design.</p>
+<p>You have a voltage at the output of the coil. We nullify this difference to gound and provide the axis of freedom at the output with norrator. In opamp speak, current form the coil get into the cap, which gets integrated and inverted to the output as a voltage.</p>
+<p>We think this design might be better as it is three terminal, so it needs less transistors so less noise</p>
+<p></p>
+<p>Potential question: is there a problem with the resonant frequency which we have to keep in mind?</p>
+<p>theoretical awnser: no, because resonent frequency peak would increase thevenin equivalent impedance which would shift the voltage from the Ri to Rsource which will kill the gain.</p>
+<p>potential question: Anton has put in a termination resistance which we dont yet know why</p>
+<p>potential awnser: we dont know if we need one in this design</p>
+<p>Q: Why did anton choose the 10k terminator resistor and not a 113k as this is the intersection to fix resonance?</p>
+<p>A: 10k is choosen as something with a pole or zero with source</p>
+<h2>Amplifier Design A2</h2>
+<p>We agree with that as the amplifier needs an amplification of 1.4 we can just use a wire instead of designing an amplifier</p>
+<p>Q: The value is not 1 so why can you use a wire?</p>
+<p>A: </p>
+<h2>Amplifier Design A3</h2>
+<h2>Amplifier Design A3 - type</h2>
+<p>We have a different number as we have a different specification for the amplifier, so we have a different conclusion to the awnser model. This is because they used the value at 1kHz, but the peak is at 2.5kHz which there the peak is 109 dBSPL (which is the max value instead of the typical). This is what we would like to discuss with the client, we would like to take the max to protect the ears</p>
+<p>Since the desired max voltage level of loudspeaker is 1.21 volt, which is below is below the maximum battery voltage of 1.4. Compared to the awnser model, we dont have to do the trick with the doubling voltage of the battery as it is unncecessary.</p>
+<p>This gives the different values which are</p>
+<p>1.21 at the output</p>
+<figure><img src="img/A3fbType1.svg" alt="" style="width:800px">
+</figure>
+<p>We would like to use A and it is theoraticly possible, but as the input signal is to close to a rail to rail voltage it is impractical to do it with a single transistor source follower, which leads us to also use B.</p>
+<p>Q: why do we take a crest factor of 3</p>
+<p>A: It is in the specs and its a usual value for audio signals.</p>
+<h2>Circuit slicap simulations</h2>
+<p>The pole of the resonance resistance is the least dominant.</p>
+<p>Our amplifier design needs a massive resistor</p>
+<p>What are the benifits of our design?</p>
+<p>Much lower power, since we can do it with a 3-terminal device which can be implemented with a single transistor, in stead of a differential stage</p>
+<p>Using a differential pair requires 4 times the current for the same noise.</p>
+<p>Where does the noise budget come from?</p>
+<p>The output noise specification is 30 dBSPL, which is approximately 10 uV. The gain of the total system is 2, since the maximum output voltage of the microphone is 636 mV.</p>
+<p>Therefore, the noise budget at the output of A1 is half of the total output noise budget: 5 uV.</p>
+<p>Since the input impedance of the amplifier in our configuration is not infinite, the impedance of the source/coil does influence the tranferfunction to the output. This effect has to be taken into account</p>
+<p>The impedance of the source/coil is flat until 4kHz and increases above. As a result, the desired gain drops. However, the maximum full power frequency is 5kHz.</p>
+<h2>EUREKA</h2>
+<p>After looking deeper it is easier than we initially thought. The noise budget of 30 dBSPL is calculated as the output of A1. This is because the 30dBSPL is the noise floor of the microphone and we are trying to match this with the microphone. The electrical noise of the microphone is the sensitivity times the noise floor of the system requirement which in the linear domain or plus in the dB domain. This gives the following equation:</p>
+\begin{equation}
+V_{noise}=1.062 \cdot 10^{-5}\,\left[ \mathrm{V}\right]
+\end{equation}
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="index.html">index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 3.0.1 &copy 2009-2024 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2025-01-29 22:08:04</p>
+</div></body></html>
