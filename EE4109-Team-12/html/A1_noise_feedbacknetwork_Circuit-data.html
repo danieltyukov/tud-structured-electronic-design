@@ -57,34 +57,34 @@ V1 3 0 V value=0 noise=0 dc=0 dcvar=0
 <table><caption>Table: Parameters without definition in 'A1_noise_feedbacknetwork.</caption>
 
 <tr><th class="left">Name</th></tr>
-<tr><td class="left">$R_{i}$</td></tr>
+<tr><td class="left">$L_{s}$</td></tr>
+<tr><td class="left">$R_{s}$</td></tr>
 <tr><td class="left">$\tau_{i}$</td></tr>
 <tr><td class="left">$C_{s}$</td></tr>
-<tr><td class="left">$R_{s}$</td></tr>
-<tr><td class="left">$L_{s}$</td></tr>
+<tr><td class="left">$R_{i}$</td></tr>
 </table>
 <figure><img src="img/A1_R_noise_with_Ri.svg" alt="" style="width:500px">
 </figure>
 \begin{equation}
-S_{onoise}=\frac{1.634 \cdot 10^{-12} R_{i}}{f^{2}} + \frac{5.585 \cdot 10^{46}}{f^{2} \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
+S_{onoise}=\frac{1.634 \cdot 10^{-12} R_{i}}{f^{2}} + \frac{5.585 \cdot 10^{46}}{f^{2} \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{V^2/Hz}\right]
 \end{equation}
 \begin{equation}
 n_{Ri}=0.2
 \end{equation}
 \begin{equation}
-N_{var required}=24.75\cdot 10^{-12}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
+N_{var required}=24.75\cdot 10^{-12}\,\left[ \mathrm{V^2/Hz}\right]
 \end{equation}
 \begin{equation}
-RMS_{2 sq}=2.451 \cdot 10^{-15} R_{i} + 2.145 \cdot 10^{-12}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
+RMS_{2 sq}=2.451 \cdot 10^{-15} R_{i} + 2.145 \cdot 10^{-12}\,\left[ \mathrm{V^2/Hz}\right]
 \end{equation}
 \begin{equation}
 Ri_{max}=9.221\cdot 10^{3}\,\left[ \mathrm{\Omega}\right]
 \end{equation}
 \begin{equation}
-S_{weighted}=\frac{0.1013 f^{6} \left(2.513 \cdot 10^{51} f^{4} - 1.131 \cdot 10^{62} f^{2} + 1.393 \cdot 10^{72}\right)}{\left(f^{2} + 1.487 \cdot 10^{8}\right)^{2} \left(25 f^{2} + 1.061 \cdot 10^{4}\right)^{2} \left(100 f^{2} + 1.16 \cdot 10^{6}\right) \left(100 f^{2} + 5.445 \cdot 10^{7}\right) \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
+S_{weighted}=\frac{0.1013 f^{6} \left(2.513 \cdot 10^{51} f^{4} - 1.131 \cdot 10^{62} f^{2} + 1.393 \cdot 10^{72}\right)}{\left(f^{2} + 1.487 \cdot 10^{8}\right)^{2} \left(25 f^{2} + 1.061 \cdot 10^{4}\right)^{2} \left(100 f^{2} + 1.16 \cdot 10^{6}\right) \left(100 f^{2} + 5.445 \cdot 10^{7}\right) \left(7.716 \cdot 10^{34} f^{4} - 3.472 \cdot 10^{45} f^{2} + 3.906 \cdot 10^{55}\right)}\,\left[ \mathrm{V^2/Hz}\right]
 \end{equation}
 \begin{equation}
-N_{var obtained}=25.37\cdot 10^{-12}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
+N_{var obtained}=25.37\cdot 10^{-12}\,\left[ \mathrm{V^2/Hz}\right]
 \end{equation}
 \begin{equation}
 correction=0.9754
@@ -108,7 +108,7 @@ R_{i}=5\cdot 10^{3}\,\left[ \mathrm{\Omega}\right]
 <td class="left">$Ri_{max}$</td><td class="left">Max. value of integrator resistor</td><td class="left">$8.972\cdot 10^{3}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
 <td class="left">$Ri_{min}$</td><td class="left">Min. value of integrator resistor</td><td class="left">$1.620\cdot 10^{3}$</td><td class="left">$\mathrm{\Omega}$</td></tr>
 <td class="left">$SRCnoise$</td><td class="left">DIN A weighted RMS output noise, source + termination</td><td class="left">$1.483\cdot 10^{-6}$</td><td class="left">$\mathrm{V}$</td></tr>
-<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$14.76\cdot 10^{-12}$</td><td class="left">$\mathrm{V\operatorname{xor}\frac{2}{Hz}}$</td></tr>
+<td class="left">$S_{Ri}$</td><td class="left">Squared DIN A weighted RMS output noise due to source and feedback network</td><td class="left">$14.76\cdot 10^{-12}$</td><td class="left">$\mathrm{V^2/Hz}$</td></tr>
 <td class="left">$n_{Ri obtained}$</td><td class="left">Relative contribution of source and feedback network to squared DIN A weighted output noise</td><td class="left">$0.1115$</td><td></td></tr>
 </table>
 <!-- INSERT -->
@@ -116,5 +116,5 @@ R_{i}=5\cdot 10^{3}\,\left[ \mathrm{\Omega}\right]
 <p>Go to <a href="A1_noise_feedbacknetwork_index.html">A1_noise_feedbacknetwork_index</a></p>
 <p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.10 &copy 2009-2025 SLiCAP development team</p>
 <p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
-<p>Last project update: 2026-02-23 08:55:21</p>
+<p>Last project update: 2026-02-23 13:01:21</p>
 </div></body></html>

@@ -1,8 +1,8 @@
 (export (version "E")
   (design
-    (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/EE4109-Team-12/kicad/A1_Ideal_Controller.kicad_sch")
-    (date "2026-02-23T08:55:25+0100")
-    (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
+    (source "C:\\Users\\alima\\tud-structured-electronic-design\\EE4109-Team-12\\kicad\\A1_Ideal_Controller.kicad_sch")
+    (date "2026-02-23T13:01:36+0100")
+    (tool "Eeschema 9.0.6")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
         (title "A1_Ideal_Controller")
@@ -269,9 +269,7 @@
       (pins
         (pin (num "1") (name "p") (type "power_out"))
         (pin (num "2") (name "n") (type "power_out")))))
-  (libraries
-    (library (logical "SLiCAP")
-      (uri "/home/danieltyukov/workspace/tud/slicap_env/lib/python3.12/site-packages/SLiCAP/files/kicad/SLiCAP.kicad_sym")))
+  (libraries)
   (nets
     (net (code "1") (name "/out") (class "Default")
       (node (ref "C1") (pin "1") (pinfunction "1") (pintype "passive"))
