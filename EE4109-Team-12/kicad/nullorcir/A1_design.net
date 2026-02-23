@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/EE4109-Team-12/kicad/nullorcir/A1_design.kicad_sch")
-    (date "2026-02-23T08:40:50+0100")
+    (date "2026-02-23T08:55:22+0100")
     (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block

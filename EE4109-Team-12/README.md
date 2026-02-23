@@ -13,7 +13,7 @@ The virtual environment is at `../.venv/`.
 ./run.sh
 
 # Or manually
-../.venv/bin/python3 g12main.py
+../.venv/bin/python3 hlr_main.py
 ```
 
 The pipeline is interactive and prompts for 8 design parameters (see Design Knobs below).
@@ -35,35 +35,35 @@ requires 4x less current for the same noise performance.
 
 ## Pipeline steps
 
-`g12main.py` imports 10 modules sequentially. Each step generates HTML documentation.
+`hlr_main.py` imports 10 modules sequentially. Each step generates HTML documentation.
 
-| Step | Script | What it does |
+| Step | Module | Description |
 |------|--------|-------------|
-| 1 | `g12specifications.py` | System requirements (battery, audio, frequency, noise specs) |
-| 2 | `g12OverallDesign.py` | Overall amplifier topology (A1/A2/A3 structure) |
-| 3 | `g12amp1cir.py` | A1 circuit design, design equation for C_i |
-| 4 | `g12sourcenoise.py` | Source noise analysis with DIN-A weighting |
-| 5 | `g12feedbacknetworknoise.py` | Feedback network noise budget, R_i/C_i sizing |
-| 6 | `g12idealcontroller.py` | Ideal controller transfer function analysis |
-| 7 | `g12gmciss.py` | gm/c_iss optimization for minimum cost |
-| 8 | `g12WLID.py` | Transistor W, L, ID sizing |
-| 9 | `g12controller.py` | Single MOS controller gain/stability analysis |
-| 10 | `g12Biasing.py` | Biasing point and linearity verification |
+| 1 | `hlr_specs.py` | Design requirements (battery, audio, frequency, noise specs) |
+| 2 | `hlr_system.py` | System architecture (A1/A2/A3 stage structure) |
+| 3 | `hlr_a1_circuit.py` | A1 circuit design, integration capacitor equation |
+| 4 | `hlr_source_noise.py` | Source noise analysis with DIN-A weighting |
+| 5 | `hlr_fb_noise.py` | Feedback network noise budget, R_i/C_i sizing |
+| 6 | `hlr_ideal_ctrl.py` | Ideal controller transfer function analysis |
+| 7 | `hlr_gm_opt.py` | gm/c_iss transconductance optimization |
+| 8 | `hlr_mos_sizing.py` | Transistor W, L, ID sizing |
+| 9 | `hlr_controller.py` | Single MOS + cascode controller analysis |
+| 10 | `hlr_biasing.py` | Operating point and linearity verification |
 
 ## Design knobs
 
 The pipeline prompts for 8 interactive parameters. These are design tradeoff choices:
 
-| # | Parameter | Script (step) | Constraint | Description |
+| # | Parameter | Module (step) | Constraint | Description |
 |---|-----------|--------------|------------|-------------|
-| 1 | `n_Ri` | g12feedbacknetworknoise (5) | 0 < n_Ri < 1 - n_SRC (~0.980) | Noise budget fraction for integrator resistor R_i |
-| 2 | `R_i` | g12feedbacknetworknoise (5) | Ri_min <= R_i <= Ri_max | Integrator resistance value in Ohm |
-| 3 | `mosType` | g12gmciss (7) | N or P | NMOS or PMOS input stage |
-| 4 | `n_M` | g12gmciss (7) | 0 < n_M < 1 - n_SRC - n_Ri | Noise budget fraction for controller MOS |
-| 5 | `mosType` | g12WLID (8) | N or P (match #3) | MOS type for W/L/ID sizing |
-| 6 | `W_finger` | g12WLID (8) | 0.18 to 50 um | Maximum finger width |
-| 7 | `Le` | g12WLID (8) | >= 0.18 um | Channel length |
-| 8 | `mosType` | g12controller (9) | N or P (match #3) | MOS type for controller analysis |
+| 1 | `n_Ri` | hlr_fb_noise (5) | 0 < n_Ri < 1 - n_SRC (~0.980) | Noise budget fraction for integrator resistor R_i |
+| 2 | `R_i` | hlr_fb_noise (5) | Ri_min <= R_i <= Ri_max | Integrator resistance value in Ohm |
+| 3 | `mosType` | hlr_gm_opt (7) | N or P | NMOS or PMOS input stage |
+| 4 | `n_M` | hlr_gm_opt (7) | 0 < n_M < 1 - n_SRC - n_Ri | Noise budget fraction for controller MOS |
+| 5 | `mosType` | hlr_mos_sizing (8) | N or P (match #3) | MOS type for W/L/ID sizing |
+| 6 | `W_finger` | hlr_mos_sizing (8) | 0.18 to 50 um | Maximum finger width |
+| 7 | `Le` | hlr_mos_sizing (8) | >= 0.18 um | Channel length |
+| 8 | `mosType` | hlr_controller (9) | N or P (match #3) | MOS type for controller analysis |
 
 The noise budgets must satisfy: `n_SRC + n_Ri + n_M <= 1` (total noise budget).
 `n_SRC` is computed automatically (~0.0195) from source and termination noise.
@@ -131,63 +131,49 @@ Total noise budget used: n_SRC + n_Ri + n_M = 0.0195 + 0.2 + 0.5 = 0.72 (72%)
 ```
 EE4109-Team-12/
 |
-|-- g12main.py                     # Entry point: imports all steps sequentially
-|-- g12specifications.py           # Step 1: requirement specs
-|-- g12OverallDesign.py            # Step 2: overall amplifier topology
-|-- g12amp1cir.py                  # Step 3: A1 circuit design
-|-- g12sourcenoise.py              # Step 4: source noise + DIN-A weighting
-|-- g12feedbacknetworknoise.py     # Step 5: feedback network noise (interactive)
-|-- g12idealcontroller.py          # Step 6: ideal controller TF
-|-- g12gmciss.py                   # Step 7: gm/c_iss optimization (interactive)
-|-- g12WLID.py                     # Step 8: W/L/ID transistor sizing (interactive)
-|-- g12controller.py               # Step 9: single MOS controller (interactive)
-|-- g12Biasing.py                  # Step 10: biasing and linearity
-|-- g12conceptdesignphase.py       # Concept design notes (imported by OverallDesign)
-|-- run.sh                         # Shell script to run full pipeline
-|-- SLiCAP.ini                     # SLiCAP project configuration
-|-- README.md                      # This file
-|-- commonknowledge.md             # EKV model notes
+|-- hlr_main.py                      # Entry point: imports all steps sequentially
+|-- hlr_specs.py                     # Step 1: design requirements
+|-- hlr_system.py                    # Step 2: system architecture
+|-- hlr_a1_circuit.py                # Step 3: A1 circuit design
+|-- hlr_source_noise.py              # Step 4: source noise + DIN-A weighting
+|-- hlr_fb_noise.py                  # Step 5: feedback network noise (interactive)
+|-- hlr_ideal_ctrl.py                # Step 6: ideal controller transfer function
+|-- hlr_gm_opt.py                    # Step 7: gm/c_iss optimization (interactive)
+|-- hlr_mos_sizing.py                # Step 8: W/L/ID transistor sizing (interactive)
+|-- hlr_controller.py                # Step 9: controller analysis + cascode (interactive)
+|-- hlr_biasing.py                   # Step 10: operating point and linearity
+|-- run.sh                           # Shell script to run full pipeline
+|-- SLiCAP.ini                       # SLiCAP project configuration
+|-- README.md                        # This file
 |
 |-- lib/
-|   `-- C18.lib                    # CMOS18 device library (EKV model params)
+|   `-- C18.lib                      # CMOS18 device library (EKV model params)
 |
-|-- kicad/                         # KiCAD schematics (source for netlists)
+|-- kicad/                           # KiCAD schematics (source for netlists)
 |   |-- nullorcir/
-|   |   |-- A1_design.kicad_sch            # A1 nullor integrator
-|   |   `-- A1_design copy.kicad_sch       # Copy for TF analysis
+|   |   |-- A1_design.kicad_sch
+|   |   `-- A1_design copy.kicad_sch
 |   |-- controller/
-|   |   |-- single_NMOS.kicad_sch          # Single NMOS controller
-|   |   `-- single_PMOS.kicad_sch          # Single PMOS controller
-|   |-- A1_Ideal_Controller.kicad_sch      # Ideal controller schematic
-|   |-- A1_R_noise_without_Ri.kicad_sch    # Noise model (source only)
-|   `-- A1_R_noise_with_Ri.kicad_sch       # Noise model (source + R_i)
+|   |   |-- single_NMOS.kicad_sch
+|   |   |-- single_PMOS.kicad_sch
+|   |   `-- cascode_PMOS.kicad_sch
+|   |-- A1_Ideal_Controller.kicad_sch
+|   |-- A1_R_noise_without_Ri.kicad_sch
+|   `-- A1_R_noise_with_Ri.kicad_sch
 |
-|-- cir/                           # Generated SPICE netlists (from kicad/ or manual)
-|   |-- A1_design.cir
-|   |-- A1_controller_noise_ciss_gm.cir    # gm/c_iss noise model
-|   |-- A1_controller_noiseWLI_n.cir       # NMOS W/L/ID circuit
-|   |-- A1_controller_noiseWLI_p.cir       # PMOS W/L/ID circuit
-|   `-- single_PMOS.cir
-|
-|-- html/                          # Generated HTML documentation (output)
-|   |-- index.html                 # Table of contents
-|   |-- css/slicap.css             # SLiCAP default stylesheet
-|   `-- img/                       # Generated plots (SVG)
-|
-|-- img/                           # Generated circuit diagrams (SVG + PDF)
-|-- csv/                           # Specification data files
-|-- tex/                           # LaTeX output
-|-- sphinx/                        # Sphinx documentation output
-|-- mathml/                        # MathML output
-|-- txt/                           # Text output
-`-- notes/                         # Design notes
+|-- cir/                             # Generated SPICE netlists
+|-- html/                            # Generated HTML documentation (output)
+|-- img/                             # Generated circuit diagrams (SVG + PDF)
+|-- csv/                             # Specification data files
+|-- tex/                             # LaTeX output
+`-- notes/                           # Design notes
 ```
 
 ### Key relationships
 
-- `g12main.py` imports steps 1-10 in order. Each step builds on results from previous steps.
+- `hlr_main.py` imports steps 1-10 in order. Each step builds on results from previous steps.
 - KiCAD schematics (`kicad/`) are converted to SPICE netlists (`cir/`) by SLiCAP's `makeCircuit()`.
 - `lib/C18.lib` defines CMOS18 EKV model parameters used by all circuits with MOS devices.
 - Each step generates HTML pages in `html/` with equations, plots, and tables.
-- The `specsObject` class (defined in `g12specifications.py`) passes design parameters between steps.
+- The `specsObject` class (defined in `hlr_specs.py`) passes design parameters between steps.
 - Steps 5, 7, 8, 9 are interactive (require design knob inputs).

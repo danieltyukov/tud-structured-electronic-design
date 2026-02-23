@@ -2,10 +2,10 @@ import SLiCAP as sl
 import sympy as sp
 from scipy.integrate import quad
 
-from g12specifications import global_specs, A1specs
-from g12sourcenoise import DIN_A
+from hlr_specs import global_specs, A1specs
+from hlr_source_noise import DIN_A
 
-sl.htmlPage('A1_controller_g12WLID')
+sl.htmlPage('Transistor Sizing')
 sl.specs2html(A1specs.getSpecs())
 
 mosType = False

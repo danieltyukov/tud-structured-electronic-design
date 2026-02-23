@@ -95,21 +95,21 @@ V2 7 3 V value=0 noise={4*k*T*n*Gamma*f_ell^AF/g_m/f^AF} dc=0 dcvar=0
 <table><caption>Table: Parameters without definition in 'A1_controller_noise_ciss_gm.</caption>
 
 <tr><th class="left">Name</th></tr>
-<tr><td class="left">$n$</td></tr>
-<tr><td class="left">$\tau_{i}$</td></tr>
-<tr><td class="left">$AF$</td></tr>
-<tr><td class="left">$c_{iss}$</td></tr>
-<tr><td class="left">$KF$</td></tr>
-<tr><td class="left">$g_{m}$</td></tr>
-<tr><td class="left">$R_{i}$</td></tr>
 <tr><td class="left">$C_{OX}$</td></tr>
+<tr><td class="left">$R_{i}$</td></tr>
+<tr><td class="left">$g_{m}$</td></tr>
+<tr><td class="left">$c_{iss}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td></tr>
+<tr><td class="left">$KF$</td></tr>
+<tr><td class="left">$n$</td></tr>
+<tr><td class="left">$AF$</td></tr>
 </table>
 <figure><img src="img/noise_ciss_gm.svg" alt="" style="width:700px">
 </figure>
 \begin{equation}
 N_{required}=81.11\cdot 10^{-12}\,\left[ \mathrm{V\operatorname{xor}2}\right]
 \end{equation}
-<h2>DIT IS HET CIRCUIT</h2>
+<h2>Controller Noise Circuit</h2>
 <table><caption>Table: Element data of expanded netlist 'A1_controller_noise_ciss_gm'</caption>
 <tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
 <tr><td class="left">E1</td><td class = "left">out 0 in 0 </td><td class = "left"></td><td class = "left">E</td>
@@ -198,13 +198,13 @@ N_{required}=81.11\cdot 10^{-12}\,\left[ \mathrm{V\operatorname{xor}2}\right]
 <table><caption>Table: Parameters without definition in 'A1_controller_noise_ciss_gm.</caption>
 
 <tr><th class="left">Name</th></tr>
-<tr><td class="left">$AF_{P18}$</td></tr>
-<tr><td class="left">$KF_{P18}$</td></tr>
-<tr><td class="left">$N_{s P18}$</td></tr>
-<tr><td class="left">$g_{m}$</td></tr>
-<tr><td class="left">$C_{OX P18}$</td></tr>
-<tr><td class="left">$c_{iss}$</td></tr>
 <tr><td class="left">$f$</td></tr>
+<tr><td class="left">$C_{OX P18}$</td></tr>
+<tr><td class="left">$AF_{P18}$</td></tr>
+<tr><td class="left">$g_{m}$</td></tr>
+<tr><td class="left">$KF_{P18}$</td></tr>
+<tr><td class="left">$c_{iss}$</td></tr>
+<tr><td class="left">$N_{s P18}$</td></tr>
 </table>
 \begin{equation}
 S_{onoise}=\frac{9.6 \cdot 10^{-9}}{f^{2}} + \frac{3.301 \cdot 10^{-11} c_{iss}^{2} f^{4} + 0.002004 c_{iss}^{2} f^{2} - 1.393 \cdot 10^{-11} c_{iss} f^{2} + 1.471 \cdot 10^{-12}}{f^{2} g_{m}} + \frac{1.666 \cdot 10^{-17}}{c_{iss} f^{3.05}}\,\left[ \mathrm{V\operatorname{xor}\frac{2}{Hz}}\right]
@@ -292,5 +292,5 @@ correction=1.021
 <p>Go to <a href="A1_controller_noise_ciss_gm_index.html">A1_controller_noise_ciss_gm_index</a></p>
 <p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.10 &copy 2009-2025 SLiCAP development team</p>
 <p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
-<p>Last project update: 2026-02-23 08:40:49</p>
+<p>Last project update: 2026-02-23 08:55:21</p>
 </div></body></html>

@@ -83,7 +83,7 @@ global_specs.append("f_high_hearing_loop", "High frequency hearing loop", fhighh
 
 
 
-sl.htmlPage("Given Specifications")
+sl.htmlPage("Design Requirements")
 sl.specs2html(global_specs.getSpecs())
 
 A1specs = specsObject()

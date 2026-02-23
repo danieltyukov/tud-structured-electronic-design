@@ -1,7 +1,7 @@
 import SLiCAP as sl
 import sympy as sp
 
-from g12specifications import global_specs, A1specs
+from hlr_specs import global_specs, A1specs
 
 # Select NMOS or PMOS
 mosType = False
@@ -36,7 +36,7 @@ sl.elementData2html(cir)
 # params
 sl.params2html(cir)
 
-sl.htmlPage('gain plots')
+sl.htmlPage('Gain Analysis')
 # Plot gain
 gain        = sl.doLaplace(cir, pardefs="circuit", numeric=True)
 asymptotic  = sl.doLaplace(cir, pardefs="circuit", numeric=True, transfer="asymptotic")
@@ -56,7 +56,7 @@ fbmodel_mag = sl.plotSweep("fb_mag", "Magnitude plots feedback model parameters"
 sl.img2html("fb_mag.svg", width=600)
 
 
-sl.htmlPage('pole zero plots')
+sl.htmlPage('Pole-Zero Analysis')
 PZgain = sl.doPZ(cir, pardefs="circuit", numeric=True, transfer="gain")
 PZasymptotic = sl.doPZ(cir, pardefs="circuit", numeric=True, transfer="asymptotic")
 PZloopgain = sl.doPZ(cir, pardefs="circuit", numeric=True, transfer="loopgain")
@@ -81,7 +81,7 @@ sl.pz2html(PZdirect)
 sl.img2html("PZplotdirect.svg", width=600)
 
 
-sl.htmlPage('feedback model plots')
+sl.htmlPage('Feedback Loop Analysis')
 fbmodel_phase = sl.plotSweep("fb_phase", "Magnitude plots feedback model parameters", fb_model, 10, 10e5, 200, funcType="phase")
 sl.img2html("fb_phase.svg", width=600)
 
@@ -121,7 +121,7 @@ if mosType == "P":
     sl.elementData2html(cir_casc)
     sl.params2html(cir_casc)
 
-    sl.htmlPage('Cascode Magnitude Response')
+    sl.htmlPage('Cascode Frequency Response')
 
     # Feedback model analysis
     casc_gain       = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True)

@@ -7,7 +7,7 @@ from scipy.integrate import quad
 from sympy import Symbol, lambdify, sqrt
 from numpy import geomspace
 
-from g12specifications import A1specs
+from hlr_specs import A1specs
 
 cir2 = sl.makeCircuit("kicad/A1_R_noise_without_Ri.kicad_sch", imgWidth = 800)
 sl.elementData2html(cir2)
@@ -16,8 +16,8 @@ sl.params2html(cir2)
 sl.img2html("A1_R_noise_without_Ri.svg", width = 800)
 
 # DIN_A
-htmlPage('DIN A weighting curve')
-print("Calculating DIN A weighting curve")
+htmlPage('DIN-A Weighting Response')
+print("Computing DIN-A weighting function")
 
 f            = Symbol("f")
 DIN_A        = 12194**2*f**4/((f**2+20.6**2)*(f**2+12194**2)*sqrt((f**2+107.7**2)*(f**2+737.9**2)))
@@ -33,12 +33,12 @@ DINA_plot    = plot("DINA", "DIN A normalized at 1kHz", 'log', {"DINA":tr}, xNam
 
 sl.img2html("DINA.svg", width = 800)
 
-htmlPage("Noise budget")
+htmlPage("Noise Budget Analysis")
 # Load circuit parameters from specifications
 
 
 text2html('The noise budget is calculated by the following formula:')
-print("Calculating noise budget")
+print("Computing noise budget")
 
 sl.specs2html(A1specs.getSpecs())
 sl.specs2circuit(A1specs.getSpecs(), cir2)

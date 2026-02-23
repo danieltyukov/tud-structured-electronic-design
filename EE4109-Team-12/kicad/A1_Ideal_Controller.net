@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/EE4109-Team-12/kicad/A1_Ideal_Controller.kicad_sch")
-    (date "2026-02-23T08:40:53+0100")
+    (date "2026-02-23T08:55:25+0100")
     (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block

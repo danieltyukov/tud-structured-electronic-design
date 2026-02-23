@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# run.sh - Execute the full EE4109 Team 12 hearing loop design pipeline
+# run.sh - Hearing Loop Receiver design pipeline (EE4109)
 #
 # This script feeds all interactive design knob parameters automatically.
 # Edit the values below to explore different design tradeoffs.
@@ -17,43 +17,43 @@ cd "$(dirname "$0")"
 # DESIGN KNOBS - Edit these to change the design
 # ============================================================================
 
-# Step 5 (g12feedbacknetworknoise.py): Noise budget for integrator resistor
+# Step 5 (hlr_fb_noise.py): Noise budget for integrator resistor
 # Constraint: 0 < N_RI < 1 - n_SRC  (~0.980)
 # Higher -> more noise allowed from R_i -> larger Ri_max -> less power
 # Lower  -> tighter R_i constraint -> leaves more budget for MOS
 N_RI="0.2"
 
-# Step 5 (g12feedbacknetworknoise.py): Integrator resistance value [Ohm]
+# Step 5 (hlr_fb_noise.py): Integrator resistance value [Ohm]
 # Constraint: Ri_min <= R_I <= Ri_max
 #   Ri_min = V_DD / I_max = 0.9 / (P_max/2/V_DD) = 1620 Ohm
 #   Ri_max depends on n_Ri (with n_Ri=0.2: ~8972, with n_Ri=0.4: ~18420)
 # Larger R_i -> less power, but larger C_i
 R_I="5000"
 
-# Step 7 (g12gmciss.py): MOS type for input stage
+# Step 7 (hlr_gm_opt.py): MOS type for input stage
 # N = NMOS (higher f_T peak ~50GHz, more noise)
 # P = PMOS (lower f_T peak ~10GHz, less noise for this application)
 MOS_TYPE_GMCISS="P"
 
-# Step 7 (g12gmciss.py): Noise budget for controller MOS input stage
+# Step 7 (hlr_gm_opt.py): Noise budget for controller MOS input stage
 # Constraint: 0 < N_M < 1 - n_SRC - n_Ri
 #   With n_Ri=0.2: max ~0.781
 #   With n_Ri=0.4: max ~0.581
 N_M="0.5"
 
-# Step 8 (g12WLID.py): MOS type for W/L/ID sizing (must match step 7)
+# Step 8 (hlr_mos_sizing.py): MOS type for W/L/ID sizing (must match step 7)
 MOS_TYPE_WLID="P"
 
-# Step 8 (g12WLID.py): Maximum finger width [um]
+# Step 8 (hlr_mos_sizing.py): Maximum finger width [um]
 # Constraint: 0.18 <= W_FINGER <= 50
 W_FINGER="10"
 
-# Step 8 (g12WLID.py): Channel length [um]
+# Step 8 (hlr_mos_sizing.py): Channel length [um]
 # Constraint: >= 0.18  (minimum for C18 technology)
 # Minimum length gives maximum f_T
 CHANNEL_LENGTH="0.18"
 
-# Step 9 (g12controller.py): MOS type for controller (must match step 7)
+# Step 9 (hlr_controller.py): MOS type for controller (must match step 7)
 MOS_TYPE_CTRL="P"
 
 # ============================================================================
@@ -99,11 +99,11 @@ if [ "${1:-}" = "--dry" ]; then
     echo ""
     echo "  Noise budget: n_SRC(~0.02) + $N_RI + $N_M = $(echo "$N_RI + $N_M + 0.02" | bc)"
     echo ""
-    echo "Would run: printf '...' | $VENV_PYTHON g12main.py"
+    echo "Would run: printf '...' | $VENV_PYTHON hlr_main.py"
     exit 0
 fi
 
-echo "=== EE4109 Team 12 - Hearing Loop Design Pipeline ==="
+echo "=== Hearing Loop Receiver - EE4109 Design Pipeline ==="
 echo ""
 echo "Design knobs:"
 echo "  n_Ri           = $N_RI"
@@ -125,7 +125,7 @@ printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \
     "$W_FINGER" \
     "$CHANNEL_LENGTH" \
     "$MOS_TYPE_CTRL" \
-    | "$VENV_PYTHON" g12main.py
+    | "$VENV_PYTHON" hlr_main.py
 
 echo ""
 echo "=== Pipeline complete ==="

@@ -9,7 +9,7 @@ from numpy import geomspace
 from SLiCAP import trace, plot, float2rational, initProject, head2html, htmlPage, text2html
 from sympy import Symbol, lambdify, sqrt
 
-from g12specifications import global_specs, A1specs
+from hlr_specs import global_specs, A1specs
 
 
 # A1 amplifier Design
@@ -18,14 +18,14 @@ cir = sl.makeCircuit(fileName, imgWidth = 800)
 sl.elementData2html(cir)
 sl.params2html(cir)
 # sl.img2html("A1-design.svg", width = 800)
-head2html("The design equation for $C_i$:")
+head2html("Design Equation for Integration Capacitor $C_i$")
 Ci_eq = 1/ ((sp.Symbol('(R_i + R_s)', positive = True)) * sp.Symbol('62.4e3'))
 sl.eqn2html(sp.Symbol('C_i', positive = True), Ci_eq, label = 'CC1', labelText = 'Design equation for $C_i$')
 
 # In order to calculate the Ri and Ci of the feedback network, we make noise budget
 
 
-htmlPage('Noise analysis specifications')
+htmlPage('Noise Specifications')
 # Specifications A1
 tau_i           = 1/6.24e4    # A1 integration time constant
 f_min           = 600      # Low 3dB cut off frequency

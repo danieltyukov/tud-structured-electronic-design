@@ -5,8 +5,8 @@ import numpy as np
 from SLiCAP import trace, plot, float2rational, initProject, head2html, htmlPage, text2html
 from scipy.integrate import quad
 
-from g12sourcenoise import DIN_A
-from g12specifications import A1specs
+from hlr_source_noise import DIN_A
+from hlr_specs import A1specs
 
 cir = sl.makeCircuit("kicad/A1_R_noise_with_Ri.kicad_sch")
 sl.elementData2html(cir)

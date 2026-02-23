@@ -9,15 +9,15 @@ import numpy as np
 from scipy.optimize import fsolve
 from scipy.integrate import quad
 
-from g12specifications import global_specs, A1specs
-from g12sourcenoise import DIN_A
+from hlr_specs import global_specs, A1specs
+from hlr_source_noise import DIN_A
 
 from pprint import pprint
 
 
 
 
-sl.htmlPage('gmCiss')
+sl.htmlPage('Transconductance Optimization')
 sl.specs2html(A1specs.getSpecs())
 cir = sl.makeCircuit("A1_controller_noise_ciss_gm.cir")
 sl.elementData2html(cir)
@@ -69,7 +69,7 @@ sl.eqn2html("N_required", N_required, units="V^2")
 
 ## Calculation of the unweighted output noise spectrum and variance
 # print cir data
-sl.head2html("DIT IS HET CIRCUIT")
+sl.head2html("Controller Noise Circuit")
 sl.elementData2html(cir)
 sl.params2html(cir)
 noiseResult = sl.doNoise(cir, pardefs="circuit")
