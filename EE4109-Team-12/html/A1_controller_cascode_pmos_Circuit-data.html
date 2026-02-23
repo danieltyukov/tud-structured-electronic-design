@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="Language" content="English"/>
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
+<script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
+<script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of cascode_PMOS.kicad_sch</h2>
+<figure><a id="fig_cascode_PMOS.kicad_sch"></a><img src="img/cascode_PMOS.svg" alt="Circuit diagram of cascode_PMOS." style="width:800px">
+<figcaption>Figure: cascode_PMOS.svg<br>Circuit diagram of cascode_PMOS.</figcaption>
+</figure>
+<h2><a id="netlist_cascode_PMOS"></a>Netlist: cascode_PMOS.cir</h2>
+<pre>"A1_controller_cascode_pmos"
+.source V1
+.param L_s=120m R_s=875 C_ell=10p
+.param W={W_P} L={L_P} ID={ID_P}
+.detector V_out
+.lgref Gm_M1_X1
+.lib C18.lib
+C1 out 3 C value={tau_i/R_i} vinit=0
+C2 out 0 C value={C_ell} vinit=0
+C3 in 0 C value={C_s} vinit=0
+L1 1 in L value={L_s} iinit=0
+R1 1 2 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 in 0 R value=113k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 3 in R value={R_i} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+X1 mid 3 0 0 CMOS18P W={W_P} L={L_P} ID={ID_P}
+X2 out 0 mid 0 CMOS18P W={W_P} L={L_P} ID={ID_P}
+.end</pre>
+<table><caption>Table: Element data of expanded netlist 'A1_controller_cascode_pmos'</caption>
+<tr><th class="left">RefDes</th><th class="left">Nodes</th><th class="left">Refs</th><th class="left">Model</th><th class="left">Param</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">C1</td><td class = "left">out 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$\frac{\tau_{i}}{R_{i}}$</td><td class="left">$3.205\cdot 10^{-9}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{\ell}$</td><td class="left">$10\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">C3</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$C_{s}$</td><td class="left">$9.382\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1_X1</td><td class = "left">mid 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X1}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdb_M1_X2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{db X2}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdg_M1_X1</td><td class = "left">mid 3 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X1}$</td><td class="left">$1.499\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cdg_M1_X2</td><td class = "left">out 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{dg X2}$</td><td class="left">$1.499\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgb_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X1}$</td><td class="left">$654.4\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgb_M1_X2</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gb X2}$</td><td class="left">$654.4\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgs_M1_X1</td><td class = "left">3 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X1}$</td><td class="left">$6.547\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Cgs_M1_X2</td><td class = "left">0 mid </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{gs X2}$</td><td class="left">$6.547\cdot 10^{-12}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Csb_M1_X1</td><td class = "left">0 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X1}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Csb_M1_X2</td><td class = "left">mid 0 </td><td class = "left"></td><td class = "left">C</td>
+<td class="left">value</td><td class="left">$c_{sb X2}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">vinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">Gb_M1_X1</td><td class = "left">mid 0 0 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X1}$</td><td class="left">$417.7\cdot 10^{-6}$</td></tr>
+<tr><td class="left">Gb_M1_X2</td><td class = "left">out mid 0 mid </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{b X2}$</td><td class="left">$417.7\cdot 10^{-6}$</td></tr>
+<tr><td class="left">Gm_M1_X1</td><td class = "left">mid 0 3 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X1}$</td><td class="left">$0.001193$</td></tr>
+<tr><td class="left">Gm_M1_X2</td><td class = "left">out mid 0 mid </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{m X2}$</td><td class="left">$0.001193$</td></tr>
+<tr><td class="left">Go_M1_X1</td><td class = "left">mid 0 mid 0 </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X1}$</td><td class="left">$5.908\cdot 10^{-6}$</td></tr>
+<tr><td class="left">Go_M1_X2</td><td class = "left">out mid out mid </td><td class = "left"></td><td class = "left">g</td>
+<td class="left">value</td><td class="left">$g_{o X2}$</td><td class="left">$5.908\cdot 10^{-6}$</td></tr>
+<tr><td class="left">L1</td><td class = "left">1 in </td><td class = "left"></td><td class = "left">L</td>
+<td class="left">value</td><td class="left">$L_{s}$</td><td class="left">$0.12$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">iinit</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R1</td><td class = "left">1 2 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{s}$</td><td class="left">$875$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R2</td><td class = "left">in 0 </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$113\cdot 10^{3}$</td><td class="left">$113\cdot 10^{3}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">R3</td><td class = "left">3 in </td><td class = "left"></td><td class = "left">R</td>
+<td class="left">value</td><td class="left">$R_{i}$</td><td class="left">$5\cdot 10^{3}$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noisetemp</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noiseflow</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvarlot</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td class="left">V1</td><td class = "left">2 0 </td><td class = "left"></td><td class = "left">V</td>
+<td class="left">value</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">noise</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dc</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="left">dcvar</td><td class="left">$0$</td><td class="left">$0$</td></tr>
+</table>
+<table><caption>Table: Parameter definitions in 'A1_controller_cascode_pmos'.</caption>
+<tr><th class="left">Name</th><th class="left">Symbolic</th><th class="left">Numeric</th></tr>
+<tr><td class="left">$CGBO_{P18}$</td><td class="left">$1000\cdot 10^{-15}$</td><td class="left">$1000\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$CGSO_{P18}$</td><td class="left">$300\cdot 10^{-12}$</td><td class="left">$300\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$CJB_{0 P18}$</td><td class="left">$1000\cdot 10^{-6}$</td><td class="left">$1000\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$C_{OX P18}$</td><td class="left">$\frac{\epsilon_{0} \epsilon_{SiO2}}{TOX_{P18}}$</td><td class="left">$0.008422$</td></tr>
+<tr><td class="left">$C_{\ell}$</td><td class="left">$10\cdot 10^{-12}$</td><td class="left">$10\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$C_{i}$</td><td class="left">$2.728\cdot 10^{-9}$</td><td class="left">$2.728\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$C_{s}$</td><td class="left">$9.382\cdot 10^{-12}$</td><td class="left">$9.382\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$E_{CRIT P18}$</td><td class="left">$14\cdot 10^{6}$</td><td class="left">$14\cdot 10^{6}$</td></tr>
+<tr><td class="left">$IC_{P}$</td><td class="left">$0.005603$</td><td class="left">$0.005603$</td></tr>
+<tr><td class="left">$ID$</td><td class="left">$ID_{P}$</td><td class="left">$-42.54\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$ID_{P}$</td><td class="left">$-42.54\cdot 10^{-6}$</td><td class="left">$-42.54\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$I_{0 P18}$</td><td class="left">$2 C_{OX P18} N_{s P18} U_{T}^{2} u_{0 P18}$</td><td class="left">$273.6\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$I_{fb}$</td><td class="left">$70.89\cdot 10^{-6}$</td><td class="left">$70.89\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$L$</td><td class="left">$L_{P}$</td><td class="left">$180\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$LDS_{P18}$</td><td class="left">$180\cdot 10^{-9}$</td><td class="left">$180\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$L_{P}$</td><td class="left">$180\cdot 10^{-9}$</td><td class="left">$180\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$L_{s}$</td><td class="left">$0.12$</td><td class="left">$0.12$</td></tr>
+<tr><td class="left">$M_{P}$</td><td class="left">$27$</td><td class="left">$27$</td></tr>
+<tr><td class="left">$N_{s P18}$</td><td class="left">$1.35$</td><td class="left">$1.35$</td></tr>
+<tr><td class="left">$P_{max}$</td><td class="left">$1000\cdot 10^{-6}$</td><td class="left">$1000\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$R_{i}$</td><td class="left">$5\cdot 10^{3}$</td><td class="left">$5\cdot 10^{3}$</td></tr>
+<tr><td class="left">$R_{s}$</td><td class="left">$875$</td><td class="left">$875$</td></tr>
+<tr><td class="left">$R_{t}$</td><td class="left">$10\cdot 10^{3}$</td><td class="left">$10\cdot 10^{3}$</td></tr>
+<tr><td class="left">$Ri_{max}$</td><td class="left">$8.972\cdot 10^{3}$</td><td class="left">$8.972\cdot 10^{3}$</td></tr>
+<tr><td class="left">$Ri_{min}$</td><td class="left">$1.620\cdot 10^{3}$</td><td class="left">$1.620\cdot 10^{3}$</td></tr>
+<tr><td class="left">$SRCnoise$</td><td class="left">$1.483\cdot 10^{-6}$</td><td class="left">$1.483\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$S_{Ri}$</td><td class="left">$14.76\cdot 10^{-12}$</td><td class="left">$14.76\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$T$</td><td class="left">$300$</td><td class="left">$300$</td></tr>
+<tr><td class="left">$TOX_{P18}$</td><td class="left">$4.100\cdot 10^{-9}$</td><td class="left">$4.100\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\Theta_{P18}$</td><td class="left">$0.35$</td><td class="left">$0.35$</td></tr>
+<tr><td class="left">$U_{T}$</td><td class="left">$\frac{T k}{q}$</td><td class="left">$0.02585$</td></tr>
+<tr><td class="left">$VAL_{P18}$</td><td class="left">$40\cdot 10^{6}$</td><td class="left">$40\cdot 10^{6}$</td></tr>
+<tr><td class="left">$V_{DD}$</td><td class="left">$0.9$</td><td class="left">$0.9$</td></tr>
+<tr><td class="left">$V_{onoise}$</td><td class="left">$10.62\cdot 10^{-6}$</td><td class="left">$10.62\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$V_{onoise WLI P}$</td><td class="left">$8.816\cdot 10^{-6}$</td><td class="left">$8.816\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$V_{onoise gmCissP}$</td><td class="left">$9.005\cdot 10^{-6}$</td><td class="left">$9.005\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$Vi_{ADC}$</td><td class="left">$0.9$</td><td class="left">$0.9$</td></tr>
+<tr><td class="left">$Vi_{pp}$</td><td class="left">$0.2932$</td><td class="left">$0.2932$</td></tr>
+<tr><td class="left">$Vth_{P18}$</td><td class="left">$-0.44$</td><td class="left">$-0.44$</td></tr>
+<tr><td class="left">$W$</td><td class="left">$W_{P}$</td><td class="left">$0.004995$</td></tr>
+<tr><td class="left">$W_{F P}$</td><td class="left">$10\cdot 10^{-6}$</td><td class="left">$10\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$W_{P}$</td><td class="left">$0.004995$</td><td class="left">$0.004995$</td></tr>
+<tr><td class="left">$c$</td><td class="left">$299.8\cdot 10^{6}$</td><td class="left">$299.8\cdot 10^{6}$</td></tr>
+<tr><td class="left">$c_{issP}$</td><td class="left">$475.0\cdot 10^{-15}$</td><td class="left">$475.0\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{iss P o}$</td><td class="left">$470.3\cdot 10^{-15}$</td><td class="left">$470.3\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{iss costs minP}$</td><td class="left">$475.0\cdot 10^{-15}$</td><td class="left">$475.0\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{iss g m minP}$</td><td class="left">$2.854\cdot 10^{-9}$</td><td class="left">$2.854\cdot 10^{-9}$</td></tr>
+<tr><td class="left">$\epsilon_{0}$</td><td class="left">$\frac{1}{c^{2} \mu_{0}}$</td><td class="left">$8.854\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$\epsilon_{SiO2}$</td><td class="left">$3.9$</td><td class="left">$3.9$</td></tr>
+<tr><td class="left">$f_{fp}$</td><td class="left">$5\cdot 10^{3}$</td><td class="left">$5\cdot 10^{3}$</td></tr>
+<tr><td class="left">$f_{max}$</td><td class="left">$6\cdot 10^{3}$</td><td class="left">$6\cdot 10^{3}$</td></tr>
+<tr><td class="left">$f_{min}$</td><td class="left">$600$</td><td class="left">$600$</td></tr>
+<tr><td class="left">$g_{mP}$</td><td class="left">$64.50\cdot 10^{-6}$</td><td class="left">$64.50\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{m P o}$</td><td class="left">$64.50\cdot 10^{-6}$</td><td class="left">$64.50\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{m costs minP}$</td><td class="left">$64.50\cdot 10^{-6}$</td><td class="left">$64.50\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{m minP}$</td><td class="left">$31.46\cdot 10^{-6}$</td><td class="left">$31.46\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$k$</td><td class="left">$13.81\cdot 10^{-24}$</td><td class="left">$13.81\cdot 10^{-24}$</td></tr>
+<tr><td class="left">$\mu_{0}$</td><td class="left">$1.257\cdot 10^{-6}$</td><td class="left">$1.257\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$n_{MP}$</td><td class="left">$0.5$</td><td class="left">$0.5$</td></tr>
+<tr><td class="left">$n_{Ri}$</td><td class="left">$0.2$</td><td class="left">$0.2$</td></tr>
+<tr><td class="left">$n_{Ri obtained}$</td><td class="left">$0.1115$</td><td class="left">$0.1115$</td></tr>
+<tr><td class="left">$n_{SRC}$</td><td class="left">$0.01951$</td><td class="left">$0.01951$</td></tr>
+<tr><td class="left">$q$</td><td class="left">$160.2\cdot 10^{-21}$</td><td class="left">$160.2\cdot 10^{-21}$</td></tr>
+<tr><td class="left">$\tau_{i}$</td><td class="left">$16.03\cdot 10^{-6}$</td><td class="left">$16.03\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$u_{0 P18}$</td><td class="left">$0.018$</td><td class="left">$0.018$</td></tr>
+<tr><td class="left">$IC_{CRIT X1}$</td><td class="left">$\frac{0.0625}{N_{s P18}^{2} U_{T}^{2} \left(\Theta_{P18} + \frac{1}{E_{CRIT P18} L_{P}}\right)^{2}}$</td><td class="left">$92$</td></tr>
+<tr><td class="left">$IC_{CRIT X2}$</td><td class="left">$\frac{0.0625}{N_{s P18}^{2} U_{T}^{2} \left(\Theta_{P18} + \frac{1}{E_{CRIT P18} L_{P}}\right)^{2}}$</td><td class="left">$92$</td></tr>
+<tr><td class="left">$IC_{X1}$</td><td class="left">$IC_{i X1} \left(1 + \frac{0.5 IC_{i X1}}{IC_{CRIT X1}}\right)^{0.5}$</td><td class="left">$0.005603$</td></tr>
+<tr><td class="left">$IC_{X2}$</td><td class="left">$IC_{i X2} \left(1 + \frac{0.5 IC_{i X2}}{IC_{CRIT X2}}\right)^{0.5}$</td><td class="left">$0.005603$</td></tr>
+<tr><td class="left">$IC_{i X1}$</td><td class="left">$- \frac{ID_{P} L_{P}}{I_{0 P18} W_{P}}$</td><td class="left">$0.005603$</td></tr>
+<tr><td class="left">$IC_{i X2}$</td><td class="left">$- \frac{ID_{P} L_{P}}{I_{0 P18} W_{P}}$</td><td class="left">$0.005603$</td></tr>
+<tr><td class="left">$V_{GS X1}$</td><td class="left">$- 2 N_{s P18} U_{T} \log{\left(e^{IC_{X1}^{0.5}} - 1 \right)} + Vth_{P18}$</td><td class="left">$-0.2617$</td></tr>
+<tr><td class="left">$V_{GS X2}$</td><td class="left">$- 2 N_{s P18} U_{T} \log{\left(e^{IC_{X2}^{0.5}} - 1 \right)} + Vth_{P18}$</td><td class="left">$-0.2617$</td></tr>
+<tr><td class="left">$c_{db X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{db X2}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{dg X1}$</td><td class="left">$CGSO_{P18} W_{P}$</td><td class="left">$1.499\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{dg X2}$</td><td class="left">$CGSO_{P18} W_{P}$</td><td class="left">$1.499\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{gb X1}$</td><td class="left">$2 CGBO_{P18} L_{P} + \frac{0.3333 C_{OX P18} L_{P} W_{P} \left(N_{s P18} - 1\right)}{N_{s P18}}$</td><td class="left">$654.4\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{gb X2}$</td><td class="left">$2 CGBO_{P18} L_{P} + \frac{0.3333 C_{OX P18} L_{P} W_{P} \left(N_{s P18} - 1\right)}{N_{s P18}}$</td><td class="left">$654.4\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{gs X1}$</td><td class="left">$CGSO_{P18} W_{P} + 0.6667 C_{OX P18} L_{P} W_{P}$</td><td class="left">$6.547\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{gs X2}$</td><td class="left">$CGSO_{P18} W_{P} + 0.6667 C_{OX P18} L_{P} W_{P}$</td><td class="left">$6.547\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{iss X1}$</td><td class="left">$c_{dg X1} + c_{gb X1} + c_{gs X1}$</td><td class="left">$8.700\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{iss X2}$</td><td class="left">$c_{dg X2} + c_{gb X2} + c_{gs X2}$</td><td class="left">$8.700\cdot 10^{-12}$</td></tr>
+<tr><td class="left">$c_{sb X1}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$c_{sb X2}$</td><td class="left">$CJB_{0 P18} LDS_{P18} W_{P}$</td><td class="left">$899.1\cdot 10^{-15}$</td></tr>
+<tr><td class="left">$f_{T X1}$</td><td class="left">$\frac{0.5 g_{m X1}}{\pi c_{iss X1}}$</td><td class="left">$21.83\cdot 10^{6}$</td></tr>
+<tr><td class="left">$f_{T X2}$</td><td class="left">$\frac{0.5 g_{m X2}}{\pi c_{iss X2}}$</td><td class="left">$21.83\cdot 10^{6}$</td></tr>
+<tr><td class="left">$g_{b X1}$</td><td class="left">$g_{m X1} \left(N_{s P18} - 1\right)$</td><td class="left">$417.7\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{b X2}$</td><td class="left">$g_{m X2} \left(N_{s P18} - 1\right)$</td><td class="left">$417.7\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{m X1}$</td><td class="left">$- \frac{ID_{P}}{N_{s P18} U_{T} \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right) + 0.5 \left(IC_{X1} \left(1 + \frac{IC_{X1}}{IC_{CRIT X1}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$0.001193$</td></tr>
+<tr><td class="left">$g_{m X2}$</td><td class="left">$- \frac{ID_{P}}{N_{s P18} U_{T} \left(IC_{X2} \left(1 + \frac{IC_{X2}}{IC_{CRIT X2}}\right) + 0.5 \left(IC_{X2} \left(1 + \frac{IC_{X2}}{IC_{CRIT X2}}\right)\right)^{0.5} + 1\right)^{0.5}}$</td><td class="left">$0.001193$</td></tr>
+<tr><td class="left">$g_{o X1}$</td><td class="left">$- \frac{ID_{P}}{L_{P} VAL_{P18}}$</td><td class="left">$5.908\cdot 10^{-6}$</td></tr>
+<tr><td class="left">$g_{o X2}$</td><td class="left">$- \frac{ID_{P}}{L_{P} VAL_{P18}}$</td><td class="left">$5.908\cdot 10^{-6}$</td></tr>
+</table>
+<!-- INSERT -->
+<div id="footnote">
+<p>Go to <a href="A1_controller_cascode_pmos_index.html">A1_controller_cascode_pmos_index</a></p>
+<p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.10 &copy 2009-2025 SLiCAP development team</p>
+<p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
+<p>Last project update: 2026-02-23 08:40:49</p>
+</div></body></html>

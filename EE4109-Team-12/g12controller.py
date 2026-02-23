@@ -103,3 +103,33 @@ sl.eqn2html("L_MB_max", sp.N(L_MB_max))
 PZ = sl.doPoles(cir, pardefs="circuit", numeric=True, transfer="loopgain")
 sl.pz2html(PZ)
 sl.img2html("PZ.svg", width=600)
+
+
+# ============================================================================
+# Cascode Magnitude Response
+# ============================================================================
+if mosType == "P":
+    # Load the cascode PMOS circuit (starts new HTML section)
+    cir_casc = sl.makeCircuit("kicad/controller/cascode_PMOS.kicad_sch", imgWidth=800)
+
+    # Apply specs and scale W/ID same as single PMOS
+    sl.specs2circuit(A1specs.getSpecs(), cir_casc)
+    WP_casc = -0.6*cir_casc.getParValue("I_fb")/cir_casc.getParValue("ID_P")*cir_casc.getParValue("W_P")
+    cir_casc.defPar("W_P", WP_casc)
+    cir_casc.defPar("ID_P", -0.6*cir_casc.getParValue("I_fb"))
+
+    sl.elementData2html(cir_casc)
+    sl.params2html(cir_casc)
+
+    sl.htmlPage('Cascode Magnitude Response')
+
+    # Feedback model analysis
+    casc_gain       = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True)
+    casc_asymptotic = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True, transfer="asymptotic")
+    casc_loopgain   = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True, transfer="loopgain")
+    casc_servo      = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True, transfer="servo")
+    casc_direct     = sl.doLaplace(cir_casc, pardefs="circuit", numeric=True, transfer="direct")
+
+    casc_fb_model = [casc_gain, casc_asymptotic, casc_loopgain, casc_servo, casc_direct]
+    sl.plotSweep("casc_fb_mag", "Magnitude plots cascode feedback model parameters", casc_fb_model, 10, 10e5, 200)
+    sl.img2html("casc_fb_mag.svg", width=600)

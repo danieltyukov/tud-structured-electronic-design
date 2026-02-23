@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/EE4109-Team-12/kicad/A1_R_noise_with_Ri.kicad_sch")
-    (date "2026-02-23T04:52:47+0100")
+    (date "2026-02-23T08:40:52+0100")
     (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
