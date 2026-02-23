@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/Notebooks2/kicad/Libs/biasP.kicad_sch")
-    (date "2025-12-16T16:25:01+0100")
+    (date "2025-12-16T16:52:53+0100")
     (tool "Eeschema 9.0.6-9.0.6~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
