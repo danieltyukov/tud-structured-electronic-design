@@ -1,0 +1,12 @@
+"A1_Ideal_Controller"
+.source V1
+.detector V_out
+.param R_s=875 C_s={1/(L_s*4*(pi*pi)*(f_c*f_c))} f_c=150k L_s=0.12
+C1 out 0 C value={C_s} vinit=0
+C2 2 3 C value={C_i} vinit=0
+L1 1 4 L value={L_s} iinit=0
+N1 3 0 2 0 N
+R1 out 2 R value={R_i} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 out 1 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 4 0 V value=1 noise=0 dc=0 dcvar=0
+.end

@@ -1,0 +1,16 @@
+"A1_controller_single_pmos_optimization"
+.source V1
+.param L_s=120m R_s=875 C_ell=10p
+.param W={W_P} L={L_P} ID={ID_P} ID_o={-0.6*I_fb}
+.detector V_out
+.lgref Gm_M1_X1
+C1 out 3 C value={tau_i/R_i} vinit=0
+C2 out 0 C value={C_ell} vinit=0
+C3 in 0 C value={C_s} vinit=0
+L1 1 in L value={L_s} iinit=0
+R1 1 2 R value={R_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 in 0 R value=113k noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 3 in R value={R_i} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+X1 out 3 0 0 CMOS18P W={W_P} L={L_P} ID={ID_P}
+.end
