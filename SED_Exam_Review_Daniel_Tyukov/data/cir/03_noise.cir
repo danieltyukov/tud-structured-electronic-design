@@ -1,0 +1,15 @@
+"Source and termination noise"
+.source V1
+.detector V_out
+.param L_s=120m R_s=875 f_res=150k C_s={1/(L_s*4*pi^2*f_res^2)} R_t=79.97k
+.param A_v1=62.4e3 tau_i={1/A_v1} R_i=1.6k C_i={tau_i/R_i}
+V1 1 0 V value=1 dc=0 noise=0 dcvar=0
+L1 1 2 L value={L_s} iinit=0
+R1 2 in R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+C1 in 0 C value={C_s} vinit=0
+R2 in 0 R value={R_t} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 in 3 R value={R_i} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+C2 3 out C value={C_i} vinit=0
+N1 out 0 3 0 N
+.param T=300
+.end
