@@ -1,0 +1,17 @@
+dualStageEKVcompensated
+.source V1
+.detector V_out
+.lgref Gm_M1_X2
+C2 out 0 C value={C_L} vinit=0
+C3 5 4 C value={C_i} vinit=0
+C4 in 0 C value={C_s} vinit=0
+L1 in 1 L value={L_s} iinit=0
+R1 1 2 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R2 in 0 R value={R_t} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R3 4 0 R value={R_f} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R4 out 5 R value={R_phz} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R5 5 4 R value={R_b} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 2 0 V value=0 noise=0 dc=0 dcvar=0
+X1 3 0 in 4 CMOS18PD W={W1} L={L1} ID={ID1}
+X2 5 3 0 0 CMOS18N W={W2} L={L2} ID={ID2}
+.end

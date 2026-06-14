@@ -1,9 +1,9 @@
-\documentclass[aspectratio=169,10pt]{beamer}
+\documentclass[aspectratio=169,9pt]{beamer}
 \usetheme{TUDelft}
 
 % ---------- fonts ----------
 \usepackage[T1]{fontenc}
-\usepackage[default,scale=0.96]{sourcesanspro}
+\usepackage[default,scale=0.95]{sourcesanspro}
 \usepackage{lmodern}
 
 % ---------- math + symbols ----------
@@ -22,23 +22,25 @@
 \usetikzlibrary{arrows.meta,positioning,calc}
 
 \graphicspath{%
-  {../assets/logos/}{../assets/plots/}{../assets/schematics/}{../assets/figures/}}
+  {../assets/logos/}{../assets/plots/}{../assets/schematics/}%
+  {../assets/schematics/mini/}{../assets/figures/}}
 
 % ---------- highlight / callout helpers ----------
 \newtcolorbox{resultbox}[1][]{enhanced,colback=tudyellow!16,colframe=tudcyan,
-  boxrule=1pt,arc=2.5pt,left=5pt,right=5pt,top=3pt,bottom=3pt,fontupper=\centering,#1}
-\newcommand{\hl}[1]{\colorbox{tudyellow!50}{\,$#1$\,}}
+  boxrule=1pt,arc=2.5pt,left=4pt,right=4pt,top=2pt,bottom=2pt,fontupper=\centering,#1}
+\newcommand{\hl}[1]{\colorbox{tudyellow!55}{\,$#1$\,}}
 \newtcolorbox{whybox}{enhanced,colback=tudcyan!8,colframe=tudcyan,boxrule=0.8pt,arc=2pt,
-  left=5pt,right=5pt,top=2pt,bottom=2pt,title=\textbf{Why},fonttitle=\bfseries\footnotesize,
+  left=4pt,right=4pt,top=2pt,bottom=2pt,title=\textbf{Why},fonttitle=\bfseries\scriptsize,
   coltitle=white,colbacktitle=tudcyan}
 \newtcolorbox{antoonbox}{enhanced,colback=tudorange!8,colframe=tudorange,boxrule=0.8pt,arc=2pt,
-  left=5pt,right=5pt,top=2pt,bottom=2pt,title=\textbf{What the review wants},
-  fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=tudorange}
+  left=4pt,right=4pt,top=2pt,bottom=2pt,title=\textbf{What the review wants},
+  fonttitle=\bfseries\scriptsize,coltitle=white,colbacktitle=tudorange}
 \newcommand{\src}[1]{{\scriptsize\color{tudgray}\textit{#1}}}
+\newcommand{\cbox}[1]{\textcolor{#1}{$\blacksquare$}}   % colour legend chip
 
 % ---------- metadata ----------
 \title{A1 Receive-Coil Amplifier}
-\subtitle{Hearing-Loop Receiver --- Structured Design Review}
+\subtitle{Hearing-Loop Receiver: Structured Design Review}
 \author{Daniel Tyukov\quad(5714699)}
 \date{15 June 2026}
 
@@ -70,8 +72,8 @@
   \end{columns}
   \vfill
   \begin{antoonbox}
-  A structured, \emph{top-down} story: set the budget first, generate options, then
-  justify every component before placing it --- ``\emph{replace the how with the why}.''
+  Top-down and \emph{in order}: specify the budget, generate options, then justify every
+  component \emph{before} placing it. Build up to the circuit, don't open with it.
   \end{antoonbox}
 \end{frame}
 
@@ -79,23 +81,22 @@
 \section{Specification \& design environment}
 % =================================================================
 
-\begin{frame}{The hearing loop --- and where A1 lives}
+\begin{frame}{The hearing loop and where A1 lives}
   \begin{columns}[T]
     \begin{column}{0.6\textwidth}
-      \includegraphics[width=\linewidth]{hearing_loop_application}
-      \vskip0.3em
-      \src{Application diagram --- EE4109 \texttt{HearingLoopIntro}}
+      \includegraphics[width=\linewidth]{hearing_loop_application}\\
+      \src{Application diagram, EE4109 \texttt{HearingLoopIntro}}
     \end{column}
     \begin{column}{0.4\textwidth}
-      A magnetic \emph{induction loop} broadcasts the audio; a hearing aid picks it up
-      with a coil.
+      A magnetic \emph{induction loop} broadcasts the audio; a hearing aid picks it up with a
+      coil.
       \begin{itemize}
         \item \textbf{A1} = receive-coil pre-amplifier.
         \item Feeds A2 (ADC driver) $\to$ ADC $\to$ DSP.
       \end{itemize}
       \begin{whybox}
-      Before any transistor: understand the \emph{environment} and what A1 connects to.
-      That sets the whole specification.
+      Understand the \emph{environment} first, what feeds A1 and what it drives sets the
+      whole specification.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -105,13 +106,13 @@
   \begin{columns}[T]
     \begin{column}{0.62\textwidth}
       \includegraphics[width=\linewidth]{a1_system_blockdiagram}\\
-      \src{Electronic information processing system --- A1 is the pick-up-coil pre-amplifier}
+      \src{A1 is the pick-up-coil pre-amplifier}
     \end{column}
     \begin{column}{0.38\textwidth}
       \begin{itemize}
         \item \textbf{Input:} pick-up coil.
         \item \textbf{Output:} source-select switch (mic / loop), then the ADC driver.
-        \item Single \SI{0.9}{V} supply; \SI{1}{mW} total power budget.
+        \item Single \SI{0.9}{V} supply; \SI{1}{mW} power budget.
       \end{itemize}
       \begin{block}{Three questions first}
         1. What environment?\\ 2. How does it work?\\ 3. What is the budget?
@@ -120,182 +121,240 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Circuit model --- the complete picture}
-  \centering
-  \includegraphics[width=0.96\linewidth]{feedbackConceptNoisyNullorN18}\\[0.35em]
-  \src{SLiCAP concept model. I build it up and justify each block in turn:
-  coil source $\to$ termination $\to$ amplifier (nullor) $\to$ feedback network $\to$ ADC load
-  $\to$ DIN-A noise weighting.}
-\end{frame}
-
-\begin{frame}{Representation 1 --- the pick-up coil (a \emph{differentiator})}
+\begin{frame}{Input of A1: the pick-up coil}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      A current in the loop makes a magnetic field; the coil sees a voltage proportional
-      to the \emph{rate of change} of flux:
+    \begin{column}{0.55\textwidth}
+      The coil output is proportional to the \emph{rate of change} of magnetic flux,
+      it \textbf{differentiates}:
       \begin{resultbox}
-        $\displaystyle v_{coil}(t) = -N\,\frac{d\Phi}{dt}\;\propto\; \frac{dB}{dt}$
+        $\displaystyle v_{coil}(t) = -N\,\frac{d\Phi}{dt}\;\propto\;\frac{dB}{dt}$
       \end{resultbox}
-      \vskip0.4em
-      Small-signal model of the coil + cable:
+      \vskip0.3em
       \begin{itemize}
-        \item series $L_s=\SI{120}{mH}$, $R_s=\SI{875}{\ohm}$
-        \item parasitic $C_s\approx\SI{9.4}{pF}$
-        \item termination $R_t\approx\SI{80}{k\ohm}$
+        \item Current in the loop $\to$ magnetic field $\to$ coil voltage.
+        \item Open-circuit sensitivity \SI{-59.4}{dBV/(A/m)} at \SI{1}{kHz}.
       \end{itemize}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      \centering
-      \begin{circuitikz}[scale=0.78,transform shape,line width=0.8pt]
-        \draw (0,0) to[sV,l=$v_{emf}$] (0,2.6);
-        \draw (0,2.6) to[L,l=$L_s$] (2,2.6) to[R,l=$R_s$] (4,2.6) coordinate(in);
-        \draw (in) to[short] (5.2,2.6) node[right]{\textbf{in}};
-        \draw (in) to[C,l_=$C_s$] (in|-0,0);
-        \draw (5.2,2.6) to[R,l=$R_t$] (5.2,0);
-        \draw (0,0) -- (5.2,0) node[ground]{};
-      \end{circuitikz}\\[0.3em]
-      \src{Pick-up coil two-port}
+    \begin{column}{0.45\textwidth}
       \begin{whybox}
-      An \textbf{integrator} A1 undoes this differentiation $\Rightarrow$ flat audio response.
+      If the coil differentiates, A1 must \textbf{integrate}, so the cascade is flat across
+      the audio band. That single fact drives the whole topology.
       \end{whybox}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Representation 2 --- the termination resistor}
+\begin{frame}{Output of A1: source-select switch + ADC}
   \begin{columns}[T]
-    \begin{column}{0.56\textwidth}
-      \includegraphics[width=\linewidth]{coil_damping}
-    \end{column}
-    \begin{column}{0.44\textwidth}
-      $L_s$ and $C_s$ resonate at
-      \[ f_{res}=\frac{1}{2\pi\sqrt{L_s C_s}}\approx\SI{150}{kHz}. \]
-      Undamped, this peak rings and overloads the input.
+    \begin{column}{0.55\textwidth}
       \begin{itemize}
-        \item Add $R_t$ across the input.
-        \item Pick $R_t$ for \emph{critical} damping, $Q=\tfrac{1}{\sqrt2}$.
-      \end{itemize}
-      \begin{antoonbox}
-      ``If you add a component, have a \emph{reason}.'' $R_t$ exists only to damp the LC
-      resonance --- and it is then a noise source we must budget.
-      \end{antoonbox}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Representation 3 --- the ideal amplifier (nullor)}
-  \begin{columns}[T]
-    \begin{column}{0.53\textwidth}
-      I model the controller as a \textbf{nullor}: the ideal element with infinite gain.
-      \begin{itemize}
-        \item Input (nullator): $v=0,\ i=0$.
-        \item Output (norator): $v,i$ free.
-      \end{itemize}
-      With a nullor the transfer is set \emph{only} by the passive feedback:
-      \begin{resultbox}
-        $\displaystyle A_\infty=\frac{1}{s\,R_f C_i}=\frac{62.4\times10^3}{s}$
-      \end{resultbox}
-    \end{column}
-    \begin{column}{0.47\textwidth}
-      \centering
-      \begin{tikzpicture}[line width=0.9pt]
-        \fill[tudcyan!20,draw=tudblue] (0,0)--(2.5,1.0)--(0,2.0)--cycle;
-        \node at (0.78,1.0) {\large $\infty$};
-        \node[below=1pt,font=\small] at (1.2,0) {nullor};
-        \draw (-0.7,1.55)--(0,1.55) node[left=16pt]{\small$-$};
-        \draw (-0.7,0.55)--(0,0.55) node[left=16pt]{\small$+$};
-        \draw (2.5,1.0)--(3.2,1.0) node[right]{\small out};
-      \end{tikzpicture}\\[0.5em]
-      \begin{whybox}
-      The nullor separates the \emph{ideal target} from the implementation. Real transistors
-      come later.
-      \end{whybox}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Representation 4 --- the output (switch, ADC, $C_L$)}
-  \begin{columns}[T]
-    \begin{column}{0.54\textwidth}
-      \begin{itemize}
-        \item \textbf{Source-select switch} (microphone / hearing loop).
-          \begin{itemize}\item requires $V_{mic}=V_{loop}$ at the reference frequency $f_{ref}=\SI{1}{kHz}$.\end{itemize}
-        \item \textbf{ADC input} behaves as a voltage amplifier: $Z_{in}\to\infty$, draws no
-          current.
+        \item \textbf{Source-select switch} (mic / hearing loop): needs $V_{mic}=V_{loop}$ at
+          $f_{ref}=\SI{1}{kHz}$.
+        \item \textbf{ADC input} is a voltage amplifier: $Z_{in}\to\infty$, draws no current.
         \item Only loading left = parasitic \hl{C_L=\SI{10}{pF}}.
       \end{itemize}
     \end{column}
-    \begin{column}{0.46\textwidth}
+    \begin{column}{0.45\textwidth}
       \begin{block}{Consequence}
-        A1 is a \textbf{voltage--voltage} amplifier driving a capacitive load --- not a
-        power stage.
+        A1 is a \textbf{voltage-to-voltage} amplifier driving a capacitor, not a power stage.
       \end{block}
       \begin{whybox}
-      Matching $V_{mic}=V_{loop}$ at $f_{ref}$ is what fixes the required gain magnitude.
+      Matching $V_{mic}=V_{loop}$ at $f_{ref}$ fixes the required gain magnitude.
       \end{whybox}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Representation 5 --- the noise sources}
-  \begin{columns}[T]
-    \begin{column}{0.47\textwidth}
-      \includegraphics[width=\linewidth]{noise_spectrum}
-    \end{column}
-    \begin{column}{0.53\textwidth}
-      Each resistor adds thermal noise $\overline{v^2}=4kTR$; the input device adds $v_n,i_n$
-      (the \emph{noisy nullor}).
-      \begin{itemize}
-        \item Budget $B_{n1}=0.4$ to $R_s$, $R_t$, $R_f$.
-        \item The rest goes to the input transistor $\Rightarrow$ this sets $g_m$.
-        \item Output-noise RMS $\approx\SI{7.5}{\micro V}$ (1\,Hz--100\,kHz), within the
-          \SI{10.6}{\micro V} DIN-A budget. \textcolor{tudgreen}{\checkmark}
-      \end{itemize}
-      \begin{antoonbox}
-      Every noise source is traced to the budget --- nothing is added without accounting for it.
-      \end{antoonbox}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{How should A1 work?}
   \begin{enumerate}
-    \item A1 is a \textbf{voltage--voltage amplifier}.
+    \item A1 is a \textbf{voltage-to-voltage amplifier}.
     \item Its transfer is an \textbf{integrator} (cancels the coil's differentiation):
       \begin{resultbox}
-        $\displaystyle H(s)=\frac{V_o}{V_i}=\frac{1/\tau_i}{s}
-        =\frac{\hl{62.4\times10^{3}}}{s}\ \si{V/V},\qquad \tau_i=\SI{16.06}{\micro s}$
+        $\displaystyle H(s)=\frac{V_o}{V_i}=\frac{1/\tau_i}{s}=\frac{\hl{62.4\times10^{3}}}{s}\ \si{V/V},
+        \qquad \tau_i=\SI{16.06}{\micro s}$
       \end{resultbox}
-    \item Gain magnitude set so $V_{mic}=V_{coil}$ at $f_{ref}$.
-    \item \textbf{Noise:} weighted output noise must not exceed the microphone's floor
-      ($\le\SI{30}{dBSPL}$).
+    \item Gain set so $V_{mic}=V_{coil}$ at $f_{ref}$.
+    \item \textbf{Noise:} weighted output noise $\le$ microphone floor ($\le\SI{30}{dBSPL}$).
   \end{enumerate}
   \begin{antoonbox}
-  Note the \emph{order}: transfer first, \emph{then} noise. Keep it a V--V amplifier
-  throughout --- do not silently switch to a transimpedance amplifier.
+  The order matters: transfer first, \emph{then} noise. And it stays a V--V amplifier
+  throughout, no silent switch to a transimpedance amplifier.
   \end{antoonbox}
 \end{frame}
 
 \begin{frame}{Specification \& budget}
   \centering
-  \renewcommand{\arraystretch}{1.15}
+  \renewcommand{\arraystretch}{1.1}
   \begin{tabular}{@{}l l l@{}}
     \toprule
-    \textbf{Quantity} & \textbf{Value} & \textbf{Sets\ldots} \\
-    \midrule
-    Transfer (integrator) & $62.4\times10^{3}/s$ \;($\tau_i=\SI{16.06}{\micro s}$) & gain / $R_fC_i$ \\
+    \textbf{Quantity} & \textbf{Value} & \textbf{Sets\ldots} \\ \midrule
+    Transfer (integrator) & $62.4\times10^{3}/s$ ($\tau_i=\SI{16.06}{\micro s}$) & gain / $R_fC_i$ \\
     Audio band & $f_{min}=\SI{600}{Hz}$ \ldots $f_{max}=\SI{6}{kHz}$ & bypass \& bandwidth \\
-    Output noise (DIN-A) & $\le\hl{\SI{10.6}{\micro V}}$ RMS \;($\approx\SI{30}{dBSPL}$) & input stage \\
+    Output noise (DIN-A) & $\le\hl{\SI{10.6}{\micro V}}$ RMS ($\approx\SI{30}{dBSPL}$) & input stage \\
     Load & $C_L=\SI{10}{pF}$ & stability / drive \\
-    Supply / power & \SIrange{1.1}{1.3}{V} \,/\, $\le\SI{1}{mW}$ & currents \\
+    Supply / power & \SIrange{1.1}{1.3}{V} / $\le\SI{1}{mW}$ & currents \\
     Coil & $L_s=\SI{120}{mH}$, $R_s=\SI{875}{\ohm}$, $C_s=\SI{9.4}{pF}$ & source noise / $R_t$ \\
     \bottomrule
   \end{tabular}
   \vfill
   \begin{whybox}
-  Every later decision is traced back to a line in this table. The amplifier is graded on
-  \emph{this reasoning}, not on whether the final numbers are perfect.
+  Every later decision traces back to one line here. The design is graded on \emph{this
+  reasoning}, not on whether the final numbers are perfect.
   \end{whybox}
+\end{frame}
+
+% ---- now we have built up to the circuit ----
+\begin{frame}{Circuit model: the complete picture}
+  \centering
+  \includegraphics[width=0.92\linewidth]{circuit_model_colored}\\[0.3em]
+  {\footnotesize
+   \cbox{tudcyan}~coil source \ \ \cbox{tudorange}~termination \ \
+   \cbox{tudgreen}~amplifier (nullor) \ \ \cbox{tudyellow}~feedback \ \
+   \cbox{tudpink}~ADC load \ \ \cbox{tudgray}~noise weighting}\\[0.3em]
+  \src{The SLiCAP concept model. Each coloured block is represented and justified next.}
+\end{frame}
+
+\begin{frame}{Representation 1: the pick-up coil}
+  \begin{columns}[T]
+    \begin{column}{0.34\textwidth}
+      \centering
+      \begin{circuitikz}[scale=0.58,transform shape,line width=0.7pt]
+        \draw (0,0) to[sV,l_=$v_{emf}$] (0,2.3);
+        \draw (0,2.3) to[L,l=$L_s$] (1.7,2.3) to[R,l=$R_s$] (3.3,2.3) coordinate(n);
+        \draw (n) to[C,l_=$C_s$] (3.3,0);
+        \draw (n) -- (4.4,2.3) coordinate(m);
+        \draw (m) to[R,l=$R_t$] (4.4,0);
+        \draw (0,0) -- (4.4,0);
+      \end{circuitikz}\\[0.3em]
+      \src{coil source sub-circuit}
+    \end{column}
+    \begin{column}{0.66\textwidth}
+      {\footnotesize\renewcommand{\arraystretch}{1.05}
+      \begin{tabular}{@{}l c c c l@{}}
+        \toprule
+        Parameter & Min & \textbf{Typ} & Max & Unit \\ \midrule
+        DC resistance $R_s$ & 788 & \textbf{875} & 962 & \si{\ohm} \\
+        Inductance $L_s$ & 102 & \textbf{120} & 138 & \si{mH} \\
+        Sensitivity @1\,kHz & $-60.9$ & \textbf{$-59.4$} & $-57.9$ & dBV/(A/m) \\
+        Resonance freq. & & \textbf{150} & & kHz \\
+        \bottomrule
+      \end{tabular}}
+      \vskip0.5em
+      From the quoted resonance, back out the parasitic capacitance:
+      \[ f_{res}=\frac{1}{2\pi\sqrt{L_sC_s}}\ \Rightarrow\
+         C_s=\frac{1}{(2\pi f_{res})^2 L_s}=\hl{\SI{9.382}{pF}}. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Representation 2: the termination resistor}
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+      \includegraphics[width=\linewidth]{coil_damping}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \centering
+      \begin{circuitikz}[scale=0.62,transform shape,line width=0.8pt]
+        \draw (0,1.6)node[left]{in}--(0.9,1.6) to[R,l=$R_t$] (0.9,0) node[ground]{};
+        \draw (0,1.6)--(0,0);
+      \end{circuitikz}\\[0.2em]
+      \raggedright
+      $L_s$ and $C_s$ resonate at \SI{150}{kHz}; undamped it rings.
+      \[ Q=2\pi f_{res}C_s R_t,\quad Q_{crit}=\tfrac{1}{\sqrt2} \]
+      \[ R_t=\frac{Q_{crit}}{2\pi f_{res}C_s}=\hl{\SI{79.97}{k\ohm}} \]
+      \begin{antoonbox}
+      $R_t$ exists \emph{only} to damp the resonance, and it then becomes a budgeted noise source.
+      \end{antoonbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Representation 3: the ideal amplifier (nullor)}
+  \begin{columns}[T]
+    \begin{column}{0.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line width=0.9pt]
+        \fill[tudgreen!25,draw=tudblue] (0,0)--(2.2,0.9)--(0,1.8)--cycle;
+        \node at (0.7,0.9){\large$\infty$};
+        \draw(-0.6,1.4)--(0,1.4) node[left=14pt]{\scriptsize$-$};
+        \draw(-0.6,0.4)--(0,0.4) node[left=14pt]{\scriptsize$+$};
+        \draw(2.2,0.9)--(2.8,0.9);
+      \end{tikzpicture}\\[0.4em]
+      \src{nullor: $v_{in}=i_{in}=0$}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      Sensitivity gives the coil voltage; with $d/dt\leftrightarrow s$:
+      \[ V_{ind}=10^{-59.4/20}=\SI{1.07e-3}{Vm/A},\quad V_{ind}(s)=k\,s\,H(s). \]
+      Convert to Pa and divide by the microphone sensitivity ($\SI{-35.5}{dBV/Pa}$):
+      \[ A_{v1}=\frac{V_{mic}}{V_{ind}}=\frac{0.0168}{0.269\times10^{-6}}=\hl{\frac{62.4\times10^{3}}{s}}. \]
+      With a nullor the transfer is set \emph{only} by the passive feedback,
+      $A_\infty=1/(sR_fC_i)$; the transistors come later.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Representation 4: the output (ADC load)}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \begin{tikzpicture}[>=Latex,line width=0.8pt]
+        \fill[tudyellow!30,draw=tudblue] (0,0)--(1.1,0.45)--(0,0.9)--cycle;
+        \node[font=\scriptsize] at (0.35,0.45){A2};
+        \draw[->](1.1,0.45)--(1.7,0.45);
+        \node[draw,minimum width=1.0cm,minimum height=0.8cm] (adc) at (2.4,0.45){ADC};
+        \node[right=2pt,font=\scriptsize,align=left] at (adc.east){$Z_{in}=\infty$\\$C=\SI{10}{pF}$};
+      \end{tikzpicture}
+      \vskip0.6em
+      \begin{circuitikz}[scale=0.62,transform shape,line width=0.8pt]
+        \draw (0,1.6)node[left]{out}--(0.9,1.6) to[C,l=$C_L$] (0.9,0) node[ground]{};
+        \draw (0,1.6)--(0,0);
+      \end{circuitikz}
+      \vskip0.4em
+      \begin{resultbox}$C_L=\SI{10}{pF}$ is the only load.\end{resultbox}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      The ADC input draws no current ($Z_{in}\to\infty$); only its parasitic capacitance loads A1.
+      \begin{whybox}
+      A capacitive load means the output stage must supply charging current at the full-power
+      frequency, and $C_L$ enters the stability analysis.
+      \end{whybox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Representation 5: the noise sources}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \includegraphics[width=\linewidth]{noise_spectrum}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Convert the \SI{30}{dBSPL} floor to a voltage through the microphone sensitivity
+      ($A_{mic}=\SI{-35.5}{dBV/Pa}$):
+      \[ \resizebox{0.96\linewidth}{!}{$V_{onoise}=20\,\mu\mathrm{V}\cdot 10^{(A_{mic}+n_{SPL})/20}$} \]
+      \begin{resultbox}$V_{onoise}=\hl{\SI{10.62}{\micro V}}$\end{resultbox}
+      Each resistor adds $4kTR$; the input device adds $v_n,i_n$ (the noisy nullor).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Noise budgeting}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \includegraphics[width=\linewidth]{circuit_model_noise}\\[0.2em]
+      \src{circled: the three budgeted noise sources $R_s$, $R_t$, $R_f$}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Decide the budget of the \emph{signal source} first:
+      \begin{itemize}
+        \item Source $+$ termination $+$ feedback: $B_{n1}=0.4$ of the total.
+        \item Remainder goes to the input transistor, which sets $g_m$.
+      \end{itemize}
+      \begin{resultbox}
+        source share $=\dfrac{\mathrm{RMS}_{source}}{V_{onoise}}\approx\hl{0.14}$
+      \end{resultbox}
+      Output-noise RMS $\approx\SI{7.5}{\micro V}\le\SI{10.6}{\micro V}$. \textcolor{tudgreen}{\checkmark}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Noise is judged by ear: DIN-A weighting}
@@ -304,16 +363,13 @@
       \includegraphics[width=\linewidth]{din_a_weighting}
     \end{column}
     \begin{column}{0.44\textwidth}
-      The ear is not flat. The output noise is weighted by the standard \textbf{DIN-A}
-      curve before integrating to an RMS value:
-      \[ \sigma_o^2=\int_0^\infty \big|A(f)\big|^2 S_o(f)\,df. \]
+      Output noise is weighted by the standard DIN-A curve before integrating:
+      \[ \sigma_o^2=\int_0^\infty|A(f)|^2 S_o(f)\,df. \]
       \begin{itemize}
-        \item $0$ dB at \SI{1}{kHz}.
-        \item Strong roll-off below \SI{600}{Hz} / above a few kHz.
+        \item $0$ dB at \SI{1}{kHz}; rolls off outside the audio band.
       \end{itemize}
       \begin{whybox}
-      Weighting tightens the budget exactly where hearing is sensitive --- so the budget is
-      perceptually meaningful.
+      Weighting makes the budget perceptually meaningful: tight where hearing is sensitive.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -323,32 +379,29 @@
 \section{Transfer function \& feedback configuration}
 % =================================================================
 
-\begin{frame}{First generate the options --- \emph{then} choose}
+\begin{frame}{First generate the options, \emph{then} choose}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \textbf{Option A --- voltage--voltage}\\ (integrator in feedback)
+      \textbf{Option A, voltage-to-voltage} (chosen)
       \begin{itemize}
         \item $Z_1=$ capacitor, $Z_2=$ resistor.
-        \item Coil seen as a voltage source.
-        \item Coil $R_s$ only enters \emph{noise}.
+        \item Coil $R_s$ enters only the \emph{noise}.
       \end{itemize}
-      \vskip0.4em
-      \textbf{Option B --- current--voltage}\\ (transimpedance, inductor integrates)
+      \vskip0.3em
+      \textbf{Option B, current--voltage (transimpedance)}
       \begin{itemize}
-        \item $Z_2=$ inductor, $Z_1=$ resistor.
-        \item Coil $R_s$ now enters the \emph{transfer}.
-        \item Large inductor $\Rightarrow$ area / noise.
+        \item $Z_2=$ inductor integrates.
+        \item Coil $R_s$ enters the \emph{transfer}; large inductor.
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{antoonbox}
-      The prereview lesson: \textbf{pick one and stay consistent.} Mixing a V--V amplifier
-      on one slide with a transimpedance amplifier on the next makes the plots meaningless.
+      The prereview lesson: \textbf{pick one and stay consistent}. Mixing a V--V amplifier with
+      a transimpedance amplifier between slides makes the plots meaningless.
       \end{antoonbox}
-      \vskip0.5em
       \begin{block}{Decision}
-        Choose \textbf{Option A: voltage--voltage integrator}.
-        Practical components, and $R_s$ stays out of the transfer.
+        \textbf{Option A: voltage-to-voltage integrator.} Practical components, and $R_s$ stays out
+        of the transfer.
       \end{block}
     \end{column}
   \end{columns}
@@ -357,32 +410,31 @@
 \begin{frame}{Why feedback? The asymptotic-gain model}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
-      Feedback fixes the transfer with a passive network, so accuracy follows passive
-      components --- not the transistor.
+      Feedback fixes the transfer with passive components, so accuracy follows them, not the
+      transistor.
       \begin{resultbox}
-        $\displaystyle A_f \;=\; A_\infty\underbrace{\frac{-L}{1-L}}_{\text{servo}}
-        \;+\;\underbrace{\frac{1}{1-L}}_{\text{direct}}$
+        $\displaystyle A_f=A_\infty\underbrace{\frac{-L}{1-L}}_{\text{servo}}
+        +\underbrace{\frac{1}{1-L}}_{\text{direct}}$
       \end{resultbox}
       \begin{itemize}
-        \item $A_\infty$: ideal (nullor) transfer = $1/(sR_fC_i)$.
-        \item $L$: loop gain (return ratio).
-        \item servo $\to 1$ when $|L|\gg1$ $\Rightarrow$ $A_f\to A_\infty$.
+        \item $A_\infty$: ideal (nullor) transfer $=1/(sR_fC_i)$.
+        \item $L$: loop gain; servo $\to1$ when $|L|\gg1\Rightarrow A_f\to A_\infty$.
       \end{itemize}
     \end{column}
     \begin{column}{0.45\textwidth}
       \centering
       \begin{tikzpicture}[>=Latex,line width=0.8pt,node distance=6mm]
-        \node (sum) [draw,circle,inner sep=1.2pt] {$\Sigma$};
-        \node (A) [draw,fill=tudcyan!20,right=10mm of sum,minimum height=7mm] {nullor};
-        \node (out)[right=12mm of A] {$V_o$};
-        \node (in) [left=10mm of sum] {$V_i$};
-        \node (B) [draw,fill=tudyellow!30,below=8mm of A,minimum height=6mm] {$Z_1,Z_2$};
-        \draw[->] (in)--(sum); \draw[->] (sum)--(A); \draw[->] (A)--(out);
-        \draw[->] ($(A)!0.5!(out)$)|-(B); \draw[->] (B)-|(sum);
-      \end{tikzpicture}\\[0.4em]
+        \node (sum)[draw,circle,inner sep=1pt]{$\Sigma$};
+        \node (A)[draw,fill=tudgreen!20,right=9mm of sum,minimum height=7mm]{nullor};
+        \node (out)[right=10mm of A]{$V_o$};
+        \node (in)[left=8mm of sum]{$V_i$};
+        \node (B)[draw,fill=tudyellow!30,below=7mm of A,minimum height=6mm]{$Z_1,Z_2$};
+        \draw[->](in)--(sum);\draw[->](sum)--(A);\draw[->](A)--(out);
+        \draw[->]($(A)!0.5!(out)$)|-(B);\draw[->](B)-|(sum);
+      \end{tikzpicture}\\[0.3em]
       \begin{antoonbox}
-      In the review you must \emph{explain every curve} of this model --- gain, asymptotic,
-      loop gain, servo, direct.
+      In the review, \emph{explain every curve} of this model, gain, asymptotic, loop gain,
+      servo, direct.
       \end{antoonbox}
     \end{column}
   \end{columns}
@@ -393,12 +445,9 @@
     \begin{column}{0.54\textwidth}
       Bound $R_f$ from two budgets:
       \begin{itemize}
-        \item \textbf{Noise} budget ($B_{n1}=0.4$) $\Rightarrow$ \emph{upper} bound
-          $R_{f,max}=\SI{7.5}{k\ohm}$.
-        \item \textbf{Power} budget ($B_{i1}=0.1$) $\Rightarrow$ \emph{lower} bound
-          $R_{f,min}=\SI{1.4}{k\ohm}$.
+        \item \textbf{Noise} ($B_{n1}=0.4$) $\Rightarrow$ upper bound $R_{f,max}=\SI{7.5}{k\ohm}$.
+        \item \textbf{Power} ($B_{i1}=0.1$) $\Rightarrow$ lower bound $R_{f,min}=\SI{1.4}{k\ohm}$.
       \end{itemize}
-      Then set $C_i$ from the integrator constant and add a bypass $R_b$ for the DC path:
       \[ C_i=\frac{\tau_i}{R_f},\qquad R_b=\frac{1}{2\pi C_i f_{min}}. \]
     \end{column}
     \begin{column}{0.46\textwidth}
@@ -406,10 +455,9 @@
         $R_f=\hl{\SI{3.24}{k\ohm}}$\\[2pt]
         $C_i=\hl{\SI{4.96}{nF}}\qquad R_b=\hl{\SI{53.5}{k\ohm}}$
       \end{resultbox}
-      \vskip0.4em
       \begin{whybox}
-      $R_b\parallel C_i$ sets the lower corner at $f_{min}=\SI{600}{Hz}$ and gives the DC
-      bias a path --- one resistor, two justified jobs.
+      $R_b\parallel C_i$ sets the low corner at $f_{min}=\SI{600}{Hz}$ and gives the DC bias a
+      path, one resistor, two justified jobs.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -421,20 +469,18 @@
 
 \begin{frame}{The first stage sets the input-referred noise}
   \begin{columns}[T]
-    \begin{column}{0.46\textwidth}
+    \begin{column}{0.44\textwidth}
       \includegraphics[width=\linewidth]{noisyNullorN}\\
       \src{Noisy nullor: ideal nullor + the input device's $v_n,i_n$}
     \end{column}
-    \begin{column}{0.54\textwidth}
-      Replace the controller by a \textbf{noisy nullor}: an ideal nullor plus the input
-      transistor's noise sources.
+    \begin{column}{0.56\textwidth}
+      Model the controller as a \textbf{noisy nullor}.
       \begin{itemize}
-        \item Later stages add almost nothing (divided by the first-stage gain).
-        \item So the whole noise budget is spent on \emph{stage 1}.
+        \item Later stages' noise is divided by the first-stage gain $\Rightarrow$ negligible.
+        \item So the whole budget is spent on \emph{stage 1}.
       \end{itemize}
       \begin{whybox}
-      This is why we design the first stage \emph{from the noise spec} --- before sizing
-      anything else.
+      This is why the first stage is designed \emph{from the noise spec}, before anything else.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -444,23 +490,21 @@
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       Input-referred thermal noise of a CS stage:
-      \begin{resultbox}
-        $\displaystyle \overline{v_n^2}=\frac{4kT\gamma}{g_m}\ \big[\si{V^2/Hz}\big]$
-      \end{resultbox}
+      \begin{resultbox}$\displaystyle \overline{v_n^2}=\frac{4kT\gamma}{g_m}$\end{resultbox}
       \begin{itemize}
         \item More $g_m$ $\Rightarrow$ less noise (more current for less voltage).
-        \item But wider device $\Rightarrow$ more $c_{iss}$ $\Rightarrow$ more input loading.
+        \item Wider device $\Rightarrow$ more $c_{iss}$ $\Rightarrow$ more input loading.
         \item \textbf{Weak inversion} gives the largest $g_m/I_D$.
       \end{itemize}
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{block}{The trade-off}
-        Minimise the product $g_m\cdot c_{iss}$: enough $g_m$ for the noise budget, lowest
-        $c_{iss}$ for the source.
+        Minimise $g_m\cdot c_{iss}$: enough $g_m$ for the noise budget, lowest $c_{iss}$ for the
+        source.
       \end{block}
       \begin{antoonbox}
-      ``Replace the how with the why'': we choose weak inversion \emph{because} it maximises
-      transconductance efficiency for the noise budget.
+      ``Replace the how with the why'': weak inversion is chosen \emph{because} it maximises
+      transconductance efficiency.
       \end{antoonbox}
     \end{column}
   \end{columns}
@@ -468,29 +512,26 @@
 
 \begin{frame}{Which stage? CS vs CG vs CD}
   \centering
-  \renewcommand{\arraystretch}{1.2}
+  \renewcommand{\arraystretch}{1.15}
   \begin{tabular}{@{}l c c l@{}}
     \toprule
-    & \textbf{Gain} & \textbf{Chain (ABCD)} & \textbf{Role} \\
-    \midrule
+    & \textbf{Gain} & \textbf{Chain (ABCD)} & \textbf{Role} \\ \midrule
     \textbf{CS} & high & \textbf{smallest} entries & most \emph{nullor-like} \\
-    CG & $\approx1$ (current) & --- & current follower \\
-    CD & $\approx1$ (voltage) & --- & voltage follower \\
+    CG & $\approx1$ (current) & $-$ & current follower \\
+    CD & $\approx1$ (voltage) & $-$ & voltage follower \\
     \bottomrule
   \end{tabular}
   \vfill
   \begin{columns}[T]
     \begin{column}{0.62\textwidth}
       \begin{itemize}
-        \item The CS chain matrix has the \emph{smallest} elements $\Rightarrow$ it behaves
-          most like a nullor, so following stages barely add noise.
-        \item CG and CD are \emph{followers} --- no voltage gain to suppress later noise.
+        \item The CS chain matrix has the smallest elements $\Rightarrow$ most nullor-like, so
+          later stages barely add noise.
+        \item CG / CD are followers, no voltage gain to suppress later noise.
       \end{itemize}
     \end{column}
     \begin{column}{0.38\textwidth}
-      \begin{resultbox}
-        First stage $=$ \textbf{common-source}, in saturation.
-      \end{resultbox}
+      \begin{resultbox}First stage $=$ \textbf{common-source}, in saturation.\end{resultbox}
     \end{column}
   \end{columns}
 \end{frame}
@@ -500,20 +541,19 @@
     \begin{column}{0.52\textwidth}
       \begin{enumerate}
         \item Find the output noise spectrum $S_o(f)$.
-        \item Integrate (DIN-A weighted) $\to$ variance $\sigma_o^2=(B_{n2}\,V_{o,n})^2$.
+        \item Integrate (DIN-A weighted) $\to$ variance $\sigma_o^2=(B_{n2}V_{o,n})^2$.
         \item Express $g_m$ as a function of $c_{iss}$.
-        \item Lowest feasible $c_{iss}$ $\to$ $g_m,I_D$, then $W,L$ via the \textbf{EKV} model.
+        \item Lowest feasible $c_{iss}\to g_m,I_D$, then $W,L$ via the \textbf{EKV} model.
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
       \begin{resultbox}
         PMOS input ($g_m\!\cdot\!c_{iss}$ optimum):\\[2pt]
-        $g_m=\hl{\SI{73}{\micro S}}$,\ \ $W=\SI{19.1}{\micro m}$\\[2pt]
-        $L=\SI{0.72}{\micro m}$,\ \ $I_D=\SI{8.1}{\micro A}$
+        $g_m=\hl{\SI{73}{\micro S}}$,\ $W=\SI{19.1}{\micro m}$\\[2pt]
+        $L=\SI{0.72}{\micro m}$,\ $I_D=\SI{8.1}{\micro A}$
       \end{resultbox}
       \begin{whybox}
-      SLiCAP gives the symbolic spectrum; the EKV model turns the budget directly into
-      $W,L,I_D$. ngspice then verifies the numbers.
+      SLiCAP gives the symbolic spectrum; EKV turns the budget into $W,L,I_D$; ngspice verifies.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -523,24 +563,31 @@
 \section{Single stage \& loop-gain check}
 % =================================================================
 
+\begin{frame}{Single stage: the circuit}
+  \centering
+  \includegraphics[width=0.82\linewidth]{singleStageSimple_colored}\\[0.2em]
+  {\footnotesize\cbox{tudcyan}~single amplifier stage ($-g_m$)}\quad
+  \src{behavioural model: coil $\to$ termination $\to$ one CS controller $\to$ feedback $\to$ load}
+\end{frame}
+
 \begin{frame}{Is a single stage enough?}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \includegraphics[width=\linewidth]{single_stage_loopgain}\\
-      \src{Single-stage feedback model --- the loop gain $L$ stays below \SI{0}{dB}.}
+      \src{Loop gain $L$ stays below \SI{0}{dB}.}
     \end{column}
     \begin{column}{0.5\textwidth}
       A single CS has only 3 usable terminals $\Rightarrow$ a \textbf{differential pair}
-      ($\approx4\times$ current and area).
+      ($\approx4\times$ current/area).
       \begin{itemize}
-        \item Current-drive into $C_L$: \textcolor{tudgreen}{\checkmark}
+        \item Current drive into $C_L$: \textcolor{tudgreen}{\checkmark}
         \item Voltage headroom on \SI{0.9}{V}: \textcolor{tudgreen}{\checkmark}
         \item Loop gain $|L_{DC}|<1$ across the band: \textcolor{tudorange}{\ding{55}}
       \end{itemize}
-      \begin{block}{Verdict}
-        $|L|<1$ $\Rightarrow$ the servo cannot enforce the transfer $\Rightarrow$ \textbf{poor
-        accuracy}. Go to a \textbf{dual stage}.
-      \end{block}
+      \begin{resultbox}
+        $|L|<1\Rightarrow$ servo cannot enforce the transfer $\Rightarrow$ \textbf{poor accuracy}.
+        Go to a \textbf{dual stage}.
+      \end{resultbox}
     \end{column}
   \end{columns}
 \end{frame}
@@ -552,41 +599,39 @@
 \begin{frame}{Why a dual stage?}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      The five costs trade against each other:\\
-      \emph{noise, power, accuracy, stability, area}.
+      Five competing costs: \emph{noise, power, accuracy, stability, area}.
       \begin{itemize}
         \item The \textbf{first stage dominates noise}.
         \item The \textbf{second stage dominates loop gain} (accuracy).
       \end{itemize}
-      Split the job: optimise each stage for one thing.
+      Split the job, optimise each stage for one thing.
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{resultbox}
-        Stage 1: \textbf{PMOS differential pair} --- low noise.\\[3pt]
-        Stage 2: \textbf{NMOS common-source} --- high loop gain.
+        Stage 1: \textbf{PMOS differential pair}, low noise.\\[3pt]
+        Stage 2: \textbf{NMOS common-source}, high loop gain.
       \end{resultbox}
       \begin{whybox}
-      Two stages give enough loop gain for accuracy while keeping the input noise low ---
-      the single stage could not do both.
+      One stage could not give both low noise and enough loop gain; two stages can.
       \end{whybox}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{The dual-stage topology}
+\begin{frame}{Suggested topology}
   \centering
-  \includegraphics[width=0.82\linewidth]{dualStageEKV}\\[0.2em]
-  \src{SLiCAP / KiCad schematic: coil source $\to$ PMOS 1st stage $\to$ $C_i/R_f/R_b$ feedback $\to$ NMOS CS $\to$ ADC load.
-  Directives: \texttt{.source V1}, \texttt{.detector V\_out}, \texttt{.lgref Gm\_M1\_X2}.}
+  \includegraphics[width=0.74\linewidth]{dualstage_colored}\\[0.2em]
+  {\footnotesize\cbox{tudcyan}~1st stage: PMOS differential pair \quad
+   \cbox{tudpink}~2nd stage: NMOS common-source}\\[0.1em]
+  \src{EKV schematic, \texttt{.source V1}, \texttt{.detector V\_out}, \texttt{.lgref Gm\_M1\_X2}}
 \end{frame}
 
 \begin{frame}{First stage: differential pair vs single CS}
   \centering
-  \renewcommand{\arraystretch}{1.2}
+  \renewcommand{\arraystretch}{1.15}
   \begin{tabular}{@{}p{0.46\textwidth} p{0.46\textwidth}@{}}
     \toprule
-    \textbf{Differential pair} & \textbf{Single-ended CS} \\
-    \midrule
+    \textbf{Differential pair} & \textbf{Single-ended CS} \\ \midrule
     \textcolor{tudgreen}{+} lower noise & \textcolor{tudgreen}{+} less area \\
     \textcolor{tudgreen}{+} high CMRR & \textcolor{tudgreen}{+} lower power \\
     \textcolor{tudgreen}{+} matches the coil's 2-terminal input & \textcolor{tudgreen}{+} simple \\
@@ -596,8 +641,8 @@
   \end{tabular}
   \vfill
   \begin{resultbox}
-  The coil is a floating two-terminal source $\Rightarrow$ the \textbf{differential pair}
-  wins on noise and common-mode rejection.
+  The coil is a floating two-terminal source $\Rightarrow$ the \textbf{differential pair} wins on
+  noise and common-mode rejection.
   \end{resultbox}
 \end{frame}
 
@@ -610,12 +655,12 @@
         \item high current-drive into $C_L$;
         \item low power, small area, simple.
       \end{itemize}
-      Minimum length $L=\SI{0.18}{\micro m}$ for speed; width traded for $g_m/I_D$.
+      Minimum length for speed; width traded for $g_m/I_D$.
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{resultbox}
         NMOS CS output stage:\\[2pt]
-        $W=\SI{10}{\micro m}$,\ \ $L=\SI{0.18}{\micro m}$\\[2pt]
+        $W=\SI{10}{\micro m}$,\ $L=\SI{0.18}{\micro m}$\\[2pt]
         $I_D=\hl{\SI{16.5}{\micro A}}$
       \end{resultbox}
       \begin{whybox}
@@ -625,7 +670,28 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Asymptotic-gain model --- every curve explained}
+\begin{frame}{Dual-stage design parameters}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \includegraphics[width=\linewidth]{dualStageSimple_colored}\\
+      \src{behavioural model: $g_{m1}$ (1st) and $g_{m2}$ (2nd) transconductors}
+      \[ L_{DC}=\frac{R_f g_{m1} g_{m2}(-R_s-R_t)}{R_sg_{o1}+R_tg_{o1}}
+         =-\frac{R_f g_{m1}g_{m2}}{g_{o1}} \]
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \footnotesize
+      \textbf{$g_{m1}$}, first-stage transconductance, set by the \emph{noise} budget.\\[3pt]
+      \textbf{$g_{m2}$}, second-stage transconductance, the extra \emph{loop-gain} factor.\\[3pt]
+      \textbf{$R_f$}, feedback resistor, set by the \emph{transfer}.\\[3pt]
+      \textbf{$g_{o1}$}, first-stage output conductance (its output resistance).
+      \begin{resultbox}
+        \footnotesize $|L_{DC}|\approx\SI{45}{dB}$, enough for accuracy.
+      \end{resultbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Asymptotic-gain model: every curve explained}
   \begin{columns}[T]
     \begin{column}{0.6\textwidth}
       \includegraphics[width=\linewidth]{fb_decomposition}
@@ -634,12 +700,10 @@
       \footnotesize
       \begin{itemize}
         \item \textbf{\textcolor{tudblue}{gain}}: the closed-loop transfer we deliver.
-        \item \textbf{\textcolor{tudcyan}{asymptotic} $A_\infty$}: ideal nullor target ($1/sR_fC_i$).
-        \item \textbf{\textcolor{tudorange}{loop gain} $L$}: $\approx\SI{45}{dB}$ at DC --- the
-          ``budget'' for accuracy.
-        \item \textbf{\textcolor{tudgreen}{servo} $L/(1{-}L)$}: $\to1$ while $|L|\gg1$, so
-          gain $\to A_\infty$.
-        \item \textbf{\textcolor{tudpink}{direct} $1/(1{-}L)$}: feed-through; negligible here.
+        \item \textbf{\textcolor{tudcyan}{asymptotic} $A_\infty$}: ideal nullor target $1/sR_fC_i$.
+        \item \textbf{\textcolor{tudorange}{loop gain} $L$}: $\approx\SI{45}{dB}$ at DC, budget for accuracy.
+        \item \textbf{\textcolor{tudgreen}{servo} $L/(1{-}L)$}: $\to1$ while $|L|\gg1$, so gain $\to A_\infty$.
+        \item \textbf{\textcolor{tudpink}{direct} $1/(1{-}L)$}: feed-through; negligible.
       \end{itemize}
       \begin{antoonbox}
       Gain follows $A_\infty$ exactly where the servo $\approx1$; it departs once $|L|$ falls.
@@ -652,40 +716,48 @@
 \section{EKV model \& pole--zero analysis}
 % =================================================================
 
-\begin{frame}{From behavioural to the EKV transistor model}
+\begin{frame}{EKV small-signal model}
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \includegraphics[width=\linewidth]{gain_uncompensated}
+    \begin{column}{0.6\textwidth}
+      \includegraphics[width=\linewidth]{dualStageEKV}
     \end{column}
-    \begin{column}{0.5\textwidth}
-      Swap the ideal devices for the \textbf{EKV} small-signal model:
+    \begin{column}{0.4\textwidth}
+      Swap the ideal devices for the \textbf{EKV} model:
       \begin{itemize}
-        \item realistic $g_m,g_o$ and \emph{all} parasitic capacitances;
-        \item far more accurate gain and phase;
-        \item reveals the real poles \& zeros.
+        \item realistic transistor-level design;
+        \item includes most parasitic capacitances;
+        \item far more accurate gain \& phase.
       \end{itemize}
-      The passband matches $A_\infty$; the high-frequency behaviour is now trustworthy.
+      \begin{whybox}
+      Now the poles and zeros are trustworthy, so we can check stability.
+      \end{whybox}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Pole--zero analysis}
   \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
+    \begin{column}{0.46\textwidth}
       \includegraphics[width=\linewidth]{pole_zero_map}
     \end{column}
-    \begin{column}{0.45\textwidth}
-      \textbf{5 poles, all with $\mathrm{Re}<0$ $\Rightarrow$ stable.}
-      \begin{itemize}
-        \item $\approx\SI{600}{Hz}$: dominant (integrator + bypass).
-        \item $\approx\SI{150}{kHz}$ pair: $Q\approx0.71$ (well damped).
-        \item $\approx\SI{51}{MHz}$ pair: \hl{Q\approx5.4} --- severely
-          \textbf{underdamped} $\Rightarrow$ peaking.
+    \begin{column}{0.54\textwidth}
+      {\scriptsize\renewcommand{\arraystretch}{1.1}
+      \begin{tabular}{@{}l r r r r@{}}
+        \toprule
+        & Re [Hz] & Im [Hz] & $|f|$ [Hz] & Q \\ \midrule
+        $p_1$ & $-602$ & $0$ & $602$ & $-$ \\
+        $p_{2,3}$ & $-106.5$k & $\pm106.6$k & $150.7$k & $0.71$ \\
+        $p_{4,5}$ & $-4.69$M & $\pm50.9$M & $51.1$M & \hl{5.44} \\
+        $z_{1,2}$ & $+263$M & $\pm794$M & $837$M & $1.59$ \\
+        $z_3$ & $-10.5$k & $0$ & $10.5$k & $-$ \\
+        \bottomrule
+      \end{tabular}}
+      \vskip0.3em
+      \begin{itemize}\footnotesize
+        \item All poles $\mathrm{Re}<0$ $\Rightarrow$ \textbf{stable}.
+        \item The \SI{51}{MHz} pair has \hl{Q\approx5.4}, severely underdamped $\Rightarrow$ peaking.
+        \item The gain plot follows the poles \& zeros, as expected.
       \end{itemize}
-      \begin{antoonbox}
-      The gain plot follows the poles and zeros: the high-$Q$ pair is exactly the bump we
-      must explain --- and then remove.
-      \end{antoonbox}
     \end{column}
   \end{columns}
 \end{frame}
@@ -697,9 +769,9 @@
 \begin{frame}{Target: maximally-flat magnitude (MFM)}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
-      A pole pair with $Q>\tfrac{1}{\sqrt2}$ peaks and rings.
-      \textbf{MFM} (Butterworth) sets the dominant closed-loop pair to
-      \[ Q=\frac{1}{\sqrt2}\approx0.707. \]
+      A pole pair with $Q>\tfrac{1}{\sqrt2}$ peaks and rings. \textbf{MFM} (Butterworth) sets the
+      dominant pair to
+      \[ Q=\tfrac{1}{\sqrt2}\approx0.707. \]
       \begin{itemize}
         \item No peaking, fastest flat response.
         \item Comfortable phase margin.
@@ -707,11 +779,11 @@
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{block}{How to move a pole pair?}
-        Add a \emph{zero} to the loop gain near the offending poles --- it injects phase
-        lead and lowers the effective $Q$.
+        Add a \emph{zero} to the loop gain near the offending poles, it injects phase lead and
+        lowers the effective $Q$.
       \end{block}
       \begin{whybox}
-      We shape \emph{stability}, not just gain --- a Bode plot is the $0$-axis slice of the
+      We shape \emph{stability}, not just gain, a Bode plot is the $0$-axis slice of the
       Nyquist plot.
       \end{whybox}
     \end{column}
@@ -721,53 +793,54 @@
 \begin{frame}{The phantom-zero method}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
-      Put a resistor $R_{phz}$ in series with the load capacitor. It creates a zero in the
-      \emph{loop gain} without a real pole in the signal path:
-      \begin{resultbox}
-        $\displaystyle z=-\frac{1}{R_{phz}\,C_L}$
-      \end{resultbox}
+      Put $R_{phz}$ in series with the load capacitor: a zero in the \emph{loop gain} with no real
+      pole in the signal path.
+      \begin{resultbox}$\displaystyle z=-\frac{1}{R_{phz}C_L}$\end{resultbox}
       \textbf{Why this one?}
       \begin{itemize}
         \item no extra noise source in the signal path;
         \item negligible power and area;
-        \item no added energy-storage (no compensation cap).
+        \item no added energy storage (no compensation cap).
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \centering
-      \begin{circuitikz}[scale=0.8,transform shape,line width=0.8pt]
-        \node[draw,fill=tudcyan!20,minimum height=10mm,minimum width=15mm] (amp) at (0,0) {NMOS CS};
-        \draw (amp.east) -- (1.6,0) coordinate(a);
+      \begin{tikzpicture}[scale=0.8,transform shape,line width=0.8pt]
+        \node[draw,fill=tudpink!25,minimum height=10mm,minimum width=15mm] (amp) at (0,0){NMOS CS};
+        \draw (amp.east)--(1.6,0) coordinate(a);
         \draw (a) to[R,l=$R_{phz}$] (4.2,0) coordinate(out);
-        \draw (out) -- (4.9,0) node[right]{\textbf{out}};
+        \draw (out)--(4.9,0) node[right]{\textbf{out}};
         \draw (out) to[C,l_=$C_L$] (4.2,-1.9) node[ground]{};
-        \draw (a) -- (a|-0,1.5) coordinate(t) to[C,l=$C_i$] (-1.0,1.5);
-        \draw (t) node[above right,font=\scriptsize]{feedback tap};
-      \end{circuitikz}\\[0.4em]
-      \src{$R_{phz}$ in series with the output; feedback is taken \emph{before} it,
-      so the zero appears only in the loop gain.}
+        \draw (a)--(a|-0,1.5) coordinate(t) to[C,l=$C_i$] (-1.0,1.5);
+        \node[above right,font=\scriptsize] at (t){feedback tap};
+      \end{tikzpicture}\\[0.3em]
+      \src{$R_{phz}$ in series; feedback tapped \emph{before} it.}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Compensation result}
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.52\textwidth}
       \includegraphics[width=\linewidth]{compensation_mfm}
     \end{column}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.48\textwidth}
+      {\scriptsize\renewcommand{\arraystretch}{1.1}
+      \begin{tabular}{@{}l r r r@{}}
+        \toprule
+        compensated & $|f|$ [Hz] & Q & \\ \midrule
+        $p_{2,3}$ & $150.7$k & $0.71$ & \\
+        $p_{4,5}$ & $47.8$M & \hl{0.70} & MFM \\
+        \bottomrule
+      \end{tabular}}
+      \vskip0.4em
       \begin{resultbox}
-        $R_{phz}\approx\hl{\SI{0.70}{k\ohm}}$\\[3pt]
-        $Q:\ 5.4 \;\longrightarrow\; \hl{0.71}$ \;(MFM)
+        $R_{phz}\approx\hl{\SI{0.42}{k\ohm}}$\\[2pt] $Q:\ 5.4\longrightarrow 0.70$
       \end{resultbox}
-      \begin{itemize}
-        \item Peak removed; passband untouched.
-        \item All poles remain in the left half-plane $\Rightarrow$ stable.
+      \begin{itemize}\footnotesize
+        \item Peak removed; passband untouched; all poles in the LHP.
         \item Cost: one resistor.
       \end{itemize}
-      \begin{whybox}
-      The phantom zero buys maximally-flat magnitude for essentially zero noise/power penalty.
-      \end{whybox}
     \end{column}
   \end{columns}
 \end{frame}
@@ -780,9 +853,10 @@
   \begin{columns}[T]
     \begin{column}{0.58\textwidth}
       \textbf{The structured path, end to end:}
-      \begin{enumerate}
+      \begin{enumerate}\footnotesize
         \item Specification \& budget from the environment.
         \item V--V integrator chosen \emph{after} listing options.
+        \item Build the model up, block by block.
         \item Noise budget $\to$ first-stage $g_m,c_{iss}\to W,L,I_D$.
         \item Single stage fails accuracy $\to$ dual stage.
         \item PMOS pair (noise) + NMOS CS (loop gain).
@@ -792,11 +866,11 @@
     \end{column}
     \begin{column}{0.42\textwidth}
       \begin{antoonbox}
-      The grade is in the \emph{reasoning}: right order, options before choices, every curve
-      and component justified --- the how replaced by the why.
+      The grade is in the \emph{reasoning}: right order, options before choices, every curve and
+      component justified, the how replaced by the why.
       \end{antoonbox}
       \begin{resultbox}
-        $H(s)=\dfrac{62.4\times10^{3}}{s}$, noise $\le\SI{10.6}{\micro V}$, stable, MFM.
+        \footnotesize $H(s)=\dfrac{62.4\times10^{3}}{s}$, noise $\le\SI{10.6}{\micro V}$, stable, MFM.
       \end{resultbox}
     \end{column}
   \end{columns}
@@ -808,8 +882,8 @@
     \fill[tudblue] (current page.south west) rectangle (current page.north east);
     \node[anchor=north east] at ([xshift=-0.7cm,yshift=-0.6cm]current page.north east)
       {\includegraphics[height=1.0cm]{tudelft_logo_white}};
-    \node[text=white,font=\Huge\bfseries] at ([yshift=0.6cm]current page.center) {Thank you};
-    \node[text=tudcyan,font=\large] at ([yshift=-0.4cm]current page.center) {Questions \& discussion};
+    \node[text=white,font=\Huge\bfseries] at ([yshift=0.6cm]current page.center){Thank you};
+    \node[text=tudcyan,font=\large] at ([yshift=-0.4cm]current page.center){Questions \& discussion};
     \node[text=white,font=\footnotesize,anchor=south] at ([yshift=0.7cm]current page.south)
       {Daniel Tyukov\,\textbullet\,5714699\,\textbullet\,EE4109 Structured Electronics Design\,\textbullet\,15 June 2026};
   \end{tikzpicture}

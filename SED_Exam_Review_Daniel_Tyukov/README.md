@@ -21,10 +21,13 @@ SED_Exam_Review_Daniel_Tyukov/
 │  └─ figures/                 # system figures cropped from course PDFs
 ├─ data/slicap/
 │  ├─ gen_values.py            # CSV → clean engineering values + numeric netlist
-│  ├─ gen_plots.py             # SLiCAP doLaplace/doPZ → the hero plots
+│  ├─ gen_plots.py             # SLiCAP doLaplace/doPZ/doNoise → the plots
+│  ├─ colorize_schematic.py    # colour-coded circuit overlays
 │  ├─ dualStageEKV_numeric.cir # self-contained EKV netlist (.param + .lib)
-│  ├─ values.json              # all design values
-│  └─ results_summary.json     # poles/zeros, Q, R_phz from the run
+│  ├─ values.json / results_summary.json / pz_table.json  # computed data
+├─ data/source/                # SLiCAP/KiCad SOURCES the deck is built from
+│  ├─ cir/  csv/  lib/  kicad/  # netlists, design CSVs, libraries, schematics
+│  └─ SOURCES.md               # provenance: which SLiCAP routine made each figure
 ├─ notes/
 │  ├─ theory_notes.md          # formulas, derivations, what the review wants
 │  └─ speaker_notes.md         # first-person notes to read from (humanised)

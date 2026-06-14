@@ -157,7 +157,9 @@ except Exception:
 
 # ===== 4. frequency compensation: phantom zero tuned to MFM (Q -> 1/sqrt2) =====
 def _hfQ(poles):
-    cpx = [complex(sp.N(p)) for p in poles if abs(complex(sp.N(p)).imag) > 1]
+    # only the HIGH-frequency complex pair (mag > 1 MHz) — not the 150 kHz pair
+    cpx = [complex(sp.N(p)) for p in poles
+           if abs(complex(sp.N(p)).imag) > 1 and abs(complex(sp.N(p)))/2/np.pi > 1e6]
     if not cpx:
         return None, None
     pp = max(cpx, key=lambda p: abs(p))            # highest-frequency complex pair
@@ -167,7 +169,7 @@ try:
     circ = sl.makeCircuit("cir/dualc.cir")
     target = 1/np.sqrt(2)
     sweep = []
-    for rphz in np.logspace(2, 5, 40):
+    for rphz in np.logspace(1.5, 4, 90):
         circ.defPar("R_phz", float(rphz))
         rp = sl.doPZ(circ, transfer="gain", lgref="Gm_M1_X2", pardefs="circuit", numeric=True)
         Q, fn = _hfQ(rp.poles)
@@ -193,21 +195,47 @@ try:
 except Exception:
     traceback.print_exc()
 
-# ===== 5. analytic: pick-up coil damping (no R_t / under / critical) =====
+# ===== 4b. pole-zero TABLES (Re/Im/Mag/Q in Hz) — uncompensated + compensated =====
+def _pz_rows(res):
+    rows = []
+    for kind, roots in (("p", res.poles), ("z", res.zeros)):
+        for i, r in enumerate(roots, 1):
+            c = complex(sp.N(r))
+            mag = abs(c) / 2 / np.pi
+            Q = (abs(c) / (2 * abs(c.real))) if (abs(c.imag) > 1 and c.real != 0) else None
+            rows.append({"name": f"{kind}{i}", "re_hz": c.real/2/np.pi,
+                         "im_hz": c.imag/2/np.pi, "mag_hz": mag, "Q": Q})
+    return rows
 try:
-    Ls, Rs, Cs = 0.12, 875.0, 9.381591e-12
+    pzu = sl.doPZ(cir, transfer="gain", lgref="Gm_M1_X2", pardefs="circuit", numeric=True)
+    pzc = sl.doPZ(circ, transfer="gain", lgref="Gm_M1_X2", pardefs="circuit", numeric=True)  # circ has MFM R_phz
+    with open(os.path.join(DATA, "pz_table.json"), "w") as fh:
+        json.dump({"uncompensated": _pz_rows(pzu), "compensated": _pz_rows(pzc)},
+                  fh, indent=2, default=str)
+    print("  wrote pz_table.json")
+except Exception:
+    traceback.print_exc()
+
+# ===== 5. SLiCAP: pick-up coil damping (actual RLC circuit, R_t swept) =====
+try:
     Rt_crit = 79971.89
-    f = np.logspace(3, 7, 1400); w = 2*np.pi*f
-    def coil_mag(Rt):
-        # transfer V_node/I_in into the parallel R_t || C_s, fed through series L_s+R_s
-        ZC = 1/(1j*w*Cs); ZL = 1j*w*Ls
-        Zpar = 1/(1/Rt + 1/ZC) if Rt != np.inf else ZC
-        H = Zpar/(ZL + Rs + Zpar)
-        return 20*np.log10(np.abs(H))
+    coilnet = ("coil\n.source V1\n.detector V_out\n"
+               "V1 1 0 V value=0\nL1 1 2 L value={L_s}\nR1 2 out R value={R_s}\n"
+               "C1 out 0 C value={C_s}\nR2 out 0 R value={R_t}\n"
+               ".param L_s=0.12\n.param R_s=875\n.param C_s=9.381591e-12\n.param R_t=79971.89\n.end\n")
+    with open("cir/coil.cir", "w") as fh:
+        fh.write(coilnet)
+    ccir = sl.makeCircuit("cir/coil.cir")
+    f = np.logspace(3, 7, 1400)
+    cases = [("no $R_t$ (undamped)", 1e12, ORANGE, "-", 2.6),
+             ("light damping", Rt_crit*6, GREEN, "--", 2.2),
+             ("critical ($R_t\\approx$80 k$\\Omega$)", Rt_crit, BLUE, "-", 3.0)]
     fig, ax = plt.subplots(figsize=FIG)
-    ax.semilogx(f, coil_mag(np.inf),      color=ORANGE, lw=2.6, label="no $R_t$ (undamped)")
-    ax.semilogx(f, coil_mag(Rt_crit*6),   color=GREEN,  lw=2.2, ls="--", label="light damping")
-    ax.semilogx(f, coil_mag(Rt_crit),     color=BLUE,   lw=3.0, label="critical ($R_t\\approx$80 k$\\Omega$)")
+    for lab, rt, col, ls, lw in cases:
+        ccir.defPar("R_t", float(rt))
+        rc = sl.doLaplace(ccir, transfer="gain", pardefs="circuit", numeric=True)
+        db, _ = mag_db(str(rc.laplace), f)
+        ax.semilogx(f, db, color=col, ls=ls, lw=lw, label=lab)
     ax.axvline(150e3, color=GREY, lw=1.2, ls=":")
     ax.text(150e3*1.1, ax.get_ylim()[1]-6, "$f_{res}\\approx$150 kHz", color=GREY, fontsize=12)
     ax.set_xlabel("frequency [Hz]"); ax.set_ylabel("magnitude [dB]")
