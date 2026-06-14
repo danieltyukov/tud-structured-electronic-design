@@ -3,13 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 <meta name="Language" content="English"/>
-<title>"Notebooks"</title><link rel="stylesheet" href="css/slicap.css">
+<title>"Circuit data"</title><link rel="stylesheet" href="css/slicap.css">
 <script>MathJax = {tex:{tags: 'ams', inlineMath:[['$','$'],]}, svg:{fontCache:'global'}};</script>
 <script type="text/javascript" id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><div id="top"><h1>Notebooks</h1></div>
-<h2>Table of contents</h2><ol><li><a href="fumo_index.html">fumo</a></li><!-- INSERT --></ol>
+</head><body><div id="top"><h1>Circuit data</h1></div>
+<h2>Schematic diagram of fumo.cir</h2>
+<figure><a id="fig_fumo.cir"></a><img src="img/fumo.svg" alt="Circuit diagram of fumo." style="width:500px">
+<figcaption>Figure: fumo.svg<br>Circuit diagram of fumo.</figcaption>
+</figure>
+<h2><a id="netlist_fumo"></a>Netlist: fumo.cir</h2>
+<pre>fumo
+.source V1
+.detector V_out
+C1 1 0 C value={C_s} vinit=0
+C2 out 0 C value={C_L} vinit=0
+E1 out 0 1 0 E value={1/(s*tau_i)}
+E2 noise 0 out 0 E value={DIN_A}
+L1 1 2 L value={L_s} iinit=0
+R1 2 3 R value={R_s} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+R2 1 0 R value={R_t} noisetemp={T} noiseflow=0 dcvar=0 dcvarlot=0
+V1 3 0 V value=0 noise=0 dc=0 dcvar=0
+.end</pre>
+<!-- INSERT -->
 <div id="footnote">
-<p>Go to <a href="index.html">index</a></p>
+<p>Go to <a href="fumo_index.html">fumo_index</a></p>
 <p>SLiCAP: Symbolic Linear Circuit Analysis Program, Version 4.0.10 &copy 2009-2025 SLiCAP development team</p>
 <p>For documentation, examples, support, updates and courses please visit: <a href="https://analog-electronics.tudelft.nl">analog-electronics.tudelft.nl</a></p>
 <p>Last project update: 2026-06-14 21:17:13</p>

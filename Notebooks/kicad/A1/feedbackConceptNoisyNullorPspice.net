@@ -1,8 +1,8 @@
 (export (version "E")
   (design
-    (source "/home/anton/DATA/www/SEDwebsite/_build/SEDwebsite/EE4109-2025-2026/designExample/HearingLoop/Notebooks/kicad/A1/feedbackConceptNoisyNullorPspice.kicad_sch")
-    (date "2026-01-05T14:45:20+0100")
-    (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
+    (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/Notebooks/kicad/A1/feedbackConceptNoisyNullorPspice.kicad_sch")
+    (date "2026-06-14T21:14:37+0200")
+    (tool "Eeschema 9.0.8-9.0.8~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
         (title)
@@ -493,7 +493,9 @@
         (field (name "Datasheet"))
         (field (name "Description") "SLiCAP command (.lib, .param, .model. subckt}")
         (field (name "command") "?"))))
-  (libraries)
+  (libraries
+    (library (logical "SLiCAP")
+      (uri "/home/danieltyukov/workspace/tud/slicap_env/lib/python3.12/site-packages/SLiCAP/files/kicad/SLiCAP.kicad_sym")))
   (nets
     (net (code "1") (name "/fb") (class "Default")
       (node (ref "C2") (pin "2") (pinfunction "2") (pintype "passive"))

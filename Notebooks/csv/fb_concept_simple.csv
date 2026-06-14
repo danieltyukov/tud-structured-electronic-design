@@ -26,4 +26,4 @@ B_i1,Relative budget for the current through the feedback network,1/10,,design
 R_f_min,Minimum value of R_f,27859501936177769/20000000000000,Omega,design
 B_n1,Relative budget for contribution of source&#44; termination and feedback network to the total weighted output noise,2/5,,design
 R_f_max,Maximum value of R_f,308847627897827/50000000000,Omega,design
-R_f,Selected value of R_f,6000,Omega,design
+R_f,Selected value of R_f,29333157156029797/10000000000000,Omega,design

@@ -26,14 +26,14 @@ B_i1,Relative budget for the current through the feedback network,1/10,,design
 R_f_min,Minimum value of R_f,27859501936177769/20000000000000,Omega,design
 B_n1,Relative budget for contribution of source&#44; termination and feedback network to the total weighted output noise,2/5,,design
 R_f_max,Maximum value of R_f,377092791054151/50000000000,Omega,design
-R_f,Selected value of R_f,7500,Omega,design
-g_mP1,Minimum transconductance P channel input stage,443895692332343/10000000000000000000,S,design
-c_issP1,c_iss P-channel input stage at minimum transconductance,84985420445911/200000000000000000000000,F,design
-g_mP2,Transconductance P channel input stage at minimum g-c product,444656977832881/5000000000000000000,S,design
-c_issP2,c_iss P-channel input stage at minimum g-c product,171094766089797/5000000000000000000000000000,F,design
-W_iP1,P-channel input stage width at minimum transconductance,63275827183289/50000000000000000,m,design
-L_iP1,P-channel input stage length at minimum transconductance,156867709550319/2000000000000000000,m,design
-I_iP1,P-channel input stage current at minimum transconductance,-122607068598623/50000000000000000000,A,design
-W_iP2,P-channel input stage width at minimum g-c product,4660777824171/400000000000000000,m,design
-L_iP2,P-channel input stage length at minimum g-c product,180231198099867/500000000000000000000,m,design
-I_iP2,P-channel input stage current at minimum g-c product,-49126936373327/10000000000000000000,A,design
+R_f,Selected value of R_f,6482474016142849/2000000000000,Omega,design
+g_mP1,Minimum transconductance P channel input stage,85497706083299/2500000000000000000,S,design
+c_issP1,c_iss P-channel input stage at minimum transconductance,221480358455577/50000000000000000000000,F,design
+g_mP2,Transconductance P channel input stage at minimum g-c product,73007122220563/1000000000000000000,S,design
+c_issP2,c_iss P-channel input stage at minimum g-c product,280916526554251/10000000000000000000000000000,F,design
+W_iP1,P-channel input stage width at minimum transconductance,35918704360361/10000000000000000,m,design
+L_iP1,P-channel input stage length at minimum transconductance,18059382201689/62500000000000000,m,design
+I_iP1,P-channel input stage current at minimum transconductance,-94460237356227/50000000000000000000,A,design
+W_iP2,P-channel input stage width at minimum g-c product,956549646436833/100000000000000000000,m,design
+L_iP2,P-channel input stage length at minimum g-c product,360461552638247/1000000000000000000000,m,design
+I_iP2,P-channel input stage current at minimum g-c product,-403301469102021/100000000000000000000,A,design

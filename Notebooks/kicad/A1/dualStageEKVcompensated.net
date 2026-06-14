@@ -1,8 +1,8 @@
 (export (version "E")
   (design
-    (source "/home/anton/DATA/www/SEDwebsite/_build/SEDwebsite/EE4109-2025-2026/designExample/HearingLoop/Notebooks/kicad/A1/dualStageEKVcompensated.kicad_sch")
-    (date "2026-01-05T14:53:15+0100")
-    (tool "Eeschema 9.0.7-9.0.7~ubuntu24.04.1")
+    (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/Notebooks/kicad/A1/dualStageEKVcompensated.kicad_sch")
+    (date "2026-06-14T21:15:02+0200")
+    (tool "Eeschema 9.0.8-9.0.8~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
         (title)
@@ -397,7 +397,9 @@
         (pin (num "2") (name "D2") (type "unspecified"))
         (pin (num "3") (name "G1") (type "unspecified"))
         (pin (num "4") (name "G2") (type "unspecified")))))
-  (libraries)
+  (libraries
+    (library (logical "SLiCAP")
+      (uri "/home/danieltyukov/workspace/tud/slicap_env/lib/python3.12/site-packages/SLiCAP/files/kicad/SLiCAP.kicad_sym")))
   (nets
     (net (code "1") (name "/in") (class "Default")
       (node (ref "C4") (pin "1") (pinfunction "1") (pintype "passive"))

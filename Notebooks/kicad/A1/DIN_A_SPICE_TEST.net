@@ -1,8 +1,8 @@
 (export (version "E")
   (design
-    (source "/home/anton/DATA/www/SEDwebsite/_build/SEDwebsite/EE4109-2025-2026/designExample/HearingLoop/Notebooks/kicad/A1/DIN_A_SPICE_TEST.kicad_sch")
-    (date "2025-12-19T11:30:49+0100")
-    (tool "Eeschema 9.0.6-9.0.6~ubuntu24.04.1")
+    (source "/home/danieltyukov/workspace/tud/tud-structured-electronic-design/Notebooks/kicad/A1/DIN_A_SPICE_TEST.kicad_sch")
+    (date "2026-06-14T21:14:42+0200")
+    (tool "Eeschema 9.0.8-9.0.8~ubuntu24.04.1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
         (title)

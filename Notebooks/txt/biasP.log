@@ -4,8 +4,8 @@ Note: No compatibility mode selected!
 
 Circuit: biasp
 
-Warning: Model issue on line 1239 :
-  .model pch.3 pmos ( lmin=1.8e-07 lmax=    5.000000000000000e-07     wmin ...
+Warning: Model issue on line 1423 :
+  .model pch.6 pmos ( lmin=1.8e-07 lmax=    5.000000000000000e-07     wmin ...
 unrecognized parameter (n) - ignored
 unrecognized parameter (tlev) - ignored
 unrecognized parameter (tlevc) - ignored
