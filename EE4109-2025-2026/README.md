@@ -16,6 +16,12 @@ The course uses a practical, project-based methodology centered on designing a h
 
 ## Repository Structure
 
+> **Note:** the tree below covers the downloaded *text* content. The folder also contains
+> **runnable worked-example notebook folders** (`MOS_EKV_BSIM/`, `MOSparams/`, `CSstage/`,
+> `CDstages/`, `SLiCAP_balancing/`, `CH14/`, `LTspiceComplementaryParallel/`,
+> `SLiCAP_python_mosEKVplots/`) and `course_pdfs/` (lecture slides & posters). These are
+> documented in **[`WORKED_EXAMPLES.md`](WORKED_EXAMPLES.md)**.
+
 ```
 EE4109-2025-2026/
 ├── courseWebSite/          # Main course lectures and materials
