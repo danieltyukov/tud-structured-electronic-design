@@ -1,0 +1,175 @@
+MOS_lookup
+
+* Inputs
+* Python script replaces <xx> with numeric value
+
+.param ID     = 0.0001
+.param VD     = 0.9
+.param VS     = 0
+.param VB     = 0
+.param L      = 2.2e-07
+.param W      = 1e-06
+.param M      = 1
+.param F      = 1000000000.0
+
+* Python script inserts the SPICE netlist below.
+
+.lib ../lib/log018.l TT
+B1 g1 s1 V=0.9*(1+tanh(I(V7)))
+E1 g2 in g1 0 1
+F1 0 d1 V7 1
+I1 0 d1 {ID}
+M1 d1 g1 s1 b1 nch m={M} w={W} l={L}
+M2 d2 g2 s2 b2 nch m={M} w={W} l={L}
+V1 in 0 DC 0
+V2 s2 0 DC {VS}
+V3 d2 0 DC {VD}
+V4 b2 0 DC {VB}
+V5 s1 0 {VS}
+V6 b1 0 {VB}
+V7 d1 0 {VD}
+
+.ac lin 1 {F} {F}
+.options filetype = ascii
+.csparam freq     = {F}
+.control
+
+let Cgg    = vector(1) ; total capacitance at the gate
+let Cgs    = vector(1) ; gate-source capacitance
+let Cgd    = vector(1) ; gate-drain capacitance
+let Cgb    = vector(1) ; gate-bulk capacitance
+let Css    = vector(1) ; total capacitance at the source
+let Csg    = vector(1) ; source-gate capacitance
+let Csb    = vector(1) ; source-bulk capacitance
+let Csd    = vector(1) ; source-drain capacitance
+let Cdd    = vector(1) ; total capacitance at the drain
+let Cdg    = vector(1) ; drain-gate capacitance
+let Cdb    = vector(1) ; drain-bulk capacitance
+let Cds    = vector(1) ; drain-source capacitance
+let Cbb    = vector(1) ; total capacitance at the bulk
+let Cbs    = vector(1) ; bulk-source capacitance
+let Cbd    = vector(1) ; bulk-drain capacitance
+let Cbg    = vector(1) ; bulk-gate capacitance
+let Ggg    = vector(1) ; total gate conductance
+let Ggs    = vector(1) ; gate-source conductance
+let Ggd    = vector(1) ; gate-drain conductance
+let Ggb    = vector(1) ; gate-bulk conductance
+let Gsg    = vector(1) ; source gate conductance
+let Gss    = vector(1) ; total source conductance
+let Gsd    = vector(1) ; source-drain conductance
+let Gsb    = vector(1) ; source-bulk conductance
+let Gdg    = vector(1) ; drain-gate conductance
+let Gds    = vector(1) ; drain-source conductance
+let Gdd    = vector(1) ; total drain conductance
+let Gdb    = vector(1) ; drain-bulk conductance
+let Gbg    = vector(1) ; bulk-gate conductance
+let Gbs    = vector(1) ; bulk-source conductance
+let Gbd    = vector(1) ; bulk-drain conductance
+let Gbb    = vector(1) ; total bulk conductance
+let vgs    = vector(1) ; gate-source operating voltage
+let vds    = vector(1) ; drain-source operating voltage
+let ids    = vector(1) ; drain-source operating current
+
+settype current ids
+settype voltage vgs
+settype voltage vds
+settype capacitance Cgg
+settype capacitance Cgs
+settype capacitance Cgd
+settype capacitance Cgb
+settype capacitance Css
+settype capacitance Csg
+settype capacitance Csb
+settype capacitance Csd
+settype capacitance Cdd
+settype capacitance Cdg
+settype capacitance Cdb
+settype capacitance Cds
+settype capacitance Cbb
+settype capacitance Cbs
+settype capacitance Cbd
+settype capacitance Cbg
+settype admittance Ggg
+settype admittance Ggs
+settype admittance Ggd
+settype admittance Ggb
+settype admittance Gss
+settype admittance Gsg
+settype admittance Gsb
+settype admittance Gsd
+settype admittance Gdd
+settype admittance Gdg
+settype admittance Gdb
+settype admittance Gds
+settype admittance Gbb
+settype admittance Gbs
+settype admittance Gbd
+settype admittance Gbg
+
+* ==================== Analysis 1: VG ====================
+alter @V1[ac] = [ 1 0 ]
+alter @V2[ac] = [ 0 0 ]
+alter @V3[ac] = [ 0 0 ]
+alter @V4[ac] = [ 0 0 ]
+run
+let Cgg  = -imag(V1#branch)/(2*PI*freq)
+let Cgs  = imag(V2#branch)/(2*PI*freq)
+let Cgd  = imag(V3#branch)/(2*PI*freq)
+let Cgb  = imag(V4#branch)/(2*PI*freq)
+let Ggg  = -real(V1#branch)
+let Ggs  = real(V2#branch)
+let Ggd  = real(V3#branch)
+let Ggb  = real(V4#branch)
+let vgs  = @M1[vgs]
+let vds  = @M1[vds]
+let ids  = @M1[id]
+
+* ==================== Analysis 2: VS ====================
+alter @V1[ac] = [ 0 0 ]
+alter @V2[ac] = [ 1 0 ]
+alter @V3[ac] = [ 0 0 ]
+alter @V4[ac] = [ 0 0 ]
+run
+let Csg  = imag(V1#branch)/(2*PI*freq)
+let Css  = -imag(V2#branch)/(2*PI*freq)
+let Csd  = imag(V3#branch)/(2*PI*freq)
+let Csb  = imag(V4#branch)/(2*PI*freq)
+let Gsg  = real(V1#branch)
+let Gss  = -real(V2#branch)
+let Gsd  = real(V3#branch)
+let Gsb  = real(V4#branch)
+
+* ==================== Analysis 3: VD ====================
+alter @V1[ac] = [ 0 0 ]
+alter @V2[ac] = [ 0 0 ]
+alter @V3[ac] = [ 1 0 ]
+alter @V4[ac] = [ 0 0 ]
+run
+let Cdg  = imag(V1#branch)/(2*PI*freq)
+let Cds  = imag(V2#branch)/(2*PI*freq)
+let Cdd  = -imag(V3#branch)/(2*PI*freq)
+let Cdb  = imag(V4#branch)/(2*PI*freq)
+let Gdg  = real(V1#branch)
+let Gds  = real(V2#branch)
+let Gdd  = -real(V3#branch)
+let Gdb  = real(V4#branch)
+
+* ==================== Analysis 4: VB ====================
+alter @V1[ac] = [ 0 0 ]
+alter @V2[ac] = [ 0 0 ]
+alter @V3[ac] = [ 0 0 ]
+alter @V4[ac] = [ 1 0 ]
+run
+let Cbg  = imag(V1#branch)/(2*PI*freq)
+let Cbs  = imag(V2#branch)/(2*PI*freq)
+let Cbd  = imag(V3#branch)/(2*PI*freq)
+let Cbb  = -imag(V4#branch)/(2*PI*freq)
+let Gbg  = real(V1#branch)
+let Gbs  = real(V2#branch)
+let Gbd  = real(V3#branch)
+let Gbb  = -real(V4#branch)
+
+write MOS_OP.out vgs vds Cgg Cgs Cgd Cgb Css Csg Csb Csd Cdd Cdg Cdb Cds Cbb Cbs Cbd Cbg Ggg Ggs Ggd Ggb Gss Gsg Gsb Gsd Gdd Gdg Gdb Gds Gbb Gbs Gbd Gbg ids
+
+.endc
+.end

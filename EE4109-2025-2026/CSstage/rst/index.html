@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+
+<html lang="English" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CSresNoise &#8212; TU Delft: Structured Electronics Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css?v=2a6c4383" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css?v=45cf7dbc" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css?v=d290406d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=aff84035"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'topics/CSstage/SLiCAP/rst/index';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="English"/>
+    <meta name="docbuild:last-update" content="01/11/2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TU Delft: Structured Electronics Design</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../SED.html">Structured Electronics Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../book.html">Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../slicap/SLiCAP.html">SLiCAP</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../Homologation/courseWebSite/index.html">Homologation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/introduction_SED/introduction_SED.html">Introduction Structured Electronic Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/basic_knowledge/basic_knowledge.html">Basic Knowledge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/amplifiers_ideal/amplifiers_ideal.html">Modeling and characteriztion of the ideal behavior of amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/amplifiers_non_ideal/amplifiers_non_ideal.html">Modeling and characterization of the non-ideal behavior of amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/amplifiers_feedback_configurations/amplifiers_feedback_configurations.html">Design of negative feedback amplifier configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/opamps/opamps.html">Application, modeling and characterization of operational amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/biasing/biasing.html">Amplifier biasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/feedback_modeling/feedback_modeling.html">Feedback modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/controller_requirements/controller_requirements.html">Controller requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/frequency_compensation/frequency_compensation.html">Frequency Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Homologation/courseWebSite/design_examples/design_examples.html">Design Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/index.html">EE3C11 2023-2024</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Introduction/Introduction.html">12-02-2024: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture1/EE3C11-1.html">13-02-2024: Electronics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture2/EE3C11-2.html">16-02-2024: Electronics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture3/EE3C11-3.html">19-02-2024: Electronics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture4/EE3C11-4.html">20-02-2024: Electronics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture5/EE3C11-5.html">27-02-2024: Electronics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture6/EE3C11-6.html">01-03-2024: Electronics 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture7/EE3C11-7.html">04-03-2024: Electronics 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture8/EE3C11-8.html">05-03-2024: Electronics 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture9/EE3C11-9.html">12-03-2024: Electronics 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture10/EE3C11-10.html">15-03-2024: Electronics 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture11/EE3C11-11.html">18-03-2024: Electronics 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture12/EE3C11-12.html">19-03-2024: Electronics 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture13/EE3C11-13.html">26-03-2024: Electronics 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture14/EE3C11-14.html">02-04-2024: Electronics 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture15/EE3C11-15.html">09-04-2024: Electronics 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Lecture16/EE3C11-16.html">10-04-2024: Electronics 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2023-2024/courseWebSite/Exam/Exam.html">Exam EE3C11 2024</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/index.html">EE3C11 2022-2023</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Introduction/Introduction.html">13-02-2023: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture1/EE3C11-1.html">14-02-2023: Electronics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture2/EE3C11-2.html">21-02-2023: Electronics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture3/EE3C11-3.html">24-02-2023: Electronics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture4/EE3C11-4.html">27-02-2023: Electronics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture5/EE3C11-5.html">28-02-2023: Electronics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture6/EE3C11-6.html">03-03-2022: Electronics 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture7/EE3C11-7.html">07-03-2023: Electronics 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture8/EE3C11-8.html">10-03-2023: Electronics 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture9/EE3C11-9.html">14-03-2023: Electronics 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture10/EE3C11-10.html">17-03-2023: Electronics 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture11/EE3C11-11.html">21-03-2023: Electronics 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture12/EE3C11-12.html">24-03-2023: Electronics 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture13/EE3C11-13.html">28-03-2023: Electronics 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture14/EE3C11-14.html">31-03-2023: Electronics 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture15/EE3C11-15.html">04-04-2023: Electronics 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture16/EE3C11-16.html">12-04-2023: Electronics 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Lecture17/EE3C11-17.html">14-04-2023: Electronics 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2022-2023/courseWebSite/Exam/Exam.html">Exam EE3C11 2023</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/index.html">EE3C11 2021-2022</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture1/EE3C11-1.html">8-02-2022: Electronics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture2/EE3C11-2.html">11-02-2022: Electronics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture3/EE3C11-3.html">15-02-2022: Electronics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture4/EE3C11-4.html">18-02-2022: Electronics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture5/EE3C11-5.html">22-02-2022: Electronics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture6/EE3C11-6.html">25-02-2022: Electronics 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture7/EE3C11-7.html">02-03-2022: Electronics 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture8/EE3C11-8.html">04-03-2022: Electronics 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture9/EE3C11-9.html">08-03-2022: Electronics 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture10/EE3C11-10.html">11-03-2022: Electronics 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture11/EE3C11-11.html">15-03-2021: Electronics 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture12/EE3C11-12.html">18-03-2022: Electronics 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture13/EE3C11-13.html">23-03-2022: Electronics 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture14/EE3C11-14.html">25-03-2022: Electronics 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture15/EE3C11-15.html">29-03-2022: Electronics 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture16/EE3C11-16.html">1-04-2022: Electronics 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Lecture17/EE3C11-17.html">5-04-2022: Electronics 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE3C11-2021-2022/courseWebSite/Exam/Exam.html">Exam EE3C11 2022</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/index.html">EE4109 2023-2024</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture1/lecture1.html">14-11-2023: Introduction EE4109</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture2/lecture2.html">16-11-2023: Principle of amplification and biasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture3/lecture3.html">21-11-2023: MOS modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture4/lecture4.html">23-11-2022: CS stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture5/lecture5.html">28-11-2023: CS stage noise performance optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture6/lecture6.html">30-11-2023: Application of balancing techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture7/lecture7.html">05-12-2023: Feedback stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture8/lecture8.html">07-12-2023: Design of application-specific multi-stage  negative feedback CMOS amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture9/lecture9.html">12-12-2023: Design of noise performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture10/lecture10.html">14-12-2023: Design of drive capability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture11/lecture11.html">19-12-2022: Design of accuracy, weak nonlinearity and bandwidth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture12/lecture12.html">21-12-2022: Frequency compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture13/lecture13.html">09-01-2021: Design of biasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2023-2024/courseWebSite/lecture14/lecture14.html">11-01-2024: Wrap up design application-specific CMOS amplifiers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/index.html">EE4109 2022-2023</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture1/lecture1.html">15-11-2022: Structured design of CMOS feedback amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture2/lecture2.html">17-11-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture3/lecture3.html">22-11-2022: Design of the noise performance of negative feedback amplifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture4/lecture4.html">24-11-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture5/lecture5.html">29-11-2022: Design of the drive capability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture6/lecture6.html">01-12-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture7/lecture7.html">06-12-2022: Design of accuracy, bandwidth and weak nonlinearity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture8/lecture8.html">08-12-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture9/lecture9.html">13-12-2022: Frequency compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture10/lecture10.html">15-12-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture11/lecture11.html">20-12-2022: Design of biasing concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture12/lecture12.html">22-12-2022: Guided design excersises and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture13/lecture13.html">10-01-2023: Design of bias sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2022-2023/courseWebSite/lecture14/lecture14.html">12-01-2023: Guided design excersises and discussions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/index.html">EE4109 2021-2022</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture1/lecture1.html">Lecture 1: 09-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture2/lecture2.html">Lecture 2: 11-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture3/lecture3.html">Lecture 3: 16-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture4/lecture4.html">Lecture 4: 18-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture5/lecture5.html">Lecture 5: 23-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture6/lecture6.html">Lecture 6: 25-11-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture7/lecture7.html">Lecture 7: Canceled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture8/lecture8.html">Lecture 8: 07-12-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture9/lecture9.html">Lecture 9: 09-12-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture10/lecture10.html">Lecture 10: 14-12-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture11/lecture11.html">Lecture 11: 16-12-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture12/lecture12.html">Lecture 12: 21-12-2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../EE4109-2021-2022/courseWebSite/lecture13/lecture13.html">Lecture 13: 23-12-2021</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/index.html">Seminar series Honolulu</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_1_1.html">May 1 10am-11am</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_1_2.html">May 1 2pm-3pm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_2_1.html">May 2 10am-11am</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_2_2.html">May 2 2pm-3pm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_3_1.html">May 3 10am-11am</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_3_2.html">May 3 2pm-3pm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_4_1.html">May 4 10am-11am</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_4_2.html">May 4 2pm-3pm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_5_1.html">May 5 10am-11am</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../SeminarsHonolulu/courseWebSite/seminar_5_2.html">May 5 2pm-3pm</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../ET8011-2022-2023/courseWebSite/index.html">ET8011 2024</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ET8011-2022-2023/courseWebSite/day1/day1.html">Session 1: 30-04-2024</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../Exercises/Exercises.html">Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Exercises/noise/vAmpNoise1/vAmpNoise1.html">Determination of the show-stopper values of feedback elements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../posters.html">Posters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../videos.html">Videos</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/topics/CSstage/SLiCAP/rst/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CSresNoise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="csresnoise">
+<h1>CSresNoise<a class="headerlink" href="#csresnoise" title="Link to this heading">#</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Project log messages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#csresnoise">CSresNoise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scripts.html">Project script files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CSresNoise_Circuit_Data.html">Circuit Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CSresNoise_Circuit_Data.html#netlist">Netlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CSresNoise_Circuit_Data.html#operating-parameters">Operating parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CSresNoise_Noise_analysis-1.html">Noise analysis-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CSresNoise_Noise_analysis-2.html">Noise analysis-2</a></li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anton Montagne
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024-2025, Anton Montagne.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 01/11/2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

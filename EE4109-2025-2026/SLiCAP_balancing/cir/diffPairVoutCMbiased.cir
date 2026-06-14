@@ -1,0 +1,14 @@
+diffPairVoutCMbiased
+.lib lib/log018.l TT
+.param Iss =10u VM=0.4
+.param WN=220n L_N=180n MN=1 WP=220n LP=180n MP=1
+E1 2 3 2 1 -1
+I1 ss 0 {Iss}
+M1 4 1 ss 0 nch m={MN} w={WN} l={L_N}
+M2 out 3 ss 0 nch m={MN} w={WN} l={L_N}
+M3 out 4 5 5 pch m={MP} w={WP} l={LP}
+M6 4 4 5 5 pch m={MP} w={WP} l={LP}
+V1 5 0 1.8
+V2 2 0 0.9
+V3 1 2 DC 0
+.end

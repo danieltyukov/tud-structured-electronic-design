@@ -1,0 +1,6 @@
+CSstageNMOS_SLiCAP_Zt_EKV
+.param W=220n L=180n ID=10u
+.lib SLiCAP_C18.lib
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+X1 out 1 0 0 CMOS18N W={W} L={L} ID={ID}
+.end

@@ -1,0 +1,14 @@
+diffPair
+.lib lib/log018.l TT
+.param W=220n L=180n M=1
+.param Iss =100n
+E1 2 3 2 1 -1
+I1 ss 0 {Iss}
+M1 4 1 ss 0 nch m={M} w={W} l={L}
+M2 5 3 ss 0 nch m={M} w={W} l={L}
+V1 6 0 1.8
+V2 2 0 1.2
+V3 1 2 DC 0
+V4 6 4 0
+V5 6 5 0
+.end

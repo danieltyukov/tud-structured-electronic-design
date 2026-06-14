@@ -1,0 +1,7 @@
+explanation
+.detector V_out
+G1 2 out 1 out G value={g_m}
+N1 0 out 2 0 N
+R1 2 out R value={r_o} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 1 0 V value={V_s} noise=0 dc=0 dcvar=0
+.end

@@ -1,0 +1,81 @@
+Title: Constant values
+Date: Sun Mar 31 20:15:14 UTC 2024
+Plotname: constants
+Flags: real
+No. Variables: 36
+No. Points: 1
+Variables:
+	0	yes	notype
+	1	v(vgs)	voltage
+	2	v(vds)	voltage
+	3	cgg	capacitance
+	4	cgs	capacitance
+	5	cgd	capacitance
+	6	cgb	capacitance
+	7	css	capacitance
+	8	csg	capacitance
+	9	csb	capacitance
+	10	csd	capacitance
+	11	cdd	capacitance
+	12	cdg	capacitance
+	13	cdb	capacitance
+	14	cds	capacitance
+	15	cbb	capacitance
+	16	cbs	capacitance
+	17	cbd	capacitance
+	18	cbg	capacitance
+	19	ggg	admittance
+	20	ggs	admittance
+	21	ggd	admittance
+	22	ggb	admittance
+	23	gss	admittance
+	24	gsg	admittance
+	25	gsb	admittance
+	26	gsd	admittance
+	27	gdd	admittance
+	28	gdg	admittance
+	29	gdb	admittance
+	30	gds	admittance
+	31	gbb	admittance
+	32	gbs	admittance
+	33	gbd	admittance
+	34	gbg	admittance
+	35	i(ids)	current
+Values:
+ 0	1.000000000000000e+00
+	6.486426471244829e-01
+	8.998763636472756e-01
+	3.657339655239651e-16
+	2.320965889269116e-16
+	7.379925387757720e-17
+	5.983812271947617e-17
+	6.449387191364231e-16
+	2.230037941050656e-16
+	4.227770262472525e-16
+	-8.421012158949540e-19
+	3.665193866264137e-16
+	7.299019590876960e-17
+	2.930908375973480e-16
+	4.383531202961044e-19
+	7.772339075032933e-16
+	4.135008152757242e-16
+	2.939931167170666e-16
+	6.973997551050258e-17
+	1.395191095652920e-11
+	8.476811315599721e-05
+	-8.476806917576097e-05
+	-3.002832530009896e-11
+	1.102986595231392e-04
+	3.513107436994356e-11
+	5.024998919963660e-11
+	1.102985741420408e-04
+	2.567026827354768e-06
+	6.504780496859007e-12
+	4.568104691059016e-11
+	2.566974641495663e-06
+	6.614205334934144e-11
+	2.296357197811093e-05
+	-2.296347808470623e-05
+	-2.775135133713608e-11
+	9.999998234876731e-06
+

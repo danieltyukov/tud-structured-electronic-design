@@ -14,6 +14,9 @@ tau_i,Integration time constant,50459159092039/(1000000000000000000*pi),s,perfor
 f_min,-3dB high-pass cut-off frequency,600,Hz,performance
 f_max,-3dB low-pass cut-off frequency,6000,Hz,performance
 V_onoise,DIN A weighted output voltage noise,10617688884619767/1000000000000000000000,V,performance
+DIN_A,Noise weighting function,18719114681919*f**4/(100000*sqrt((f**2 + 1159929/100)*(f**2 + 54449641/100))*(f**2 + 10609/25)*(f**2 + 148693636)),,performance
+f_ref,Reference frequency,1000,Hz,test
 P_max,Maximum power dissipation at maximum supply voltage,1/1000,W,Costs
 T_min,Minimum operating temperature,0,Celsius,Environment
 T_max,Maximum operating temperature,50,Celsius,Environment
+V_ns,Weighted noise output noise contribution of Rs,9350166400767/6250000000000000000,V,Interface

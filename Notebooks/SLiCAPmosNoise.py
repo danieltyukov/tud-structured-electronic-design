@@ -37,7 +37,7 @@ class specObject():
         self.gmID_min = None # gmID for minimum noise (maximum fT)
         self.VDS      = None # VDS; always positive
     
-def _noisyNullorCircuit(file_name, model, lib=None):
+def _noisyNullorCircuit(file_name, model, lib=None, par_defs={}):
     cir = sl.makeCircuit(file_name)
     file_name_parts = file_name.replace("\\", "/").split("/")
     cir_name = file_name_parts[-1].split('.')[0]
@@ -66,6 +66,7 @@ def _noisyNullorCircuit(file_name, model, lib=None):
         f.writelines(new_lines)
         f.close()
         cir = sl.makeCircuit(cir_name + "_" + model.name + ".cir")
+        cir.defPars(par_defs)
     else:
         cir = None
         if not found:
@@ -118,14 +119,13 @@ def _getCoeffs(cir, IC_spec, f_min, f_max):
     g_m, c_iss, IC = sp.symbols("g_m, c_iss, IC")
     gm   = cir.getParValue("g_m_X1", substitute = False)
     ciss = cir.getParValue("c_iss_X1", substitute=False)
-    ig   = cir.getParValue("IG", substitute=False)
+    #ig   = cir.getParValue("IG", substitute=False)
     ic   = cir.getParValue("IC_X1", substitute=False)
     cir.defPar("c_iss_X1", c_iss) # Use symbolic definition of c_iss
     cir.defPar("g_m_X1", g_m)     # Use symbolic definition of g_m
     cir.defPar("IG", 0)           # Ignore gate shot noise (leakage current)
     cir.defPar("IC_X1", IC_spec) # Use symbolic definition of IC
     # Express the output noise spectrum in c_iss, g_m, and f
-    
     onoise   = sl.doNoise(cir, pardefs='circuit', numeric=True).onoise
     # Wtite the output noise as a sum of products of numerically calculated integrals and 
     # coefficients in the form of (g_m^x * c_iss^y), where x and y are positive or negative integers.
@@ -140,7 +140,7 @@ def _getCoeffs(cir, IC_spec, f_min, f_max):
         cir.defPar("g_m_X1", gm)
     cir.defPar("g_m_X1", gm)
     cir.defPar("c_iss_X1", ciss)
-    cir.defPar("IG", ig)
+    #cir.defPar("IG", ig)
     cir.defPar("IC_X1", ic)
     return out
     
@@ -230,7 +230,7 @@ def _WLI(cir, g_min, c_iss_min, IC_spec, model):
     a     = chi * COX
     b     = 2 * CGSO
     c     = 2 * CGBO
-    d     = I0 * gm/ID *IC_spec
+    d     = I0 * gm/ID * IC_spec
     if model.channel.upper() == "P":
         d = -d
     if b == 0 and c == 0:
@@ -336,14 +336,14 @@ def _c_g_fT(coeffs, fT):
     gm_opt = sp.N(fT*2*sp.pi*ciss_opt)
     return gm_opt, ciss_opt
 
-def _mosParams(file_name, specs, model):
+def _mosParams(file_name, specs, model, par_defs = {}):
     print("\n=============================================================")
     print("Model: {}".format(model.name))
     print("=============================================================\n")
     # Create output dictionary
     out = {}
     # Create the noisy nullor circuit from the nullor circuit
-    cir = _noisyNullorCircuit(file_name, model, lib="SLiCAP_C18.lib")
+    cir = _noisyNullorCircuit(file_name, model, lib="SLiCAP_C18.lib", par_defs=par_defs)
     if cir != None:
         # store symbolic definition of IC
         ic  = cir.getParValue("IC_X1", substitute=False) 
@@ -402,7 +402,7 @@ def _checkNoise(cir, specs, pardefs):
     RMSnoise = sl.rmsNoise(Sout, "onoise", specs.f_min, specs.f_max)
     return RMSnoise, cir
 
-def _checkNoiseSpice(baseFileName, model, specs, ID, W, L):
+def _checkNoiseSpice(baseFileName, model, specs, ID, W, L, spice_params=None):
     M  = int(W/ model.W_finger) + 1
     W  = W/M
     params = [("W", W), ("L", L), ("ID", ID), ("M", M), ("VDS", specs.VDS)]
@@ -410,6 +410,8 @@ def _checkNoiseSpice(baseFileName, model, specs, ID, W, L):
     biascir = biascir.split("/")[-1].split(".")[0]
     biasinfo = sl.ngspice2traces(sl.ini.cir_path + biascir, "OP", {"VGS": "V(g1)", "VDS": "V(d1)"}, parList=params)
     params = [("W", W), ("L", L), ("ID", ID), ("M", M), ("VDS", biasinfo["VDS"]), ("VGS", biasinfo["VGS"])]
+    if type(spice_params) == list:
+        params += spice_params
     simCmd = "OP"
     names  = {"V_in": "V(in)", "V_out": "V(out)", "I_DS": "@M.X1.M1[id]", "V_GS": "@M.X1.M1[vgs]", "g_m": "@M.X1.M1[gm]", "c_iss": "@M.X1.M1[cgg]"}
     cirFile = baseFileName + "NoisyNullor{}.kicad_sch".format(model.channel.upper())
@@ -420,16 +422,27 @@ def _checkNoiseSpice(baseFileName, model, specs, ID, W, L):
     out["W"] = W
     out["M"] = M
     names  = {"V_no": "onoise_total"}
-    simCmd = "NOISE V(out) I4 dec 50 " + str(specs.f_min) + " " + str(specs.f_max)
+    
+    ## ADD SOURCE
+    
+    simCmd = "NOISE V(out) V1 dec 50 " + str(specs.f_min) + " " + str(specs.f_max)
     noise  = sl.ngspice2traces(sl.ini.cir_path + netlist, simCmd, names, parList=params)
     for key in noise.keys():
         out[key] = noise[key]
     return out
 
-def _printResults(results, cir, specs, model, kicad_sch, printAll=True):
-    print("\nUpdating library sub circuit definitions.\n")
-    sl.makeCircuit(model.bias, language="SPICE")
-    sl.makeCircuit(model.subckt, language="SPICE")
+def _printResults(results, cir, specs, model, kicad_sch, printAll=True, spice=False, par_defs={}):
+    if spice:
+        print("\nUpdating library sub circuit definitions.\n")
+        sl.makeCircuit(model.bias, language="SPICE")
+        sl.makeCircuit(model.subckt, language="SPICE")
+        spice_params = []
+        for key in par_defs.keys():
+            try:
+                spice_params.append( (str(key), float(par_defs[key])) )
+            except TypeError:
+                print("Error: cannot calculate numeric value of {}.".format(str(key)))
+                #spice = False
     for key in results.keys():
         errors        = False
         RMSnoise, cir = _checkNoise(cir, specs, results[key])
@@ -485,11 +498,11 @@ def _printResults(results, cir, specs, model, kicad_sch, printAll=True):
             print("IC_spec    : {:.2g} -".format(IC_spec))
             print("IC         : {:.2g} -".format(IC))
             print("f_T        : {:.2g} MHz".format(sp.N(gm/2/sp.pi/ciss/1e6)))
-        if not errors:
+        if not errors and spice:
             try:
                 print("\n------------ SPICE verification ------------\n")
                 baseFileName = kicad_sch.replace("\\", "/").split(".")[0]
-                spiceResults = _checkNoiseSpice(baseFileName, model, specs, ID, W, L)
+                spiceResults = _checkNoiseSpice(baseFileName, model, specs, ID, W, L, spice_params=spice_params)
                 if len(spiceResults.keys()):
                     print("\nRMS noise  : {:.2e} uV".format(spiceResults["V_no"]*1e6))
                     print("ID         : {:.2g} uA".format(spiceResults["I_DS"]*1e6))
@@ -511,11 +524,15 @@ def _printResults(results, cir, specs, model, kicad_sch, printAll=True):
             except:
                 pass
     
-def doMOSnoiseDesign(kicad_sch, specs, models, printAll=True):
+def doMOSnoiseDesign(kicad_sch, specs, models, printAll=True, spice=False, par_defs={}):
     all_results = {}
     for model in models:
-        results, cir = _mosParams(kicad_sch, specs, model)
+        results, cir = _mosParams(kicad_sch, specs, model, par_defs=par_defs)
         if len(results.keys()) != 0:
-            _printResults(results, cir, specs, model, kicad_sch, printAll=printAll)
+            if spice:
+                par_defs = {}
+                for key in cir.parDefs.keys():
+                    par_defs[key] = sl.fullSubs(cir.parDefs[key], cir.parDefs)
+            _printResults(results, cir, specs, model, kicad_sch, printAll=printAll, spice=spice, par_defs=par_defs)
             all_results[model.name] = (deepcopy(results), deepcopy(cir))
     return all_results

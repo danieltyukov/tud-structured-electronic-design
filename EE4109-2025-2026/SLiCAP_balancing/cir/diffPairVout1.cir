@@ -1,0 +1,15 @@
+diffPairVout1
+.lib lib/log018.l TT
+.param W=220n L=180n M=1
+.param Iss =100n VCM=0.9
+B1 1 outP I=I(I1)/2-1k*((V(outP)+V(outN))/2-V(CM))
+B2 1 outN I=I(I1)/2-1k*((V(outP)+V(outN))/2-V(CM))
+E1 3 4 3 2 -1
+I1 ss 0 {Iss}
+M1 outP 2 ss 0 nch m={M} w={W} l={L}
+M2 outN 4 ss 0 nch m={M} w={W} l={L}
+V1 1 0 1.8
+V2 3 0 1.2
+V3 2 3 DC 0
+V4 CM 0 {VCM}
+.end

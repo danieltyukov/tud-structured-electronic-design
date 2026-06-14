@@ -1,0 +1,4 @@
+mosEKVplots
+.param V_D=1.8 V_G=0.5 V_S=0 W=220n L=180n
+X1 1 2 0 0 CMOS18N_V W={W} L={L} VG={V_G} VD={V_D} VS={V_S}
+.end

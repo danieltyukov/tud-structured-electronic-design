@@ -1,0 +1,13 @@
+VampDualStageCScontroller_2
+.model M1 M gm={g_m1} go={g_o1} gb={g_b1} cgs={c_gs1}
+.model M2 M gm={g_m2} go={g_o2} gb={g_b2} cgs={c_gs2}
+.detector V_L
+.source V1
+M1 1 0 2 0 M1
+M2 L 1 0 0 M2
+R1 L 3 R value={Z_1} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R2 3 0 R value={Z_2} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R3 L 0 R value={Z_L} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+R4 4 3 R value={Z_s} noisetemp=0 noiseflow=0 dcvar=0 dcvarlot=0
+V1 4 2 V value=0 noise=0 dc=0 dcvar=0
+.end

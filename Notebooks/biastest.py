@@ -16,14 +16,16 @@ VDS = 0.9
 W   = 220e-9
 L   = 180e-9
 M   = 1
-CH  = "P"
+CH  = "N"
 
 # Update library subcircuit definitions
 fileName = "kicad/Libs/bias{}.kicad_sch".format(CH.upper())
 sl.makeCircuit(fileName, language="SPICE")
+
+
 fileName = "kicad/Libs/noisyNullor{}.kicad_sch".format(CH.upper())
 sl.makeCircuit(fileName, language="SPICE")
-
+"""
 # Obtain MOS operating point information
 simCmd = "OP"
 names  = {"V_D"  : "V(d1)",
@@ -54,3 +56,4 @@ for key in opinfo.keys():
     print(key, "\t:", opinfo[key])
 for key in bias.keys():
     print(key, "\t:", bias[key])
+    """

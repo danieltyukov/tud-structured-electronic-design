@@ -1,0 +1,39 @@
+CSstageNMOS_SPICE_Zt-Ai
+.lib lib/log018.l TT
+.param ID=10u VD=0.9 W=220n L=180n M=1 A=10u f=1Meg RS=10k CS=10p RL=10k CL=1p
+B1 g1 0 V=0.9*(1+tanh(I(V1)))
+C1 1 8 {CS}
+C2 load 0 {CL}
+E2 1 0 g1 0 1
+F1 0 2 V1 1
+I1 0 2 {ID}
+I2 0 3 {ID}
+I3 0 4 {ID}
+I4 0 5 {ID}
+I5 0 6 DC 0 AC 1 0
+I6 0 7 DC 0 AC 1 0
+I7 0 8 DC 0 AC 1 0 SIN 0 {A} {f}
+M1 2 g1 0 0 nch m={M} w={W} l={L}
+M2 3 6 0 0 nch m={M} w={W} l={L}
+M3 4 7 0 0 nch m={M} w={W} l={L}
+M4 5 8 0 0 nch m={M} w={W} l={L}
+R1 1 8 {RS} noisy=1
+R2 load 0 {RL} noisy=1
+R3 1 6 1T noisy=1
+R4 1 7 1T noisy=1
+V1 2 0 {VD}
+V3 4 0 {VD}
+V4 5 load {VD}
+V8 3 out {VD}
+** Python input section **
+.control
+set wr_vecnames
+set wr_singlescale
+TRAN 10n 5u
+let V_out = V(out)
+let ID = I(V3)
+let V_load = V(load)
+let I_load = I(V4)
+wrdata cir/CSstageNMOS_SPICE_Zt-Ai.csv V_out ID V_load I_load
+.endc
+.end

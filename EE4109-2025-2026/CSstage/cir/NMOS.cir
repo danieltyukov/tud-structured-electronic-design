@@ -1,0 +1,16 @@
+NMOS
+.lib ../lib/log018.l TT
+B1 g1 s1 V=0.9*(1+tanh(I(V7)))
+E1 g2 in g1 0 1
+F1 0 d1 V7 1
+I1 0 d1 {ID}
+M1 d1 g1 s1 b1 nch m={M} w={W} l={L}
+M2 d2 g2 s2 b2 nch m={M} w={W} l={L}
+V1 in 0 DC 0
+V2 s2 0 DC {VS}
+V3 d2 0 DC {VD}
+V4 b2 0 DC {VB}
+V5 s1 0 {VS}
+V6 b1 0 {VB}
+V7 d1 0 {VD}
+.end

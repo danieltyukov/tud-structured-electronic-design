@@ -1,0 +1,10 @@
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{%- block extrahead %}
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script type="text/javascript">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(', '\\)']]}});</script>
+{% endblock %}
+
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = ['_static/my-styles.css'] %}

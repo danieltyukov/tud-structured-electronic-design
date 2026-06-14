@@ -1,0 +1,5 @@
+CSstageNMOS_SLiCAP_Zt
+.model myMOS M cgs={c_gs} cdg={c_gd} cgb={c_gb} cdb={c_db} csb={c_sb} gm={g_m} go={g_o} gb={g_b}
+I1 0 1 I value=0 noise=0 dc=0 dcvar=0
+M1 out 1 0 0 myMOS
+.end

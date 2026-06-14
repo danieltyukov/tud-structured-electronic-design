@@ -1,0 +1,14 @@
+diffPairVoutCM
+.lib lib/log018.l TT
+.param Iss =100n VM=0.4
+.param W=220n L=180n M=1
+E1 2 3 2 1 -1
+F1 4 out V4 1
+I1 ss 0 {Iss}
+M1 5 1 ss 0 nch m={M} w={W} l={L}
+M2 out 3 ss 0 nch m={M} w={W} l={L}
+V1 4 0 1.8
+V2 2 0 1.2
+V3 1 2 DC 0
+V4 4 5 {VM}
+.end
