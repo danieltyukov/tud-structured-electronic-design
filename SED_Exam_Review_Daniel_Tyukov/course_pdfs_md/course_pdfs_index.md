@@ -73,7 +73,7 @@
 - **Use case:** Justify CS input stage for low noise; understand gain per stage
 
 ### Topic: Differential Pair vs Single CS (Noise Balancing)
-- **Best source:** Balancing-differential-pair.pdf, pages 1–20; ControllerDesign.pdf, page 5 ("CS or balanced — best nullor-like")
+- **Best source:** Balancing-differential-pair.pdf, pages 1–20; ControllerDesign.pdf, page 5 ("CS or balanced, best nullor-like")
 - **Content:** Anti-series CS structure; matched pair diagram; noise cancellation in differential mode
 - **Use case:** Input stage architecture decision (single-ended vs differential for CMRR/noise)
 
@@ -97,16 +97,16 @@
 
 ## Top 10 Most Useful Figure Sources for Presentation
 
-1. **HearingLoopIntro.pdf, page 2** — System block diagram + specs (context)
-2. **FeedbackStages-intro.pdf, pages 8–12** — Feedback topology table & T1 matrices (V-V amplifier choice)
-3. **FeedbackAmpCSstageNoiseDesign.pdf, page 4** — MOS noise model (noisy nullor, Vn/In sources)
-4. **mosEKVmodel.pdf, pages 40–50** — Inversion coefficient vs gm/c_iss curves (design trade-off)
-5. **CSstage-intrinsic.pdf, pages 1–10** — CS stage ABCD matrices & nullor equivalence (gain per stage)
-6. **ControllerDesign.pdf, pages 1–15** — Input stage selection (CS vs balanced), noise-optimal choice
-7. **Balancing-differential-pair.pdf, pages 1–15** — Differential pair structure (if using balanced input)
-8. **FeedbackAmpCSstageNoiseDesign.pdf, pages 7–10** — Noise design equation & feasibility (spec-to-design link)
-9. **FeedbackStages-intro.pdf, pages 50+** — Loop-gain/asymptotic gain model (stability/accuracy)
-10. **ControllerDesign.pdf, pages 10–20** — Output stage (complementary parallel CS, VI-drive)
+1. **HearingLoopIntro.pdf, page 2**, System block diagram + specs (context)
+2. **FeedbackStages-intro.pdf, pages 8–12**, Feedback topology table & T1 matrices (V-V amplifier choice)
+3. **FeedbackAmpCSstageNoiseDesign.pdf, page 4**, MOS noise model (noisy nullor, Vn/In sources)
+4. **mosEKVmodel.pdf, pages 40–50**, Inversion coefficient vs gm/c_iss curves (design trade-off)
+5. **CSstage-intrinsic.pdf, pages 1–10**, CS stage ABCD matrices & nullor equivalence (gain per stage)
+6. **ControllerDesign.pdf, pages 1–15**, Input stage selection (CS vs balanced), noise-optimal choice
+7. **Balancing-differential-pair.pdf, pages 1–15**, Differential pair structure (if using balanced input)
+8. **FeedbackAmpCSstageNoiseDesign.pdf, pages 7–10**, Noise design equation & feasibility (spec-to-design link)
+9. **FeedbackStages-intro.pdf, pages 50+**, Loop-gain/asymptotic gain model (stability/accuracy)
+10. **ControllerDesign.pdf, pages 10–20**, Output stage (complementary parallel CS, VI-drive)
 
 ---
 

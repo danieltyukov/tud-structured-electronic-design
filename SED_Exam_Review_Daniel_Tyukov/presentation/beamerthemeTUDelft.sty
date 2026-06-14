@@ -118,7 +118,7 @@
     % dark footer band
     \fill[tudblue] (current page.south west) rectangle ([yshift=1.15cm]current page.south east);
     \node[anchor=west,text=white,font=\footnotesize] at ([xshift=0.7cm,yshift=0.57cm]current page.south west)
-      {EE4109 — Structured Electronics Design};
+      {EE4109 Structured Electronics Design};
     \node[anchor=east,text=white,font=\footnotesize] at ([xshift=-0.7cm,yshift=0.57cm]current page.south east)
       {Delft University of Technology};
   \end{tikzpicture}%
@@ -140,7 +140,7 @@
 % ----------------------------------------------------------------------
 \newcommand{\insertsectionnumbermark}{}
 \AtBeginSection[]{%
-  \begin{frame}[plain,noframenumbering]
+  \begin{frame}[plain]
     \begin{tikzpicture}[remember picture,overlay]
       \fill[tudblue] (current page.south west) rectangle (current page.north east);
       \node[anchor=north east,text=white] at ([xshift=-0.7cm,yshift=-0.55cm]current page.north east)

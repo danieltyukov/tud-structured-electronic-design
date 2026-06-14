@@ -1,6 +1,6 @@
 # Source data behind the presentation
 
-These are the **actual SLiCAP / KiCad sources** the deck is built from — copied verbatim from
+These are the **actual SLiCAP / KiCad sources** the deck is built from, copied verbatim from
 the current `Notebooks/` A1 pipeline (the *new* notebooks, not the old Team-12 model) so the
 presentation is self-contained and auditable.
 
@@ -9,13 +9,13 @@ presentation is self-contained and auditable.
 | Folder | Contents |
 |---|---|
 | `cir/` | SLiCAP netlists: `dualStageEKV` (EKV transistor model), `dualStageEKVcompensated` (with the phantom-zero $R_{phz}$), `dualStageSimple` / `singleStageSimple` (behavioural $g_m$ models), `feedbackConcept` + `feedbackConceptNoisyNullorN18` (the concept / noisy-nullor model) |
-| `csv/` | Design hand-off data: `A1specs`, `fb_concept(_simple)`, `dualStage` — the exact (sympy) values every number in the deck is derived from |
+| `csv/` | Design hand-off data: `A1specs`, `fb_concept(_simple)`, `dualStage`, the exact (sympy) values every number in the deck is derived from |
 | `lib/` | SLiCAP libraries: `SLiCAP_C18.lib` (CMOS18 EKV models), `noisyNullorN/P.lib`, `DIN_A.lib`, `log018.l` |
-| `kicad/` | KiCad schematics for the circuits exported as images (`A1/`, shared symbols in `Libs/`) — openable in KiCad |
+| `kicad/` | KiCad schematics for the circuits exported as images (`A1/`, shared symbols in `Libs/`), openable in KiCad |
 
 ## How every figure was produced (plot provenance)
 
-All circuit plots are computed by **SLiCAP 4.0.10** running on the **actual netlists above** —
+All circuit plots are computed by **SLiCAP 4.0.10** running on the **actual netlists above**,
 not by hand. Scripts live one level up in `../`:
 
 | Figure | Source | SLiCAP routine |
@@ -36,9 +36,9 @@ MCP (`slicap_schematic_export`); the colour-coded versions add translucent zones
 ## Regenerate everything
 
 ```bash
-cd ..                     # SED_Exam_Review_Daniel_Tyukov/data/slicap
+cd .. # SED_Exam_Review_Daniel_Tyukov/data/slicap
 PY=/home/danieltyukov/workspace/tud/slicap_env/bin/python
-$PY gen_values.py         # CSV -> values.json + numeric netlist
-$PY gen_plots.py          # SLiCAP -> all plots + pz_table.json
+$PY gen_values.py # CSV -> values.json + numeric netlist
+$PY gen_plots.py # SLiCAP -> all plots + pz_table.json
 $PY colorize_schematic.py # colour-coded circuit overlays
 ```
