@@ -1,0 +1,162 @@
+% beamerthemeTUDelft.sty — TU Delft branded beamer theme
+% Palette + logo taken from the official TU Delft PowerPoint corporate template.
+% Author: Daniel Tyukov (5714699)
+\ProvidesPackage{beamerthemeTUDelft}[2026/06/15 TU Delft beamer theme]
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\usetikzlibrary{calc}
+
+% ----------------------------------------------------------------------
+% TU Delft brand palette (from official template theme1.xml clrScheme)
+% ----------------------------------------------------------------------
+\definecolor{tudcyan}{HTML}{00A6D6}   % primary
+\definecolor{tudblue}{HTML}{0C2340}   % dark navy
+\definecolor{tudpink}{HTML}{EF60A3}
+\definecolor{tudorange}{HTML}{EC6842}
+\definecolor{tudyellow}{HTML}{FFB81C}
+\definecolor{tudgreen}{HTML}{6CC24A}
+\definecolor{tudgray}{HTML}{5A5758}
+\definecolor{tudlightgray}{HTML}{ECECEC}
+
+% ----------------------------------------------------------------------
+% Colors
+% ----------------------------------------------------------------------
+\setbeamercolor{normal text}{fg=tudblue,bg=white}
+\setbeamercolor{structure}{fg=tudcyan}
+\setbeamercolor{frametitle}{fg=tudblue,bg=white}
+\setbeamercolor{framesubtitle}{fg=tudgray}
+\setbeamercolor{title}{fg=tudblue}
+\setbeamercolor{subtitle}{fg=tudcyan}
+\setbeamercolor{author}{fg=tudgray}
+\setbeamercolor{date}{fg=tudgray}
+\setbeamercolor{itemize item}{fg=tudcyan}
+\setbeamercolor{itemize subitem}{fg=tudcyan}
+\setbeamercolor{itemize subsubitem}{fg=tudcyan}
+\setbeamercolor{enumerate item}{fg=tudcyan}
+\setbeamercolor{block title}{fg=white,bg=tudcyan}
+\setbeamercolor{block body}{fg=tudblue,bg=tudlightgray}
+\setbeamercolor{block title alerted}{fg=white,bg=tudorange}
+\setbeamercolor{block body alerted}{fg=tudblue,bg=tudlightgray}
+\setbeamercolor{block title example}{fg=white,bg=tudgreen}
+\setbeamercolor{block body example}{fg=tudblue,bg=tudlightgray}
+\setbeamercolor{alerted text}{fg=tudorange}
+\setbeamercolor{section in toc}{fg=tudblue}
+\setbeamercolor{subsection in toc}{fg=tudgray}
+\setbeamercolor{caption name}{fg=tudcyan}
+\setbeamercolor{footline}{fg=white,bg=tudblue}
+
+% ----------------------------------------------------------------------
+% Fonts
+% ----------------------------------------------------------------------
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\small,series=\mdseries}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+\setbeamerfont{subtitle}{size=\large,series=\mdseries}
+\setbeamerfont{footline}{size=\tiny}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamertemplate{navigation symbols}{}
+
+% bullets: small filled squares in cyan
+\setbeamertemplate{itemize item}{\small\raisebox{0.18ex}{\textcolor{tudcyan}{$\blacksquare$}}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.18ex}{\textcolor{tudcyan}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subsubitem}{\scriptsize\raisebox{0.18ex}{\textcolor{tudcyan}{$\bullet$}}}
+
+% blocks with a little rounding
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% ----------------------------------------------------------------------
+% Frame title: title text + cyan rule + small logo top-right
+% ----------------------------------------------------------------------
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.9em,dp=0.3em]{frametitle}%
+    \hspace*{0.55cm}%
+    \begin{minipage}[c][2.9em][c]{0.80\paperwidth}%
+      {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
+      \ifx\insertframesubtitle\@empty\else%
+        \\[0.1em]{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+      \fi%
+    \end{minipage}%
+    \hfill%
+    \raisebox{0.05em}{\includegraphics[height=0.86cm]{tudelft_logo}}%
+    \hspace*{0.45cm}%
+  \end{beamercolorbox}%
+  {\color{tudcyan}\rule{\paperwidth}{1.4pt}}\par\vskip0.45em
+}
+
+% ----------------------------------------------------------------------
+% Footline: course | block | author + page
+% ----------------------------------------------------------------------
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.32\paperwidth,ht=2.4ex,dp=1.1ex,leftskip=.4cm]{footline}%
+    {\usebeamerfont{footline}EE4109 Structured Electronics Design}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.44\paperwidth,ht=2.4ex,dp=1.1ex,center]{footline}%
+    {\usebeamerfont{footline}A1 Receive-Coil Amplifier · Design Review}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.24\paperwidth,ht=2.4ex,dp=1.1ex,rightskip=.4cm]{footline}%
+    {\usebeamerfont{footline}\hfill Daniel Tyukov · \insertframenumber/\inserttotalframenumber\,}%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% ----------------------------------------------------------------------
+% Custom title page
+% ----------------------------------------------------------------------
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % logo top-right
+    \node[anchor=north east] at ([xshift=-0.7cm,yshift=-0.55cm]current page.north east)
+      {\includegraphics[height=1.15cm]{tudelft_logo}};
+    % cyan accent band behind the title
+    \fill[tudcyan] ([yshift=-3.05cm]current page.north west) rectangle ([yshift=-3.18cm]current page.north east);
+    % dark footer band
+    \fill[tudblue] (current page.south west) rectangle ([yshift=1.15cm]current page.south east);
+    \node[anchor=west,text=white,font=\footnotesize] at ([xshift=0.7cm,yshift=0.57cm]current page.south west)
+      {EE4109 — Structured Electronics Design};
+    \node[anchor=east,text=white,font=\footnotesize] at ([xshift=-0.7cm,yshift=0.57cm]current page.south east)
+      {Delft University of Technology};
+  \end{tikzpicture}%
+  \vskip0.2cm
+  \begin{minipage}{0.95\textwidth}
+    \raggedright
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+    \vskip0.25cm
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+    \vskip0.9cm
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+    \vskip0.15cm
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+  \end{minipage}
+}
+
+% ----------------------------------------------------------------------
+% Section divider frame (dark navy background)
+% ----------------------------------------------------------------------
+\newcommand{\insertsectionnumbermark}{}
+\AtBeginSection[]{%
+  \begin{frame}[plain,noframenumbering]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[tudblue] (current page.south west) rectangle (current page.north east);
+      \node[anchor=north east,text=white] at ([xshift=-0.7cm,yshift=-0.55cm]current page.north east)
+        {\includegraphics[height=0.95cm]{tudelft_logo_white}};
+      % Part label (top), title (middle), cyan underline below the title — no overlap
+      \node[anchor=west,text=tudcyan,font=\Large\bfseries]
+        at ([xshift=0.95cm,yshift=1.65cm]current page.center -| current page.west)
+        {Part \thesection};
+      \node[anchor=north west,text=white,font=\LARGE\bfseries,text width=0.84\paperwidth]
+        at ([xshift=0.9cm,yshift=1.05cm]current page.center -| current page.west)
+        {\insertsectionhead};
+      \fill[tudcyan]
+        ([xshift=0.95cm,yshift=-1.15cm]current page.center -| current page.west)
+        rectangle ([xshift=7.0cm,yshift=-1.07cm]current page.center -| current page.west);
+    \end{tikzpicture}
+  \end{frame}
+}
+
+\mode<all>
