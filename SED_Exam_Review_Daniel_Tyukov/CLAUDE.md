@@ -400,10 +400,14 @@ X2 = **CMOS18N (NMOS, 2nd stage)** W = 10 µm, L = 0.18 µm, I_D = 16.5 µA.
 - **Key:** `z = −1/(R_phz·C_L)`.
 
 ### Slide 43 — Compensation result
-- **Shown:** Before/after plot (`plots/compensation_sweep.png` / `gain_uncompensated.png`) + table.
-- **Say:** R_phz ≈ **0.42 kΩ** pulls the high-frequency pair's Q from **5.4 → 0.70** (maximally
-  flat). Peak gone, passband untouched, all poles stay in the LHP → still stable. The whole fix is
-  **one resistor**.
+- **Shown:** **Two plots** — left: before/after full band (`plots/compensation_mfm.png`); right: the
+  R_phz sweep (`plots/compensation_sweep.png`, under/MFM/over) — plus a result box.
+- **Say:** Two plots. Left: full-band gain before/after — peak gone, passband intact. Right: sweeping
+  R_phz — too small under-damps (bump stays), MFM flattens it, too large over-damps (costs
+  bandwidth). R_phz ≈ **0.42 kΩ** pulls the 51 MHz pair's Q from **5.4 → 0.70** (MFM). All poles stay
+  in the LHP → still stable. The whole fix is **one resistor**.
+- **If pushed:** "Did you actually simulate it?" — yes; both plots are SLiCAP `doLaplace` runs on
+  `dualStageEKVcompensated.cir`, R_phz swept to the MFM point (`gen_plots.py`).
 
 ### Slide 44 — *Part 8 divider: Conclusions*
 - **Say:** Let me wrap up.
