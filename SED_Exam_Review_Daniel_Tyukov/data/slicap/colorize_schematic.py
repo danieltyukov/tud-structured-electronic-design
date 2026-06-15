@@ -19,15 +19,21 @@ JOBS = {
   "feedbackConceptNoisyNullorN18.png": ("circuit_model_colored.png", 52, [
       (0.00,0.165, CY), (0.165,0.30, OR), (0.30,0.515, GR),
       (0.515,0.685, YE), (0.685,0.815, PK), (0.815,1.00, GY)]),
-  # dual-stage EKV: colour ONLY the two stages (like Group 2's topology slide)
+  # dual-stage EKV: all five blocks; the two stages (cyan/pink) kept prominent, the rest light.
+  # per-zone alpha as optional 4th element.
   "dualStageEKV.png": ("dualstage_colored.png", 60, [
-      (0.255,0.485, CY), (0.625,0.815, PK)]),
-  # single-stage behavioural: highlight the one amplifier stage
-  "singleStageSimple.png": ("singleStageSimple_colored.png", 55, [
-      (0.40,0.60, CY)]),
-  # dual-stage behavioural: highlight the two gm stages
+      (0.00,0.255, GY, 30), (0.255,0.485, CY, 64), (0.485,0.625, YE, 36),
+      (0.625,0.815, PK, 64), (0.815,1.00, GR, 36)]),
+  # single-stage behavioural: colour every block (matches the slide-10 roadmap scheme,
+  # and the speaker note that walks coil -> termination -> amplifier -> feedback -> load)
+  "singleStageSimple.png": ("singleStageSimple_colored.png", 48, [
+      (0.00,0.255, CY), (0.255,0.385, OR), (0.385,0.605, GR),
+      (0.605,0.795, YE), (0.795,1.00, PK)]),
+  # dual-stage behavioural: all five blocks (note: feedback sits AFTER the 2nd stage here).
+  # stages (cyan/pink) bold; coil/feedback/load light.
   "dualStageSimple.png": ("dualStageSimple_colored.png", 55, [
-      (0.335,0.545, CY), (0.545,0.745, PK)]),
+      (0.00,0.28, GY, 30), (0.28,0.55, CY, 60), (0.55,0.715, PK, 60),
+      (0.715,0.845, YE, 38), (0.845,1.00, GR, 36)]),
 }
 
 def on_white(img):
@@ -49,8 +55,10 @@ for src, (dst, A, zones) in JOBS.items():
     overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(overlay)
     y0, y1 = int(h*0.10), int(h*0.99)
-    for x0f, x1f, col in zones:
-        d.rectangle([int(w*x0f), y0, int(w*x1f), y1], fill=col + (A,))
+    for z in zones:
+        x0f, x1f, col = z[0], z[1], z[2]
+        a = z[3] if len(z) > 3 else A
+        d.rectangle([int(w*x0f), y0, int(w*x1f), y1], fill=col + (a,))
     out = Image.alpha_composite(im, overlay).convert("RGB")
     out.save(os.path.join(SCH, dst))
     print("wrote", dst, out.size)

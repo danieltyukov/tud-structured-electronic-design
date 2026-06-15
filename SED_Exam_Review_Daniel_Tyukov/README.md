@@ -31,7 +31,8 @@ SED_Exam_Review_Daniel_Tyukov/
 │  └─ SOURCES.md                # provenance: which SLiCAP routine made each figure
 ├─ notes/
 │  ├─ theory_notes.md           # formulas, derivations, what the review wants
-│  └─ speaker_notes.md          # first-person notes to read from (one per slide)
+│  ├─ speaker_notes.md          # first-person notes to read from (one per slide)
+│  └─ slide_reference.md        # per-slide circuit reference (every part of each SLiCAP schematic)
 └─ course_pdfs_md/
    └─ course_pdfs_index.md      # which course PDF/page holds which figure
 ```
@@ -60,7 +61,8 @@ Team-12 model).
 
 When the slides change, the related `.md` files are updated alongside them:
 `notes/speaker_notes.md` (one note per slide, must match slide order/count),
-`notes/theory_notes.md` (numbers must match the regenerated data), and this README.
+`notes/theory_notes.md` (numbers must match the regenerated data),
+`notes/slide_reference.md` (per-slide circuit parts, must match the schematics), and this README.
 Both `main.pdf` and `SED_Review_A1_Daniel_Tyukov.pdf` are rebuilt together.
 
 ## Deck outline (8 parts, 46 slides)

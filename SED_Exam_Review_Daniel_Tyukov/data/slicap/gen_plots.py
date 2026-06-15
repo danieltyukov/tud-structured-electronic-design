@@ -216,6 +216,26 @@ try:
 except Exception:
     traceback.print_exc()
 
+# ===== 4c. R_phz sweep: how the phantom zero tunes the HF peak (SLiCAP) =====
+try:
+    f = np.logspace(5, 8.7, 1300)               # 0.1 .. 500 MHz, where the peak lives
+    db_u, _ = mag_db(curves["gain"], f)         # uncompensated
+    fig, ax = plt.subplots(figsize=FIG)
+    ax.semilogx(f, db_u, color=GREY, lw=2.0, ls=":", label="no $R_{phz}$ (Q$\\approx$5.4)")
+    for rphz, col, lab in [(120, ORANGE, "0.12k (under)"),
+                           (420, BLUE,   "0.42k (MFM)"),
+                           (1800, GREEN, "1.8k (over)")]:
+        circ.defPar("R_phz", float(rphz))
+        rr = sl.doLaplace(circ, transfer="gain", lgref="Gm_M1_X2", pardefs="circuit", numeric=True)
+        db, _ = mag_db(str(rr.laplace), f)
+        ax.semilogx(f, db, color=col, lw=2.6, label=f"$R_{{phz}}=${lab}$\\Omega$")
+    ax.set_xlabel("frequency [Hz]"); ax.set_ylabel("magnitude [dB]")
+    ax.set_title("Effect of $R_{phz}$ on the HF peak")
+    ax.legend(loc="lower left", fontsize=10.5)
+    save(fig, "compensation_sweep.png")
+except Exception:
+    traceback.print_exc()
+
 # ===== 5. SLiCAP: pick-up coil damping (actual RLC circuit, R_t swept) =====
 try:
     Rt_crit = 79971.89

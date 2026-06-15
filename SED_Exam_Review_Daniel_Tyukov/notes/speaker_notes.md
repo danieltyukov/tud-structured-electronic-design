@@ -167,11 +167,18 @@ termination, a single common-source controller, the feedback network, and the lo
 simplest thing that could work, so I test it.
 
 ### 29 · Is a single stage enough?
-A single common-source has only three usable terminals, so I'd use a differential pair, which
-costs about four times the current and area. The current drive and the voltage headroom are both
-fine. But the loop gain stays below one across the band, as the plot shows, and if the loop gain
-is below one the feedback can't enforce the transfer, so the accuracy is poor. So one stage fails,
-and I move to a dual stage.
+The plot is the asymptotic-gain model for the single stage, so let me read the five curves. The
+red curve is the asymptotic gain, the ideal target the feedback should deliver. The black curve
+is the loop gain, and that is the problem here: it stays below 0 dB, magnitude one, across the
+whole band. The magenta curve is the servo function, and because the loop gain never reaches 0 dB
+the servo can't reach one, so the blue closed-loop gain is not locked onto the red asymptotic
+target. The green curve is the direct feed-through, which is negligible.
+
+Now the checks. A single common-source has only three usable terminals, so I'd use a differential
+pair, about four times the current and area. The current drive into the load is fine, and the
+voltage headroom on 0.9 volt is fine. But with the loop gain below one, the feedback can't enforce
+the transfer, so the accuracy is poor. So one stage fails the accuracy test, and I move to a dual
+stage.
 
 ### 30 · Part 5 (divider)
 So, the dual stage.
@@ -183,10 +190,11 @@ the job, a low-noise PMOS differential pair first, then a high-loop-gain NMOS co
 stage couldn't give both; two stages can.
 
 ### 32 · Suggested topology
-Here's the suggested topology. The first stage, in blue, is the PMOS differential pair. The
-second stage, in pink, is the NMOS common-source. The coil, feedback and load are around them,
-and at the bottom you can see the SLiCAP directives, the source, the detector and the loop-gain
-reference.
+Here's the suggested topology, coloured by block. On the left, in grey, the coil source. Then in
+cyan the first stage, the PMOS differential pair. In yellow the feedback network. In pink the
+second stage, the NMOS common-source. And in green the ADC load. The two stages are the point, so
+they're the bold colours, coil, feedback and load sit lighter around them. At the bottom are the
+SLiCAP directives: the source, the detector, and the loop-gain reference.
 
 ### 33 · First stage: differential pair vs single CS
 Why the differential pair for stage one? It has lower noise, high common-mode rejection, and it

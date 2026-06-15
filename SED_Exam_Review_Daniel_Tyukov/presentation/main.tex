@@ -565,9 +565,11 @@
 
 \begin{frame}{Single stage: the circuit}
   \centering
-  \includegraphics[width=0.82\linewidth]{singleStageSimple_colored}\\[0.2em]
-  {\footnotesize\cbox{tudcyan}~single amplifier stage ($-g_m$)}\quad
-  \src{behavioural model: coil $\to$ termination $\to$ one CS controller $\to$ feedback $\to$ load}
+  \includegraphics[width=0.82\linewidth]{singleStageSimple_colored}\\[0.25em]
+  {\footnotesize
+   \cbox{tudcyan}~coil source \ \ \cbox{tudorange}~termination \ \
+   \cbox{tudgreen}~amplifier ($-g_m$) \ \ \cbox{tudyellow}~feedback \ \ \cbox{tudpink}~ADC load}\\[0.2em]
+  \src{behavioural model: one common-source controller, i.e. the single amplifier stage}
 \end{frame}
 
 \begin{frame}{Is a single stage enough?}
@@ -620,9 +622,10 @@
 
 \begin{frame}{Suggested topology}
   \centering
-  \includegraphics[width=0.74\linewidth]{dualstage_colored}\\[0.2em]
-  {\footnotesize\cbox{tudcyan}~1st stage: PMOS differential pair \quad
-   \cbox{tudpink}~2nd stage: NMOS common-source}\\[0.1em]
+  \includegraphics[width=0.62\linewidth]{dualstage_colored}\\[0.3em]
+  {\footnotesize
+   \cbox{tudgray}~coil \ \ \cbox{tudcyan}~1st stage: PMOS pair \ \
+   \cbox{tudyellow}~feedback \ \ \cbox{tudpink}~2nd stage: NMOS CS \ \ \cbox{tudgreen}~ADC load}\\[0.2em]
   \src{EKV schematic, \texttt{.source V1}, \texttt{.detector V\_out}, \texttt{.lgref Gm\_M1\_X2}}
 \end{frame}
 
@@ -671,22 +674,24 @@
 \end{frame}
 
 \begin{frame}{Dual-stage design parameters}
+  \centering
+  \includegraphics[width=0.8\linewidth]{dualStageSimple_colored}\\[0.2em]
+  {\footnotesize
+   \cbox{tudgray}~coil \ \ \cbox{tudcyan}~1st stage ($g_{m1},g_{o1}$) \ \
+   \cbox{tudpink}~2nd stage ($g_{m2}$) \ \ \cbox{tudyellow}~feedback ($R_f$) \ \
+   \cbox{tudgreen}~ADC load}\\[0.35em]
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      \includegraphics[width=\linewidth]{dualStageSimple_colored}\\
-      \src{behavioural model: $g_{m1}$ (1st) and $g_{m2}$ (2nd) transconductors}
-      \[ L_{DC}=\frac{R_f g_{m1} g_{m2}(-R_s-R_t)}{R_sg_{o1}+R_tg_{o1}}
-         =-\frac{R_f g_{m1}g_{m2}}{g_{o1}} \]
-    \end{column}
-    \begin{column}{0.48\textwidth}
+    \begin{column}{0.5\textwidth}
       \footnotesize
-      \textbf{$g_{m1}$}, first-stage transconductance, set by the \emph{noise} budget.\\[3pt]
-      \textbf{$g_{m2}$}, second-stage transconductance, the extra \emph{loop-gain} factor.\\[3pt]
-      \textbf{$R_f$}, feedback resistor, set by the \emph{transfer}.\\[3pt]
-      \textbf{$g_{o1}$}, first-stage output conductance (its output resistance).
-      \begin{resultbox}
-        \footnotesize $|L_{DC}|\approx\SI{45}{dB}$, enough for accuracy.
-      \end{resultbox}
+      \textbf{$g_{m1}$} first-stage transconductance, set by the \emph{noise} budget.\\[2pt]
+      \textbf{$g_{m2}$} second-stage transconductance, the extra \emph{loop-gain} factor.\\[2pt]
+      \textbf{$R_f$} feedback resistor, set by the \emph{transfer}.\\[2pt]
+      \textbf{$g_{o1}$} first-stage output conductance (its output resistance).
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \resizebox{\linewidth}{!}{$\displaystyle L_{DC}=\frac{R_f g_{m1} g_{m2}(-R_s-R_t)}{R_sg_{o1}+R_tg_{o1}}=-\frac{R_f g_{m1}g_{m2}}{g_{o1}}$}
+      \vskip0.4em
+      \begin{resultbox}$|L_{DC}|\approx\SI{45}{dB}$, enough for accuracy.\end{resultbox}
     \end{column}
   \end{columns}
 \end{frame}
