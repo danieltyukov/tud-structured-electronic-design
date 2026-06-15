@@ -675,23 +675,23 @@
 
 \begin{frame}{Dual-stage design parameters}
   \centering
-  \includegraphics[width=0.8\linewidth]{dualStageSimple_colored}\\[0.2em]
+  \includegraphics[width=0.66\linewidth]{dualStageSimple_colored}\\[0.1em]
   {\footnotesize
    \cbox{tudgray}~coil \ \ \cbox{tudcyan}~1st stage ($g_{m1},g_{o1}$) \ \
    \cbox{tudpink}~2nd stage ($g_{m2}$) \ \ \cbox{tudyellow}~feedback ($R_f$) \ \
-   \cbox{tudgreen}~ADC load}\\[0.35em]
+   \cbox{tudgreen}~ADC load}\\[0.25em]
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.52\textwidth}
       \footnotesize
-      \textbf{$g_{m1}$} first-stage transconductance, set by the \emph{noise} budget.\\[2pt]
-      \textbf{$g_{m2}$} second-stage transconductance, the extra \emph{loop-gain} factor.\\[2pt]
-      \textbf{$R_f$} feedback resistor, set by the \emph{transfer}.\\[2pt]
-      \textbf{$g_{o1}$} first-stage output conductance (its output resistance).
+      \textbf{$g_{m1}$} first-stage transconductance, set by the \emph{noise} budget.\\[1pt]
+      \textbf{$g_{m2}$} second-stage transconductance, the extra \emph{loop-gain} factor.\\[1pt]
+      \textbf{$R_f$} feedback resistor, set by the \emph{transfer}.\\[1pt]
+      \textbf{$g_{o1}$} first-stage output conductance.
     \end{column}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.48\textwidth}
       \resizebox{\linewidth}{!}{$\displaystyle L_{DC}=\frac{R_f g_{m1} g_{m2}(-R_s-R_t)}{R_sg_{o1}+R_tg_{o1}}=-\frac{R_f g_{m1}g_{m2}}{g_{o1}}$}
-      \vskip0.4em
-      \begin{resultbox}$|L_{DC}|\approx\SI{45}{dB}$, enough for accuracy.\end{resultbox}
+      \vskip0.25em
+      \begin{resultbox}\footnotesize $|L_{DC}|\approx\SI{45}{dB}$, enough for accuracy.\end{resultbox}
     \end{column}
   \end{columns}
 \end{frame}
@@ -724,17 +724,18 @@
 \begin{frame}{EKV small-signal model}
   \begin{columns}[T]
     \begin{column}{0.6\textwidth}
-      \includegraphics[width=\linewidth]{dualStageEKV}
+      \includegraphics[width=\linewidth]{dualStageEKV_hl}\\
+      \src{same topology as slide 32; the two \textbf{transistors} (circled) are now full EKV models}
     \end{column}
     \begin{column}{0.4\textwidth}
-      Swap the ideal devices for the \textbf{EKV} model:
+      The circled devices carry what the ideal nullor and behavioural model left out:
       \begin{itemize}
-        \item realistic transistor-level design;
-        \item includes most parasitic capacitances;
-        \item far more accurate gain \& phase.
+        \item finite output conductance $g_o$;
+        \item parasitic caps $C_{gs},C_{gd},C_{gb},C_{db},C_{sb}$.
       \end{itemize}
       \begin{whybox}
-      Now the poles and zeros are trustworthy, so we can check stability.
+      These parasitics are what create the high-frequency poles \& zeros, so now the stability
+      check is trustworthy.
       \end{whybox}
     \end{column}
   \end{columns}
@@ -797,57 +798,41 @@
 
 \begin{frame}{The phantom-zero method}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      Put $R_{phz}$ in series with the load capacitor: a zero in the \emph{loop gain} with no real
-      pole in the signal path.
+    \begin{column}{0.55\textwidth}
+      \includegraphics[width=\linewidth]{dualStageEKVcompensated_hl}\\
+      \src{actual SLiCAP circuit; the one added component, \textbf{$R_{phz}$}, is circled}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      Put $R_{phz}$ in series with the load: a zero in the \emph{loop gain}, with no real pole in the
+      signal path (the feedback is tapped \emph{before} it).
       \begin{resultbox}$\displaystyle z=-\frac{1}{R_{phz}C_L}$\end{resultbox}
       \textbf{Why this one?}
       \begin{itemize}
         \item no extra noise source in the signal path;
         \item negligible power and area;
-        \item no added energy storage (no compensation cap).
+        \item no compensation capacitor (no added energy storage).
       \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \centering
-      \begin{tikzpicture}[scale=0.8,transform shape,line width=0.8pt]
-        \node[draw,fill=tudpink!25,minimum height=10mm,minimum width=15mm] (amp) at (0,0){NMOS CS};
-        \draw (amp.east)--(1.6,0) coordinate(a);
-        \draw (a) to[R,l=$R_{phz}$] (4.2,0) coordinate(out);
-        \draw (out)--(4.9,0) node[right]{\textbf{out}};
-        \draw (out) to[C,l_=$C_L$] (4.2,-1.9) node[ground]{};
-        \draw (a)--(a|-0,1.5) coordinate(t) to[C,l=$C_i$] (-1.0,1.5);
-        \node[above right,font=\scriptsize] at (t){feedback tap};
-      \end{tikzpicture}\\[0.3em]
-      \src{$R_{phz}$ in series; feedback tapped \emph{before} it.}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Compensation result}
+  \centering
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      \includegraphics[width=\linewidth]{compensation_mfm}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[width=\linewidth]{compensation_mfm}\\
+      \src{full band: peak removed, passband intact}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      {\scriptsize\renewcommand{\arraystretch}{1.1}
-      \begin{tabular}{@{}l r r r@{}}
-        \toprule
-        compensated & $|f|$ [Hz] & Q & \\ \midrule
-        $p_{2,3}$ & $150.7$k & $0.71$ & \\
-        $p_{4,5}$ & $47.8$M & \hl{0.70} & MFM \\
-        \bottomrule
-      \end{tabular}}
-      \vskip0.4em
-      \begin{resultbox}
-        $R_{phz}\approx\hl{\SI{0.42}{k\ohm}}$\\[2pt] $Q:\ 5.4\longrightarrow 0.70$
-      \end{resultbox}
-      \begin{itemize}\footnotesize
-        \item Peak removed; passband untouched; all poles in the LHP.
-        \item Cost: one resistor.
-      \end{itemize}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[width=\linewidth]{compensation_sweep}\\
+      \src{tuning $R_{phz}$: under / MFM / over}
     \end{column}
   \end{columns}
+  \vskip0.35em
+  \begin{resultbox}
+  $R_{phz}\approx\hl{\SI{0.42}{k\ohm}}$ tunes the \SI{51}{MHz} pair $Q:\ 5.4\to\hl{0.70}$ (MFM);
+  all poles stay in the LHP, so it remains stable. Cost: one resistor.
+  \end{resultbox}
 \end{frame}
 
 % =================================================================

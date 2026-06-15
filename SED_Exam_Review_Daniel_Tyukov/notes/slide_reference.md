@@ -64,12 +64,12 @@ Behavioural transconductors: **g_m1 ≈ 73 µS** (1st stage, set by noise), **g_
 | 35 | **Dual-stage design parameters** | **behavioural dual-stage SLiCAP circuit + L_DC** |
 | 36 | Asymptotic-gain model: every curve explained | 5-curve Bode plot |
 | 37 | *Part 6: EKV model & pole-zero analysis* | divider |
-| 38 | **EKV small-signal model** | **EKV dual-stage SLiCAP circuit (plain)** |
+| 38 | **EKV small-signal model** | **EKV dual-stage SLiCAP circuit, X1/X2 circled** |
 | 39 | Pole-zero analysis | PZ map + pole/zero table |
 | 40 | *Part 7: Frequency compensation (MFM)* | divider |
 | 41 | Target: maximally-flat magnitude (MFM) | Q = 1/√2 text |
-| 42 | The phantom-zero method | **R_phz insertion circuit** |
-| 43 | Compensation result | before/after plot + table |
+| 42 | The phantom-zero method | **actual SLiCAP compensated circuit, R_phz circled** |
+| 43 | Compensation result | before/after plot + R_phz sweep plot |
 | 44 | *Part 8: Conclusions* | divider |
 | 45 | Conclusions | summary |
 | 46 | Thank you | closing |
@@ -177,13 +177,16 @@ The four parameters on the slide: **g_m1** (noise budget), **g_m2** (extra loop-
   L_DC = −R_f · g_m1 · g_m2 / g_o1.
 
 ### Slide 38: "EKV small-signal model"
-Figure: `assets/schematics/dualStageEKV.png`. The **same circuit as slide 32** (netlist
-`dualStageEKV.cir`) but **plain (no colour zones)**, presented as the realistic transistor-level model
+Figure: `assets/schematics/dualStageEKV_hl.png`. The **same topology as slide 32** (netlist
+`dualStageEKV.cir`) with **X1 and X2 circled in red**: each transistor now carries the full EKV
+small-signal model (finite g_o + parasitic caps C_gs, C_gd, C_gb, C_db, C_sb) that the ideal nullor
+and the behavioural model omitted. These parasitics create the HF poles/zeros. Realistic transistor-level model
 with all parasitic capacitances. This is the circuit the pole-zero analysis (slide 39) runs on.
 
 ### Slide 42: "The phantom-zero method"
-Conceptual circuitikz drawing based on `dualStageEKVcompensated.cir`. It adds **R4 = R_phz ≈ 0.42 kΩ**
-in series between the 2nd-stage output node (`5`) and the load node (`out`). The load C2 (C_L) sits at
+Figure: `assets/schematics/dualStageEKVcompensated_hl.png` (netlist `dualStageEKVcompensated.cir`),
+the **actual SLiCAP compensated circuit** with the one added component **R4 = R_phz ≈ 0.42 kΩ
+circled in red**. It sits in series between the 2nd-stage output node (`5`) and the load node (`out`). The load C2 (C_L) sits at
 `out`; the feedback (C3 = C_i, R5 = R_b) is tapped at node `5`, i.e. **before** R_phz. Because the
 feedback is taken before R_phz, the resistor adds a zero to the **loop gain** without putting a real
 pole in the signal path. The zero is at z = −1/(R_phz·C_L).

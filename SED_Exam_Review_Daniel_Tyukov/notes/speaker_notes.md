@@ -227,10 +227,11 @@ one, and departs once the loop gain falls.
 Now I make the model realistic.
 
 ### 38 · EKV small-signal model
-I swap the ideal devices for the EKV small-signal model, which includes the real transconductance,
-the output conductance and all the parasitic capacitances. The passband still sits on the
-asymptotic gain, but now the high-frequency behaviour is trustworthy, so I can look at the real
-poles and zeros.
+It's the same topology as the suggested-topology slide, but I've circled the two transistors,
+because that's where the change is. Each transistor is now the full EKV small-signal model: it
+adds finite output conductance and all the parasitic capacitances, C_gs, C_gd, C_gb, C_db, C_sb,
+that the ideal nullor and the behavioural model left out. Those parasitics are exactly what create
+the high-frequency poles and zeros, so now the stability check is trustworthy.
 
 ### 39 · Pole-zero analysis
 There are five poles and they all have negative real parts, so the amplifier is stable. The
@@ -249,16 +250,18 @@ a comfortable phase margin. To move the pair I add a zero to the loop gain near 
 phase lead and lowers the effective Q. I'm shaping stability, not just the gain.
 
 ### 42 · The phantom-zero method
-The method I use is the phantom zero, a resistor in series with the load capacitor, which makes a
-zero in the loop gain without putting a real pole in the signal path. I choose it because it costs
-almost nothing: no extra noise source in the signal path, negligible power and area, and no
-compensation capacitor. It's the cheapest way to buy stability.
+This is the actual SLiCAP compensated circuit, and I've circled the one component I added: R_phz,
+in series with the load. It makes a zero in the loop gain without putting a real pole in the
+signal path, because the feedback is tapped before it. I choose it because it costs almost
+nothing: no extra noise source in the signal path, negligible power and area, and no compensation
+capacitor. The cheapest way to buy stability.
 
 ### 43 · Compensation result
-And here's the result. A phantom-zero resistor of about 0.42 kilohm pulls the quality factor of
-the high-frequency pair from 5.4 down to 0.7, which is maximally flat. The peak is gone, the
-passband is untouched, and all the poles stay in the left half-plane, so it's still stable. The
-whole fix is one resistor.
+Here's the result, with two plots. On the left, the full-band gain before and after: the peak is
+gone and the passband is untouched. On the right, a sweep of R_phz showing how it tunes the peak:
+too small under-damps and the bump stays, the MFM value flattens it, too large over-damps and
+costs bandwidth. The MFM value, about 0.42 kilohm, pulls the 51 megahertz pair's Q from 5.4 down
+to 0.7. All poles stay in the left half-plane, so it is still stable. The whole fix is one resistor.
 
 ### 44 · Part 8 (divider)
 Let me wrap up.
